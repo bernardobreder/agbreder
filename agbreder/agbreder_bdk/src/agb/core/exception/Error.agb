@@ -1,0 +1,4 @@
+
+throw runtime Error extends Throwable do
+
+end

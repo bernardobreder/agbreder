@@ -1,0 +1,27 @@
+
+class DataStreamTest do
+
+	static this main () do
+		DataStreamTest.test1()
+		return this
+	end
+	
+	static this test1 () do
+		ByteOutput bytes = new ByteOutput()
+		DataOutput out = new DataOutput(bytes)
+		out.writeByte(64)
+		out.writeChar(128)
+		out.writeShort(1024)
+		out.writeInt(4294967295)
+		out.writeString("Ação")
+		DataInput in = new DataInput(new ByteInput(bytes.dupBytes()))
+		Assert.equal(64, in.readByte())
+		Assert.equal(128, in.readChar())
+		Assert.equal(1024, in.readShort())
+		Assert.equal(4294967295, in.readInt())
+		Assert.equal("Ação", in.readString())
+		Assert.equal(true, in.isEof())
+		return this
+	end
+
+end

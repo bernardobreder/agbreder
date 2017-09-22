@@ -1,0 +1,85 @@
+
+class MapTest do
+
+	static this main () do
+		MapTest.test1()
+		MapTest.test2()
+		MapTest.test3()
+		MapTest.test4()
+		MapTest.test5()
+		MapTest.test6()
+		return this
+	end
+	
+	static this test1 () do 
+		Console.println("MapTest.test1")
+		Map map = new Map() 
+		Assert.equal(0, map.size())
+		Assert.equal("{}", map.toString())
+		return this
+	end
+	
+	static this test2 () do 
+		Console.println("MapTest.test2")
+		Map map = new Map()
+		map.set("a",new Number(1))
+		Assert.equal(1, map.size())
+		Assert.equal("1", map.get("a").toString())
+		Assert.equal("{a=1}", map.toString())
+		map.set("a",new Number(1))
+		Assert.equal(1, map.size())
+		Assert.equal(new Number(1), map.get("a"))
+		Assert.equal("{a=1}", map.toString())
+		return this
+	end
+	
+	static this test3 () do 
+		Console.println("MapTest.test3")
+		Map map = new Map()
+		map.set("a",new Number(1))
+		Assert.equal("1", map.get("a").toString())
+		return this
+	end
+	
+	static this test4 () do 
+		Map map = new Map()
+		map.set("c", new Number(1))
+		map.get("c").toString()
+		return this
+	end
+	
+	static this test5 () do 
+		Console.println("MapTest.test5")
+		Map map = new Map()
+		map.set("a",new Number(1))
+		Assert.equal(1, map.size())
+		map.set("b",new Number(2))
+		Assert.equal(2, map.size())
+		map.set("c",new Number(3))
+		Assert.equal(3, map.size())
+		Assert.equal("1", map.remove("a").toString())
+		Assert.equal(2, map.size())
+		Assert.equal("2", map.remove("b").toString())
+		Assert.equal(1, map.size())
+		Assert.equal("3", map.remove("c").toString())
+		Assert.equal(0, map.size())
+		map.toString()
+		return this
+	end
+	
+	static this test6 () do 
+		Console.println("MapTest.test6")
+		Map map = new Map()
+		map.set("a",new Number(1))
+		Assert.equal(1, map.size())
+		map.set("a",new Number(2))
+		Assert.equal(1, map.size())
+		map.set("a",new Number(3))
+		Assert.equal(1, map.size())
+		Assert.equal("3", map.remove("a").toString())
+		Assert.equal(0, map.size())
+		map.toString()
+		return this
+	end
+
+end

@@ -1,0 +1,11 @@
+
+class UIArialFont extends UIFont do
+
+	bool equal (Object target) do
+		if target == null or target.classname() != "UIArialFont" do
+			return false
+		end
+		return true
+	end
+
+end

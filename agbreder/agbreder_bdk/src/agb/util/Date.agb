@@ -1,0 +1,89 @@
+
+class Date extends Object do
+
+	num year
+	
+	num month
+	
+	num day
+	
+	num hour
+
+	num minute
+
+	num second
+	
+	this Date (num year, num month, num day, num hour, num minute, num second ) do
+		this.year = year
+		this.month = month
+		this.day = day
+		this.hour = hour
+		this.minute = minute
+		this.second = second
+		return this
+	end
+	
+	num getYear () do
+		return this.year
+	end
+
+	num getMonth () do
+		return this.month
+	end
+	
+	num getDay () do
+		return this.day
+	end
+	
+	num getHour () do
+		return this.hour
+	end
+	
+	num getMinute () do
+		return this.minute
+	end
+	
+	num getSecond () do
+		return this.second
+	end
+	
+	this setYear(num value) do
+		this.year = value
+		return this
+	end
+	
+	this setMonth(num value) do
+		this.month = value
+		return this
+	end
+	
+	this setDay(num value) do
+		this.day = value
+		return this
+	end
+	
+	this setHour(num value) do
+		this.hour = value
+		return this
+	end
+	
+	this setMinute(num value) do
+		this.second = value
+		return this
+	end
+	
+	this setSecond(num value) do
+		this.second = value
+		return this
+	end
+	
+	str toString() do
+		return this.year + "-" + 
+				this.month + "-" + 
+				this.day + " " + 
+				this.hour + ":" + 
+				this.minute + ":" + 
+				this.second 
+	end
+
+end

@@ -1,0 +1,22 @@
+
+class ByteInput extends Input do
+
+	Bytes bytes
+	
+	num index
+	
+	this ByteInput (byte[] bytes) do
+		this.bytes = new Bytes(bytes)
+		this.index = 0
+		return this
+	end 
+
+	byte readByte () do
+		return this.bytes.get(this.index = this.index + 1)
+	end
+	
+	bool isEof () do
+		return this.index >= this.bytes.size() 
+	end
+
+end

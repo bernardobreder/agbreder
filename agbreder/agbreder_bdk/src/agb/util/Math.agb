@@ -1,0 +1,30 @@
+
+class Math do
+
+	static num max(num a, num b) do
+		if a > b do 
+			return a 
+		end else do
+			return b
+		end 
+	end 
+	
+	static num min(num a, num b) do 
+		if a < b do 
+			return a 
+		end else do
+			return b
+		end
+	end
+	
+	static num between(num min, num value, num max) do
+		if value < min do
+			return min
+		end else if value > max do
+			return max
+		end else do
+			return value
+		end
+	end 
+	
+end

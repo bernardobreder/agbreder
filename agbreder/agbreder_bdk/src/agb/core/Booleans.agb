@@ -1,0 +1,56 @@
+
+class Booleans extends Object do
+
+	bool[] native
+
+	this Booleans(num size) do
+		this.native = |bools.alloc, size|  
+		return this
+	end
+	
+	bool get (num index) do
+		return |bools.get, this.native, index|
+	end
+	
+	this set (num index, bool value) do
+		|bools.set, this.native, index, value|
+		return this
+	end
+	
+	this sets (num beginIndex, num endIndex, bool value) do
+		|bools.sets, this.native, beginIndex, endIndex, value|
+		return this
+	end
+	
+	this copy (Booleans source, num sourceBeginIndex, num sourceEndIndex, num destIndex) do
+		|bools.copy, source.native, sourceBeginIndex, sourceEndIndex, this.native, destIndex|
+		return this
+	end
+	
+	num size () do
+		return |bools.size, this.native|
+	end
+	
+	bool equal(Object target) do
+		if target.classname() != "Booleans" do
+			return false
+		end
+		return |bools.equal,this.native, ((Booleans)target).native|
+	end
+	
+	bool[] getNative() do
+		return this.native
+	end
+	
+	str toString() do
+		str result = "["
+		num size = this.size()
+		for n = 1, size do
+			result = result + this.get(n)
+			if n != size do result = result + ", " end
+		end
+		result = result + "]"
+		return result
+	end
+
+end

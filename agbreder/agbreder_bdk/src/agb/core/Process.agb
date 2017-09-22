@@ -1,0 +1,11 @@
+
+class Process extends Object do
+
+	obj native
+
+	this Process(byte[] base64, num width, num height) do
+		this.native = Native.vmAlloc(base64, width, height)
+		return this
+	end
+	
+end

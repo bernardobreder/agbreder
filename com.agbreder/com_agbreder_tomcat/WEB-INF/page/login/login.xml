@@ -1,0 +1,24 @@
+<div>
+	<div id="container">
+		<import src="/WEB-INF/page/login/header.xml" />
+		<div id="middle">
+			<table>
+				<tr>
+					<td valign="top">
+						<div id="center">
+						</div>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+	<div id="logo" style="display: none;">
+		<import src="/WEB-INF/page/login/logo.xml" />
+	</div>
+	<div id="create_account" style="display: none;">
+		<import src="/WEB-INF/page/login/create.xml" />
+	</div>
+	<div id="forgot_password" style="display: none;">
+		<import src="/WEB-INF/page/login/forgot.xml" />
+	</div>
+</div>

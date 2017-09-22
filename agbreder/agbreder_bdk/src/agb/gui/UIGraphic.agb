@@ -1,0 +1,81 @@
+
+class UIGraphic extends Object do
+
+	Stack contexts
+	
+	this UIGraphic () do
+        this.contexts = new Stack()
+        this.push()
+        return this 
+    end
+    
+    this pushGraphic (num x, num y, num width, num height) do
+    	this.push()
+    	Native.sdlPushGraphic(x, y, width, height)
+    	return this
+    end
+    
+    this popGraphic (num x, num y) do
+    	this.pop()
+    	UIGraphicContext c = this.peek()
+    	Native.sdlPopGraphic(c.transX + x, c.transY + y)
+    	return this
+    end
+    
+	this translate (num x, num y) do
+		UIGraphicContext c = this.peek()
+		c.transX = c.transX + x;
+		c.transY = c.transY + y;
+		return this
+	end
+	
+	this drawString (num x, num y, str text, UIColor color) do
+		UIGraphicContext c = this.peek()
+		Native.sdlDrawString(c.transX + x, c.transY + y, text, color.getRGB()) 
+		return this
+	end
+	
+	this drawRect (num x, num y, num width, num height, UIColor color) do
+		UIGraphicContext c = this.peek()
+		Native.sdlDrawRect(c.transX + x, c.transY + y, width, height, color.getRGB())
+		return this
+	end
+	
+	this fillRect (num x, num y, num width, num height, UIColor color) do
+		UIGraphicContext c = this.peek()
+		Native.sdlFillRect(c.transX + x, c.transY + y, width, height, color.getRGB())
+		return this
+	end
+	
+	this drawProcess (num x, num y, Process process) do
+		UIGraphicContext c = this.peek()
+		|vm.paint, c.transX + x, c.transY + y, process.native| 
+		return this
+	end
+	
+	UIGraphicContext peek () do
+		return (UIGraphicContext) this.contexts.peek()
+	end
+	
+	this push () do
+		UIGraphicContext c = new UIGraphicContext()
+		this.contexts.push(c)
+		return this
+	end
+	
+	this pop () do
+		this.contexts.pop()
+		return this
+	end
+	
+end
+
+class UIGraphicContext extends Object do
+
+	num transX
+	
+	num transY
+	
+	UIFont font
+	
+end

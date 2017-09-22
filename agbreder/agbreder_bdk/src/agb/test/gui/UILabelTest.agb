@@ -1,0 +1,32 @@
+
+class UILabelTest do
+
+	static this main () do
+		UILabelTest.test1()
+		return this
+	end
+	
+	static this test1 () do
+		do
+			UILabel c = new UILabel()
+			Assert.equal("", c.getText())
+			Assert.equal(UIColor.getBlack(), c.getForeColor())
+			Assert.nil(c.getBackColor())
+			Assert.equal(new UIArialFont(), c.getFont())
+			Assert.equal(0, c.getPadding())
+			Assert.nil(c.getParent())
+			Assert.nil(c.getFrame())
+			Assert.equal(c, c.repaint())
+		end
+		do
+			UILabel c = new UILabel()
+			Assert.equal("test", c.setText("test").getText())
+			Assert.equal(UIColor.getRed(), c.setForeColor(UIColor.getRed()).getForeColor())
+			Assert.equal(UIColor.getRed(), c.setBackColor(UIColor.getRed()).getBackColor())
+			Assert.equal(new UIFont(), c.setFont(new UIFont()).getFont())
+			Assert.equal(2, c.setPadding(2).getPadding())
+		end
+		return this
+	end
+	
+end

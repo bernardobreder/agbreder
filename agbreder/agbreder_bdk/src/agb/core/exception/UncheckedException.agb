@@ -1,0 +1,4 @@
+
+throw runtime UncheckedException extends Throwable do
+
+end

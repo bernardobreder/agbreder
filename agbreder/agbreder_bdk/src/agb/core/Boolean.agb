@@ -1,0 +1,26 @@
+
+class Boolean extends Primitive do
+
+	bool native
+
+	this Boolean(bool value) do
+		this.native = value  
+		return this
+	end
+	
+	bool equal(Object target) do
+		if target.classname() != "Boolean" do
+			return false
+		end
+		return this.native == ((Boolean)target).native
+	end
+	
+	bool getNative() do
+		return this.native
+	end
+	
+	str toString() do
+		return |boolean.tostr,this.native|
+	end
+
+end

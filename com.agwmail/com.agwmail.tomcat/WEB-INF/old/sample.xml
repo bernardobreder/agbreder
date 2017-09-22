@@ -1,0 +1,20 @@
+<html>
+	<set var="max" value="${1024*1024*1024}" />
+	<set var="array" value="${[max]}" />
+	<for var="n" begin="${1}" end="${max}">
+		<set var="array" index="${n}" value="${math.random(1)}" />
+	</for>
+	<set var="count" value="${0}" />
+	<set var="sends" value="${[2]}" />
+	<for var="n" begin="${1}" end="${2}">
+		<set var="sends" index="${n}">
+			<send to="${receiver[n].name}"></send>
+		</set>
+	</for>
+	<for var="n" begin="${1}" end="${2}">
+		<inc var="count">
+			<join send="${sends[n]}"></join>
+		</inc>
+	</for>
+	<replay to="${me}">${count}</replay>
+</html>

@@ -1,0 +1,50 @@
+
+class ThrowTest do
+
+	static this main () do
+		ThrowTest.test1()
+		ThrowTest.test2()
+		ThrowTest.test3()
+		Console.println("Finish")
+		return this
+	end
+	
+	static this test1 () do 
+		Console.println("ThrowTest.test1")
+		try do 
+			throw new CheckedException ()
+			Assert.fail() 
+		end catch CheckedException e do end
+		try do 
+			try do 
+				throw new CheckedException ()
+				Assert.fail() 
+			end catch CheckedException e do end
+		end catch CheckedException e do 
+			Assert.fail()
+		end 
+		return this
+	end
+	
+	static this test2 () do 
+		Console.println("ThrowTest.test2")
+		try do 
+			try do 
+				throw new CheckedException ()
+			end catch CheckedException e do end
+		end catch CheckedException e do 
+		end 
+		return this
+	end
+	
+	static this test3 () do 
+		Console.println("ThrowTest.test2")
+		try do 
+			try do 
+			end catch CheckedException e do end
+		end catch CheckedException e do 
+		end 
+		return this
+	end
+
+end

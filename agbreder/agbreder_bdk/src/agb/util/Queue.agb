@@ -1,0 +1,32 @@
+
+class Queue extends Object do
+
+	Array array
+
+	this Queue () do
+		this.array = new Array() 
+		return this
+	end 
+	
+	num size () do 
+		return this.array.size()
+	end
+	
+	this push (Object value) do 
+		this.array.add(value)
+		return this
+	end
+	
+	Object pop () do   
+		return this.array.remove(1)
+	end
+	
+	Object peek () do 
+		return ((Object)this.array.get(1))
+	end
+	
+	str toString() do
+		return this.array.toString()
+	end
+
+end

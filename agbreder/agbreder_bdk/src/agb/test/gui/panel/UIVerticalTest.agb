@@ -1,0 +1,121 @@
+
+class UIVerticalTest do
+
+	static this main () do
+		UIVerticalTest.test0()
+		UIVerticalTest.test1()
+		UIVerticalTest.test2()
+		UIVerticalTest.test3()
+		UIVerticalTest.test4()
+		UIVerticalTest.test5()
+		UIVerticalTest.test6()
+		return this
+	end
+	
+	static this test0 () do
+		UIVertical v = new UIVertical().add(null)
+		Assert.equal(0, v.size())
+		Assert.equal(null, v.get(1))
+		Assert.equal("<row/>", v.toString())
+		return this
+	end
+	
+	static this test1 () do
+		UIVertical v = new UIVertical().layout()
+		Assert.equal(0, v.getX())
+		Assert.equal(0, v.getY())
+		Assert.equal(0, v.getWidth())
+		Assert.equal(0, v.getHeight())
+		Assert.equal("<row/>", v.toString())
+		return this
+	end
+	
+	static this test2 () do
+		UIVertical v = new UIVertical().setSize(200, 100).layout()
+		Assert.equal(0, v.getX())
+		Assert.equal(0, v.getY())
+		Assert.equal(200, v.getWidth())
+		Assert.equal(100, v.getHeight())
+		Assert.equal("<row/>", v.toString())
+		return this
+	end
+	
+	static this test3 () do
+		UIVertical v = new UIVertical().setSize(200, 100).add(new UILabel()).layout()
+		Assert.equal(1, v.size())
+		Assert.equal("UILabel", v.get(1).classname())
+		Assert.equal(0, v.get(1).getX())
+		Assert.equal(0, v.get(1).getY())
+		Assert.equal(200, v.get(1).getWidth())
+		Assert.equal(16, v.get(1).getHeight())
+		Assert.equal("<row><label/></row>", v.toString())
+		return this
+	end
+	
+	static this test4 () do
+		UIVertical v = new UIVertical().setSize(200, 100).setMargin(2).add(new UILabel()).add(new UILabel()).add(new UILabel()).layout()
+		Assert.equal(3, v.size())
+		Assert.equal("UILabel", v.get(1).classname())
+		Assert.equal("UILabel", v.get(2).classname())
+		Assert.equal("UILabel", v.get(3).classname())
+		Assert.equal(0, v.get(1).getX())
+		Assert.equal(0, v.get(1).getY())
+		Assert.equal(200, v.get(1).getWidth())
+		Assert.equal(16, v.get(1).getHeight())
+		Assert.equal(0, v.get(2).getX())
+		Assert.equal(18, v.get(2).getY())
+		Assert.equal(200, v.get(2).getWidth())
+		Assert.equal(16, v.get(2).getHeight())
+		Assert.equal(0, v.get(3).getX())
+		Assert.equal(36, v.get(3).getY())
+		Assert.equal(200, v.get(3).getWidth())
+		Assert.equal(16, v.get(3).getHeight())
+		Assert.equal("<row><label/><label/><label/></row>", v.toString())
+		return this
+	end
+	
+	static this test5 () do
+		UIVertical v = new UIVertical().setSize(200, 100).setMargin(2).add(new UILabel()).add(new UILabel(), true).add(new UILabel()).layout()
+		Assert.equal(3, v.size())
+		Assert.equal("UILabel", v.get(1).classname())
+		Assert.equal("UILabel", v.get(2).classname())
+		Assert.equal("UILabel", v.get(3).classname())
+		Assert.equal(0, v.get(1).getX())
+		Assert.equal(0, v.get(1).getY())
+		Assert.equal(200, v.get(1).getWidth())
+		Assert.equal(16, v.get(1).getHeight())
+		Assert.equal(0, v.get(2).getX())
+		Assert.equal(18, v.get(2).getY())
+		Assert.equal(200, v.get(2).getWidth())
+		Assert.equal(64, v.get(2).getHeight())
+		Assert.equal(0, v.get(3).getX())
+		Assert.equal(84, v.get(3).getY())
+		Assert.equal(200, v.get(3).getWidth())
+		Assert.equal(16, v.get(3).getHeight())
+		Assert.equal("<row><label/><label/><label/></row>", v.toString())
+		return this
+	end
+	
+	static this test6 () do
+		UIVertical v = new UIVertical().setSize(200, 100).setMargin(2).add(new UILabel()).add(new UILabel(), true).add(new UILabel(), true).layout()
+		Assert.equal(3, v.size())
+		Assert.equal("UILabel", v.get(1).classname())
+		Assert.equal("UILabel", v.get(2).classname())
+		Assert.equal("UILabel", v.get(3).classname())
+		Assert.equal(0, v.get(1).getX())
+		Assert.equal(0, v.get(1).getY())
+		Assert.equal(200, v.get(1).getWidth())
+		Assert.equal(16, v.get(1).getHeight())
+		Assert.equal(0, v.get(2).getX())
+		Assert.equal(18, v.get(2).getY())
+		Assert.equal(200, v.get(2).getWidth())
+		Assert.equal(40, v.get(2).getHeight())
+		Assert.equal(0, v.get(3).getX())
+		Assert.equal(60, v.get(3).getY())
+		Assert.equal(200, v.get(3).getWidth())
+		Assert.equal(40, v.get(3).getHeight())
+		Assert.equal("<row><label/><label/><label/></row>", v.toString())
+		return this
+	end
+	
+end 

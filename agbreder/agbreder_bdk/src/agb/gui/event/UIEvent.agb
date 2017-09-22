@@ -1,0 +1,4 @@
+
+class UIEvent extends Object do
+
+end

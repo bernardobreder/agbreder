@@ -1,0 +1,56 @@
+
+class UInteger2D do
+
+	obj native
+	
+	this UInteger2D (num lines, num columns) do
+		this.native = |uint2d.alloc, lines, columns|
+		return this
+	end
+	
+	num get(num line, num column) do
+		return |uint2d.get, this.native, line, column|
+	end
+	
+	this set(num line, num column, num value) do
+		|uint2d.set, this.native, line, column, value|
+		return this
+	end
+	
+	this sets(num beginLine, num endLine, num beginColumn, num endColumn, num value) do
+		|uint2d.sets, this.native, beginLine, endLine, beginColumn, endColumn, value| 
+		return this
+	end
+	
+	num rowSize () do
+		return |uint2d.lins, this.native|
+	end
+	
+	num columnSize () do
+		return |uint2d.cols, this.native|
+	end
+	
+	this copy (num destLine, num destColumn, UInteger2D source, num sourceLineBegin, num sourceLineEnd, num sourceColumnBegin, num sourceColumnEnd) do
+		|uint2d.copy, this.native, destLine, destColumn, source.native, sourceLineBegin, sourceLineEnd, sourceColumnBegin, sourceColumnEnd|
+		return this
+	end
+	
+	str toString () do
+		str result = "["
+		num lines = this.rowSize()
+		num columns = this.columnSize()
+		for n = 1, lines do
+			result = result + "["
+			for m = 1, columns do
+				num value = this.get(n, m)
+				result = result + value
+				if m != columns do result = result + ", " end
+			end
+			result = result + "]" 
+			if n != lines do result = result + ", " end
+		end
+		result = result + "]"
+		return result
+	end
+
+end

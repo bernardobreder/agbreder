@@ -1,0 +1,100 @@
+
+class Map extends Object do
+
+	num size
+	
+	Array list
+
+	this Map () do
+		return this
+	end
+	
+	num size () do 
+		return this.size
+	end
+	
+	Object get (str key) do
+		if this.list == null do return null end
+		num index = (|object.hashcode,key| % 15) + 1
+		Array array = (Array) this.list.get(index)
+		if array == null do return null end
+		for n = 1, array.size() do
+			MapEntity entity = (MapEntity) array.get(n)
+			if entity.key == key do
+				return entity.value
+			end
+		end
+		return null
+	end
+	
+	Object set (str key, Object value) do
+		if this.list == null do
+			this.list = new Array()
+			for n = 1, 15 do
+				this.list.add(null)
+			end
+		end
+		num index = (|object.hashcode,key| % 15) + 1
+		Array array = (Array) this.list.get(index) 
+		if array == null do
+			array = new Array()
+			this.list.set(index, array)
+		end
+		for n = 1, array.size() do
+			MapEntity entity = (MapEntity) array.get(n)
+			if entity.key == key do
+				Object old = entity.value
+				entity.value = value
+				return old
+			end
+		end
+		MapEntity entity = new MapEntity()
+		entity.key = key
+		entity.value = value 
+		array.add(entity) 
+		this.size = this.size + 1
+		return null
+	end
+	
+	Object remove (str key) do
+		if this.list == null do return null end
+		num index = (|object.hashcode,key| % 15) + 1
+		Array array = (Array) this.list.get(index)
+		if array == null do return null end
+		for n = 1, array.size() do
+			MapEntity entity = (MapEntity) array.get(n)
+			if entity.key == key do
+				array.remove(n)
+				this.size = this.size - 1
+				return entity.value
+			end
+		end
+		return null
+	end 
+	
+	str toString () do
+		str result = "{"
+		if this.list != null do
+			for a = 1, 15 do
+				Array array = (Array) this.list.get(a)
+				if array != null do
+					for n = 1, array.size() do
+						MapEntity entity = (MapEntity) array.get(n)
+						result = result + entity.key + "=" + entity.value.toString()
+					end
+				end
+			end
+		end
+		result = result + "}"
+		return result
+	end
+
+end
+
+class MapEntity extends Object do
+
+	str key
+	
+	Object value
+
+end

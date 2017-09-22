@@ -1,0 +1,75 @@
+
+class UIProcess extends UIComponent do
+
+	Process process
+
+	this paint (UIGraphic g) do
+		if this.process != null do
+			g.drawProcess(0, 0, this.process)
+		end
+		return this
+	end
+	
+	this setBytecode(byte[] bytes) do
+		this.process = new Process(bytes, this.getWidth(), this.getHeight())
+		return this
+	end
+    
+	this fireMouseWheelEvent (UIMouseEvent e) do
+		if this.process != null do
+			|vm.event_wheel, Native.mouseWheel(), e.getX(), e.getY(), e.getWheelX(), e.getWheelY()|
+			this.repaint()
+		end 
+		return this
+	end
+	
+    this fireMouseMotionEvent (UIMouseEvent e) do
+    	if this.process != null do
+	    	|vm.event_mouse, Native.mouseMotion(), e.getX(), e.getY()|
+	    	this.repaint()
+	    end
+		return this
+	end
+	
+	this fireMouseDownEvent (UIMouseEvent e) do
+		if this.process != null do
+			|vm.event_mouse, Native.mouseDown(), e.getX(), e.getY()|
+			this.getFrame().fireFocus(this)
+			this.repaint()
+		end
+		return this
+	end
+	
+	this fireMouseUpEvent (UIMouseEvent e) do
+		if this.process != null do
+			|vm.event_mouse, Native.mouseUp(), e.getX(), e.getY()|
+			this.repaint()
+		end
+		return this
+	end
+	
+	this fireKeyDownEvent (UIKeyEvent e) do
+		if this.process != null do
+			|vm.event_key, Native.keyDown(), e.getCode()|
+			this.repaint()
+		end
+       return this
+    end
+    
+    this fireKeyUpEvent (UIKeyEvent e) do
+    	if this.process != null do
+	    	|vm.event_key, Native.keyUp(), e.getCode()|
+	    	this.repaint()
+	    end
+       return this
+    end
+    
+    num getMinimumWidth () do
+		return 100
+	end
+	
+	num getMinimumHeight () do
+		return 100
+	end
+    
+end

@@ -1,0 +1,45 @@
+
+class Test do
+
+	static this main() throw CheckedException do
+		for n = 1, 1 do
+			do
+				NumbersTest.main()
+				BooleansTest.main()
+				ThrowTest.main()
+			end
+			do
+				ConsoleTest.main() 
+				MathTest.main() 
+				ArrayTest.main()
+				MatrixTest.main()
+				UInteger2DTest.main()
+				StackTest.main()
+				QueueTest.main()
+				MapTest.main()
+				TokenTest.main()
+			end
+			do
+				UIColorTest.main() 
+				UIComponentTest.main()
+				UILabelTest.main()
+				UITextTest.main()
+				UIButtonTest.main()
+				UIFrameTest.main()
+				UIGraphicTest.main() 
+				UIReaderTest.main() 
+				do
+					UIVerticalTest.main()
+					UIHorizontalTest.main()
+				end
+			end 
+			do
+				ByteStreamTest.main()
+				DataStreamTest.main()
+			end
+		end
+		Console.println("Finish All Tests")
+		return this 
+	end
+	
+end 

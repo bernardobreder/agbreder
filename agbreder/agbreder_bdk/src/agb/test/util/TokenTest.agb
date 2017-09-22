@@ -1,0 +1,69 @@
+
+class TokenTest do
+
+	static this main () throw ParseException do
+		TokenTest.test1()
+		TokenTest.test2()
+		TokenTest.test3()
+		TokenTest.test4()
+		TokenTest.test5()
+		return this
+	end
+	
+	static this test1 () do  
+		Console.println("TokenTest.test1")
+		Assert.equal("[<a>, <.>, <b>, <.>, <c>]", new TokenFactory("a.b.c").execute().toString())
+		Assert.equal("[<a1>, <.>, <b>, <.>, <c>]", new TokenFactory("a1.b.c").execute().toString())
+		Assert.equal("[<a_>, <.>, <b>, <.>, <c>]", new TokenFactory("a_.b.c").execute().toString())
+		Assert.equal("[<aa>, <.>, <b>, <.>, <c>]", new TokenFactory("aa.b.c").execute().toString())
+		Assert.equal("[<a>, <.>, <bb>, <.>, <c>]", new TokenFactory("a.bb.c").execute().toString())
+		Assert.equal("[<a>, <.>, <b>, <.>, <cc>]", new TokenFactory("a.b.cc").execute().toString())
+		Assert.equal("[<aa>, <.>, <bb>, <.>, <cc>]", new TokenFactory("aa.bb.cc").execute().toString())
+		Assert.equal("[<aa>, <.>, <bb>, <.>, <cc>]", new TokenFactory("aa.bb.cc").execute().toString())
+		Assert.equal("[<a>, <5>, <a>]", new TokenFactory("a\"5\"a").execute().toString())
+		return this
+	end
+	
+	static this test2 () do 
+		Console.println("TokenTest.test2")
+		Assert.equal("[<a>, <.>, <,>, <b>, <.>, <,>, <c>]", new TokenFactory("a.,b.,c").execute().toString())
+		return this
+	end
+	
+	static this test3 () do 
+		Console.println("TokenTest.test3")
+		Assert.equal("[<a>, <123>, <b>]", new TokenFactory("a 123 b").execute().toString())
+		Assert.equal("[<a>, <123.1>, <b>]", new TokenFactory("a 123.1 b").execute().toString())
+		Assert.equal("[<a>, <123.1>, <.>, <b>]", new TokenFactory("a 123.1. b").execute().toString())
+		Assert.equal("[<a>, <123>, <b>, <12>]", new TokenFactory("a 123 b 12").execute().toString())
+		return this
+	end
+	
+	static this test4 () throw ParseException do 
+		Console.println("TokenTest.test4")
+		Assert.equal("<a></a>", new XmlReader("<a></a>").getRoot().toString())
+		Assert.equal("<a></a>", new XmlReader("<a/>").getRoot().toString())
+		try do new XmlReader("<") Assert.fail() end catch ParseException e do end
+		try do new XmlReader("<a") Assert.fail() end catch ParseException e do end
+		try do new XmlReader("<a>") Assert.fail() end catch ParseException e do end
+		try do new XmlReader("<a><") Assert.fail() end catch ParseException e do end
+		try do new XmlReader("<a></a") Assert.fail() end catch ParseException e do end
+		try do new XmlReader("<a></b>") Assert.fail() end catch ParseException e do end
+		Assert.equal("<a></a>", new XmlReader(" < a > < / a > ").getRoot().toString())
+		Assert.equal("<a><b></b></a>", new XmlReader("<a><b></b></a>").getRoot().toString())
+		Assert.equal("<a><b></b><c></c></a>", new XmlReader("<a><b></b><c></c></a>").getRoot().toString())
+		Assert.equal("<a><b><c></c></b></a>", new XmlReader("<a><b><c></c></b></a>").getRoot().toString())
+		Assert.equal("<a><b></b></a>", new XmlReader("<a><b/></a>").getRoot().toString())
+		return this
+	end
+	
+	static this test5 () throw ParseException do 
+		Console.println("TokenTest.test5")
+		Assert.equal("<a id=\"5\"></a>", new XmlReader("<a id=\"5\"></a>").getRoot().toString())
+		Assert.equal("<a id=\"5\" name=\"ae\"></a>", new XmlReader("<a id=\"5\" name=\"ae\"></a>").getRoot().toString())
+		Assert.equal("<a id=\"5\" name=\"ae\" title=\"t\"></a>", new XmlReader("<a id=\"5\" name=\"ae\" title=\"t\"></a>").getRoot().toString())
+		Assert.equal("<a id=\"5\"><b name=\"ae\" title=\"t\"></b></a>", new XmlReader("<a id=\"5\"><b name=\"ae\" title=\"t\"></b></a>").getRoot().toString())
+		return this
+	end
+	
+end

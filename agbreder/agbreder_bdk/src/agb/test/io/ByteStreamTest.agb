@@ -1,0 +1,22 @@
+
+class ByteStreamTest do
+
+	static this main () do
+		ByteStreamTest.test1()
+		return this
+	end
+	
+	static this test1 () do
+		ByteOutput out = new ByteOutput()
+		for n = 1, 3 * 512 do
+			out.writeByte(n % 256)
+		end
+		ByteInput in = new ByteInput(out.dupBytes())
+		for n = 1, 3 * 512 do
+			Assert.equal(n % 256, in.readByte())
+		end
+		Assert.equal(true, in.isEof())
+		return this
+	end
+
+end

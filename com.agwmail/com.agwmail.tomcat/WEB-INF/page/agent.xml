@@ -1,0 +1,22 @@
+<div>
+	<table>
+		<tr>
+			<td colspan="2">
+				<div id="agent-top">
+					<div id="center-agent-path">
+						<input class="wide compose" style="font-size: medium; border: 0px;"
+							value="/" />
+					</div>
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td valign="top" width="200px">
+				<div id="agent-left-div"></div>
+			</td>
+			<td valign="top">
+				<div id="agent-center-div"></div>
+			</td>
+		</tr>
+	</table>
+</div>

@@ -1,0 +1,27 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: AGBreder Plug-in
+Bundle-SymbolicName: agbreder_plugin;singleton:=true
+Bundle-Version: 1.0.0
+Bundle-Activator: com.agbreder.plugin.BActivator
+Bundle-Localization: plugin
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.eclipse.core.resources,
+ org.eclipse.swt,
+ org.eclipse.jface.text,
+ org.eclipse.ui.ide,
+ org.eclipse.ui.editors,
+ org.eclipse.ui.workbench.texteditor,
+ org.eclipse.ui.views,
+ org.eclipse.jdt.ui,
+ org.eclipse.help,
+ org.eclipse.jdt,
+ org.eclipse.jdt.core,
+ org.eclipse.debug.core;bundle-version="3.5.0",
+ org.eclipse.debug.ui;bundle-version="3.5.0",
+ org.eclipse.ui.console;bundle-version="3.4.0"
+Eclipse-LazyStart: true
+Comment: For Eclipse 3.1
+Eclipse-AutoStart: true 
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6

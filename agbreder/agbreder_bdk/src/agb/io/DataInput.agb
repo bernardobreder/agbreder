@@ -1,0 +1,45 @@
+
+class DataInput extends Input do
+
+	Input input
+	
+	this DataInput (Input input) do
+		this.input = input
+		return this
+	end 
+
+	num readInt () do
+		return (this.readByte() << 24) + (this.readByte() << 16) + (this.readByte() << 8) + this.readByte()
+	end
+	
+	num readShort () do
+		return (this.readByte() << 8) + this.readByte()
+	end
+	
+	byte readByte () do
+		return this.input.readByte()
+	end
+	
+	num readChar () do
+		return this.readByte()
+	end
+	
+	str readString () do
+		num size = this.readInt()
+		Bytes bytes = new Bytes(size)
+		for n = 1 , size do
+			bytes.set(n, this.readByte())
+		end
+		return String.encodeUtf(bytes.getNative())
+	end
+	
+	bool isEof () do
+		return this.input.isEof() 
+	end
+	
+	this close () do
+		this.input.close()
+		return this 
+	end
+
+end

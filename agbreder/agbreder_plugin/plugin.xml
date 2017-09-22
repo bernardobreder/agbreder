@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.1"?>
+<plugin>
+
+	<extension point="org.eclipse.ui.views">
+		<view
+            category="com.agbreder.plugin.category"
+            class="com.agbreder.plugin.view.project.ProjectView"
+            icon="icons/project.gif"
+            id="com.agbreder.plugin.view.project.ProjectView"
+            name="AGBreder Project"
+            restorable="true">
+		</view>
+		<category
+            id="com.agbreder.plugin.category"
+            name="AGBreder View">
+		</category>
+	</extension>
+   
+   <extension point="org.eclipse.ui.editors">
+      <editor
+            name="AGBreder Editor"
+            extensions="agb"
+            icon="icons/class.gif"
+            contributorClass="org.eclipse.ui.texteditor.BasicTextEditorActionContributor"
+            class="com.agbreder.plugin.editor.BrederEditor"
+            id="com.agbreder.plugin.editors.BrederEditor">
+      </editor>
+   </extension>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <category name="AGBreder"
+            id="com.agbreder.plugin.wizard.build"/>
+      <wizard
+            category="com.agbreder.plugin.wizard.build"
+            class="com.agbreder.plugin.wizard.build.bproject.BProjectNewWizard"
+            icon="icons/project.gif"
+            id="com.agbreder.plugin.wizard.build.bproject.BProjectNewWizard"
+            name="AGBreder Project">
+      </wizard>
+      <wizard
+            category="com.agbreder.plugin.wizard.build"
+            class="com.agbreder.plugin.wizard.build.bpackage.BPackageNewWizard"
+            icon="icons/package.gif"
+            id="com.agbreder.plugin.wizard.build.bpackage.BPackageNewWizard"
+            name="AGBreder Package">
+      </wizard>
+      <wizard
+            category="com.agbreder.plugin.wizard.build"
+            class="com.agbreder.plugin.wizard.build.bclass.BClassNewWizard"
+            icon="icons/class.gif"
+            id="com.agbreder.plugin.wizard.build.bclass.BClassNewWizard"
+            name="AGBreder Class">
+      </wizard>
+   </extension>
+
+   <extension
+         point="org.eclipse.ui.perspectives">
+      <perspective
+            class="com.agbreder.plugin.perpective.BrederPerspective"
+            icon="icons/perspective.gif"
+            id="com.agbreder.plugin.perspective"
+            name="AGBreder">
+      </perspective>
+   </extension>
+   
+   <extension
+         id="sampleBuilder"
+         name="Breder Builder"
+         point="org.eclipse.core.resources.builders">
+      <builder
+            hasNature="true">
+         <run
+               class="com.agbreder.plugin.builder.AGBBuilder">
+         </run>
+      </builder>
+   </extension>
+
+   <extension
+         id="agbrederNature"
+         name="Breder Nature"
+         point="org.eclipse.core.resources.natures">
+      <runtime>
+         <run
+               class="com.agbreder.plugin.builder.BNature">
+         </run>
+      </runtime>
+      <builder
+            id="agbreder_plugin.sampleBuilder">
+      </builder>
+   </extension>
+
+   <extension
+         point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            adaptable="true"
+            objectClass="org.eclipse.core.resources.IProject"
+            nameFilter="*"
+            id="com.agbreder.plugin.contribution1">
+      </objectContribution>
+   </extension>
+
+   <extension
+         id="xmlProblem"
+         name="XML Problem"
+         point="org.eclipse.core.resources.markers">
+      <super
+            type="org.eclipse.core.resources.problemmarker">
+      </super>
+      <persistent
+            value="true">
+      </persistent>
+   </extension>
+   
+   <extension
+         point="org.eclipse.ui.commands">
+      <category
+            name="AGBreder Category"
+            id="com.agbreder.plugin.commands.category">
+      </category>
+      <command
+            category="AGBreder Category"
+            categoryId="com.agbreder.plugin.commands.category"
+            id="com.agbreder.plugin.commands.NewProjectCommand"
+            name="New Project Command">
+      </command>
+      <command
+            category="AGBreder Category"
+            categoryId="com.agbreder.plugin.commands.category"
+            id="com.agbreder.plugin.commands.NewPackageCommand"
+            name="New Package Command">
+      </command>
+      <command
+            category="AGBreder Category"
+            categoryId="com.agbreder.plugin.commands.category"
+            id="com.agbreder.plugin.commands.NewClassCommand"
+            name="New Class Command">
+      </command>
+   </extension>
+   
+   <extension
+         point="org.eclipse.ui.handlers">
+      <handler
+            class="com.agbreder.plugin.handlers.BNewProjectHandler"
+            commandId="com.agbreder.plugin.commands.NewProjectCommand">
+      </handler>
+      <handler
+            class="com.agbreder.plugin.handlers.BNewPackageHandler"
+            commandId="com.agbreder.plugin.commands.NewPackageCommand">
+      </handler>
+      <handler
+            commandId="com.agbreder.plugin.commands.NewClassCommand"
+            class="com.agbreder.plugin.handlers.BNewClassHandler">
+      </handler>
+   </extension>
+   
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            locationURI="toolbar:org.eclipse.ui.main.toolbar?after=additions">
+         <toolbar
+               id="com.agbreder.plugin.toolbars.BrederToolbar">
+            <command
+                  commandId="com.agbreder.plugin.commands.NewProjectCommand"
+                  icon="icons/project.gif"
+                  id="com.agbreder.plugin.toolbars.NewProjectCommand"
+                  tooltip="New Project">
+            </command>
+            <command
+                  commandId="com.agbreder.plugin.commands.NewPackageCommand"
+                  icon="icons/package.gif"
+                  id="com.agbreder.plugin.toolbars.NewPackageCommand"
+                  tooltip="New Package">
+            </command>
+            <command
+                  commandId="com.agbreder.plugin.commands.NewClassCommand"
+                  icon="icons/class.gif"
+                  tooltip="New Class"
+                  id="com.agbreder.plugin.toolbars.NewClassCommand">
+            </command>
+         </toolbar>
+      </menuContribution>
+   </extension>
+   
+   
+   <extension
+         point="org.eclipse.debug.core.launchDelegates">
+      <launchDelegate
+            delegate="com.agbreder.plugin.launch.BrederLaunchDelegate"
+            id="com.agbreder.plugin.launchDelegate1"
+            name="AGBreder Test"
+            sourceLocatorId="org.eclipse.jdt.debug.ui.javaSourceLocator"
+            sourcePathComputerId="org.eclipse.cdt.debug.core.sourcePathComputer"
+            type="org.eclipse.jdt.launching.javaApplet">
+      </launchDelegate>
+   </extension>
+   
+   <extension point="org.eclipse.debug.core.launchConfigurationTypes">
+	    <launchConfigurationType
+           delegate="com.agbreder.plugin.launch.BrederLaunchDelegate"
+           id="breder.launch.BrederLaunchConfigurationDelegate"
+           modes="run"
+           name="AGBreder Application">        
+	    </launchConfigurationType>
+	</extension>
+	<extension point="org.eclipse.debug.ui.launchConfigurationTabGroups">
+		<launchConfigurationTabGroup
+			class="com.agbreder.plugin.launch.tab.BrederLaunchConfigurationTabGroup"
+			id="com.agbreder.plugin.launchConfigurationTabGroup1"
+			type="breder.launch.BrederLaunchConfigurationDelegate">
+		</launchConfigurationTabGroup>
+	</extension>
+   
+	<extension point="org.eclipse.debug.ui.launchShortcuts">
+		<shortcut
+        class="com.agbreder.plugin.launch.BrederLaunchShortcut"
+        icon="icons/launch.gif"
+        id="com.agbreder.plugin.shortcut1"
+        label="AGBreder Launch"
+        modes="run">
+			<contextualLaunch>
+				<enablement>
+				<!--<with variable="selection">
+					<count value="1"/>
+					<iterate>
+						<test property="org.eclipse.cdt.launch.isExecutable"/>
+					</iterate>
+				</with>-->
+				</enablement>
+			<contextLabel mode="run" label="Breder Execute"/>
+			<contextLabel mode="debug" label="Breder Debug"/>
+		</contextualLaunch>
+		</shortcut>
+	</extension>
+ <extension
+       point="org.eclipse.debug.ui.consoleColorProviders">
+    <consoleColorProvider
+          class="agbreder_plugin.ConsoleColorProvider1"
+          id="agbreder_plugin.consoleColorProvider1"
+          processType="agbreder_plugin.consoleColorProvider1">
+    </consoleColorProvider>
+ </extension>
+ 	
+ 	<extension
+       point="org.eclipse.ui.propertyPages">
+		<page
+		  class="com.agbreder.plugin.properties.ProjectPropertyPage"
+		  id="breder.plugin.properties.samplePropertyPage"
+		  name="AGBreder Project"
+		  objectClass="org.eclipse.core.resources.IProject">
+			<enabledWhen>
+				<instanceof
+	              value="org.eclipse.core.resources.IProject">
+				</instanceof>
+			</enabledWhen>
+		</page>
+	</extension>
+
+	<extension point="org.eclipse.ui.preferencePages">
+		<page
+			name="AGBreder Preferences"
+			class="com.agbreder.plugin.preferences.BrederPreferencePage"
+			id="breder.plugin.preferences.BrederPreferencePage">
+		</page>
+	</extension>
+	<extension point="org.eclipse.core.runtime.preferences">
+		<initializer class="com.agbreder.plugin.preferences.PreferenceInitializer">
+		</initializer>
+	</extension>
+</plugin>

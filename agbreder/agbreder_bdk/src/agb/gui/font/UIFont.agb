@@ -1,0 +1,19 @@
+
+class UIFont extends Object do
+
+	num getWidth (str text) do
+		return Native.sdlFontWidth(text)
+	end
+
+	num getHeight (str text) do
+		return Native.sdlFontHeight(text)
+	end
+	
+	bool equal (Object target) do
+		if target == null or target.classname() != "UIFont" do
+			return false
+		end
+		return true
+	end
+
+end

@@ -1,0 +1,34 @@
+
+class ByteOutput extends Output do
+
+	byte[] bytes
+	
+	num index
+	
+	num max 
+	
+	this ByteOutput () do
+		this.index = 0
+		this.max = 1024
+		this.bytes = Bytes.alloc(this.max)
+		return this
+	end
+	
+	this writeByte (byte value) do
+		if this.index == this.max do
+			this.max = this.max + 1024
+			byte[] bytes = Bytes.alloc(this.max)
+			Bytes.copy(this.bytes, 1, this.index, bytes, 1)
+			this.bytes = bytes
+		end
+		Bytes.set(this.bytes, this.index = this.index + 1, value)
+		return this
+	end
+	
+	byte[] dupBytes () do
+		byte[] bytes = Bytes.alloc(this.index)
+		Bytes.copy(this.bytes, 1, this.index, bytes, 1)
+		return bytes
+	end
+	
+end

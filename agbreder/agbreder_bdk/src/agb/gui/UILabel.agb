@@ -1,0 +1,83 @@
+
+class UILabel extends UIComponent do
+
+	str text
+	
+	UIColor foreColor
+	
+	UIColor backColor
+	
+	UIFont font
+	
+	this UILabel () do
+		super() 
+		this.setText("")
+		this.setForeColor(UIColor.getBlack())
+		this.font = new UIArialFont()
+		this.setPadding(0)
+		return this
+	end
+
+	this paint (UIGraphic g) do
+        if this.getBackColor() != null do
+            g.fillRect(0, 0, this.getWidth(), this.getHeight(), this.getBackColor())
+		end
+		g.drawString(0, 0, this.getText(), this.getForeColor())
+		return this
+	end
+	
+	str getText () do
+		return this.text
+	end
+	
+	this setText (str text) do
+		this.text = text
+		return this
+	end
+	
+    UIColor getForeColor () do
+        return this.foreColor
+    end
+    
+    this setForeColor (UIColor color) do
+        this.foreColor = color
+        return this
+    end
+    
+    UIColor getBackColor () do
+        return this.backColor
+    end
+    
+    this setBackColor (UIColor color) do
+        this.backColor = color
+        return this
+    end
+	
+	UIFont getFont () do
+		return this.font
+	end
+	
+	this setFont (UIFont font) do
+		this.font = font
+		return this
+	end
+	
+	num getMinimumWidth () do
+		if String.size(this.getText()) == 0 do
+			return 0
+		end
+		return this.getFont().getWidth(this.getText())
+	end
+	
+	num getMinimumHeight () do
+		if String.size(this.getText()) == 0 do
+			return 16
+		end
+		return this.getFont().getHeight(this.getText())
+	end
+	
+	str toString () do
+		return "<label/>";
+	end
+	
+end

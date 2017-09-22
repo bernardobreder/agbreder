@@ -1,0 +1,145 @@
+
+class UIVertical extends UIPanel do
+
+	Array expandables
+	
+	this UIVertical () do
+		super()
+		this.expandables = new Array()
+		return this
+	end
+
+	this paint (UIGraphic g) do
+        for n = 1, this.size() do
+            UIComponent c = this.get(n)
+            num cx = c.getX()
+            num cy = c.getY()
+            g.translate(cx, cy)
+            g.pushGraphic(0, 0, c.getWidth(), c.getHeight())
+            c.paint(g)
+            g.popGraphic(0, 0)
+            g.translate(-cx, -cy)
+        end
+		return this
+	end
+	
+	this layout () do
+		num size = this.size()
+		if size > 0 do
+			num count = 0
+			for n = 1, size do
+				if this.isExpandable(n) do
+					count++
+				end
+			end
+			this.layout(count)
+			for n = 1, size do
+				UIComponent c = this.get(n)
+				c.layout()
+			end
+		end
+		return this
+	end
+	
+	this layout (num expandable) do
+		num size = this.size()
+		num w = this.getWidth()
+		num h = this.getHeight()
+		num margin = this.getMargin()
+		if expandable > 0 do
+			num height = 0
+			for n = 1, size do
+				UIComponent c = this.get(n)
+				height = height + Math.max(c.getPreferenceHeight(), c.getMinimumHeight())
+				if n != size do
+					height = height + margin ;
+				end
+			end
+			do
+				num delta = (h - height) / expandable ;
+				num y = 0
+				for n = 1, size do
+					UIComponent c = this.get(n)
+					c.setX(0)
+					c.setY(y) ;
+					c.setWidth(w)
+					c.setHeight(Math.max(c.getPreferenceHeight(), c.getMinimumHeight()))
+					if this.isExpandable(n) do
+						c.setHeight(c.getHeight() + delta)
+					end
+					y = y + c.getHeight()
+					if n != size do
+						y = y + margin ;
+					end
+				end
+			end
+		end else do
+			num y = 0
+			for n = 1, size do
+				UIComponent c = this.get(n)
+				c.setX(0)
+				c.setY(y)
+				c.setWidth(Math.max(c.getPreferenceWidth(), w))
+				c.setHeight(Math.max(c.getPreferenceHeight(), c.getMinimumHeight()))
+				y = y + c.getHeight()
+				h = h - c.getHeight() 
+				if n != size do
+					h = h - margin;
+					y = y + margin
+				end
+			end
+		end
+		return this
+	end
+	
+	this add (UIComponent c) do
+		return this.add(c, false) 
+	end
+	
+	this add (UIComponent c, bool expandable) do
+		if c != null do
+			this.children.add(c)
+			c.setParent(this)
+			this.expandables.add(new Boolean(expandable))
+		end
+		return this
+	end
+	
+	num getMinimumWidth () do
+		num value = 0
+		for n = 1, this.size() do
+			UIComponent c = this.get(n)
+			value = Math.max(value, c.getMinimumWidth())
+		end
+		return value
+	end
+	
+	num getMinimumHeight () do
+		if this.size() == 0 do
+			return 0
+		end
+		num value = 0
+		for n = 1, this.size() do
+			UIComponent c = this.get(n)
+			value = value + c.getMinimumHeight()
+		end
+		return Math.max(0, value + (this.size() - 1) * this.getMargin())
+	end
+	
+	bool isExpandable (num index) do
+		return ((Boolean) this.expandables.get(index)).getNative()
+	end
+	
+	str toString () do
+		if this.size() == 0 do
+			return "<row/>"
+		end else do
+			str result = "<row>"
+			for n = 1, this.size() do
+				result = result + this.get(n).toString()
+			end
+			return result + "</row>"
+		end 
+	end
+
+end

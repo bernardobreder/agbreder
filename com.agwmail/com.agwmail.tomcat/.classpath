@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="var" path="TOMCAT_HOME/lib/servlet-api.jar"/>
+	<classpathentry kind="var" path="TOMCAT_HOME/lib/jasper.jar"/>
+	<classpathentry kind="var" path="TOMCAT_HOME/lib/jsp-api.jar"/>
+	<classpathentry kind="var" path="TOMCAT_HOME/lib/el-api.jar"/>
+	<classpathentry kind="var" path="TOMCAT_HOME/lib/annotations-api.jar"/>
+	<classpathentry kind="src" path="WEB-INF/src"/>
+	<classpathentry kind="src" output="work" path="work"/>
+	<classpathentry exported="true" kind="lib" path="WEB-INF/lib/dom4j-2.0.0-ALPHA-2.jar"/>
+	<classpathentry exported="true" kind="lib" path="WEB-INF/lib/sqlitejdbc-v056.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/breder.util"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/rootlang_compiler"/>
+	<classpathentry kind="output" path="WEB-INF/classes"/>
+</classpath>

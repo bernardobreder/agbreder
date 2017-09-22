@@ -1,0 +1,23 @@
+<div id="agent-left">
+	<if test="${file.id != 1}">
+		<import src="/WEB-INF/page/comp/button.xml" id="left-index-inbox"
+			onclick="loadFolder(${file.parent.id})" img="pub/img/parent.png"
+			value=".." />
+	</if>
+	<if test="${file.id == 2}">
+		<import src="/WEB-INF/page/comp/button.xml" id="" onclick=""
+			img="pub/img/new.png" value="New" />
+	</if>
+	<forEach var="resource" list="${file.list()}">
+		<if test="${resource.folder}">
+			<import src="/WEB-INF/page/comp/button.xml" id="left-index-inbox"
+				onclick="loadFolder(${resource.id})" img="pub/img/${resource.image}"
+				value="${resource.name}" />
+			<else>
+				<import src="/WEB-INF/page/comp/button.xml" id="left-index-inbox"
+					onclick="loadFile(${resource.id})" img="pub/img/${resource.image}"
+					value="${resource.name}" />
+			</else>
+		</if>
+	</forEach>
+</div>

@@ -1,0 +1,126 @@
+
+class Console extends Object do  
+
+	static this println() do
+		|log.prints,"\n"|
+		return this
+	end
+
+	static this print(str value) do
+		if value == null do
+			|log.prints,"null"|
+		end else do 
+			|log.prints,value|
+		end
+		return this
+	end
+	
+	static this println(str value) do
+		if value == null do
+			|log.prints,"null\n"|
+		end else do 
+			|log.prints,value|
+			|log.prints,"\n"|
+		end 
+		return this
+	end
+	
+	static this print(num value) do
+		|log.printn,value|
+		return this
+	end
+	
+	static this println(num value) do
+		|log.printn,value|
+		|log.prints,"\n"|
+		return this 
+	end
+
+	static this print(bool value) do
+		|log.printb,value|
+		return this
+	end
+	
+	static this println(bool value) do
+		|log.printb,value|
+		|log.prints,"\n"|
+		return this 
+	end
+	
+	static this print(String value) do
+		if value == null do
+			|log.prints,"null"|
+		end else do 
+			|log.prints,value.native|
+		end
+		return this
+	end
+	
+	static this println(String value) do
+		if value == null do
+			|log.prints,"null\n"|
+		end else do 
+			|log.prints,value.native|
+			|log.prints,"\n"|
+		end 
+		return this
+	end
+	
+	static this print(Number value) do
+		if value == null do
+			|log.prints,"null"|
+		end else do 
+			|log.printn,value.native|
+		end
+		return this
+	end
+	
+	static this println(Number value) do
+		if value == null do
+			|log.prints,"null\n"|
+		end else do 
+			|log.printn,value.native|
+			|log.prints,"\n"|
+		end 
+		return this 
+	end
+
+	static this print(Boolean value) do
+		if value == null do
+			|log.prints,"null"|
+		end else do 
+			|log.printb,value.native|
+		end
+		return this
+	end
+	
+	static this println(Boolean value) do
+		if value == null do
+			|log.prints,"null\n"|
+		end else do 
+			|log.printb,value.native|
+			|log.prints,"\n"|
+		end 
+		return this 
+	end
+	
+	static this print(Object value) do
+		if value == null do
+			|log.prints,"null"|
+		end else do 
+			Console.print(value.toString())
+		end
+		return this 
+	end
+	
+	static this println(Object value) do
+		if value == null do
+			|log.prints,"null\n"|
+		end else do
+			|log.prints,value.toString()| 
+			|log.prints,"\n"|
+		end
+		return this 
+	end
+
+end

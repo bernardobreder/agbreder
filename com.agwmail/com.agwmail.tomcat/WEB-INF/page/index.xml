@@ -1,0 +1,30 @@
+<html>
+	<head>
+		<link inline="pub/css/style.css" />
+		<script inline="pub/jquery/js/jquery-1.6.2.min.js" />
+		<script inline="pub/js/ajax.js" />
+		<script inline="pub/js/base64.js"/>
+		<script inline="pub/js/json.js"/>
+		<script inline="pub/js/vm.js"/>
+		<script inline="pub/js/index.js"/>
+	</head>
+	<body>
+		<div id="container">
+			<import src="/WEB-INF/page/header.xml" />
+			<div id="middle">
+				<table>
+					<tr>
+						<td valign="top" width="200px">
+							<import src="/WEB-INF/page/left.xml" />
+						</td>
+						<td valign="top">
+							<div id="center">
+							</div>
+						</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+		<div id="loading">Loading</div>
+	</body>
+</html>

@@ -1,0 +1,50 @@
+
+class DataOutput do
+
+	Output output
+	
+	this DataOutput (Output output) do
+		this.output = output
+		return this
+	end
+
+	this writeInt (num value) do
+		this.output.writeByte((value andbit 4278190080) >> 24)
+		this.output.writeByte((value andbit 16711680) >> 16)
+		this.output.writeByte((value andbit 65280) >> 8)
+		this.output.writeByte(value andbit 255)
+		return this
+	end
+	
+	this writeShort (num value) do
+		this.output.writeByte((value andbit 65280) >> 8)
+		this.output.writeByte(value andbit 255)
+		return this
+	end
+	
+	this writeByte (byte value) do
+		this.output.writeByte(value)
+		return this
+	end
+	
+	this writeChar (num value) do
+		this.output.writeByte(value andbit 255)
+		return this
+	end
+	
+	this writeString (str value) do
+		byte[] bytes = String.decodeUtf(value)
+		num size = Bytes.size(bytes)
+		this.writeInt(size)
+		for n = 1 , size do
+			this.writeByte(Bytes.get(bytes, n))
+		end
+		return this
+	end
+	
+	this close () do
+		this.output.close()
+		return this 
+	end
+
+end

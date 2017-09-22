@@ -1,0 +1,30 @@
+<div>
+	<div>
+		<h1>${mail.subject}</h1>
+	</div>
+	<div class="center-msg-border-div">
+		<table class="center-msg-border">
+			<tr>
+				<td>
+					<div>
+						from
+						<nbsp />
+						<b>${mail.fromUserName}</b>
+						<nbsp />
+						to
+						<nbsp />
+						<b>${mail.toUserName}</b>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<nbsp />
+				</td>
+			</tr>
+			<tr>
+				<td>${mail.text}</td>
+			</tr>
+		</table>
+	</div>
+</div>

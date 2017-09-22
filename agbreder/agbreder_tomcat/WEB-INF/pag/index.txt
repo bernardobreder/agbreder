@@ -1,0 +1,42 @@
+**** 1. Objetivo ****
+
+	O objetivo do trabalho é construir uma aplicação corporativa sem a necessidade de manutenção de servidores. Através desse projeto, é possível construtir uma aplicação na internet sem ter um servidor que o hospede.
+	O projeto utiliza de tecnicas de Multi Agentes para 
+
+**** 2. Produtos ****
+
+	Essa sessão irá mostrar os produtos necessário para construtir essa arquitetura. 
+	O tópico 2.1 irá mostrar a linguagem de programação que será utilizada pela arquitetura, tanto para desenvolver, quanto para utilizar.
+	O tópico 2.2 irá mostra alguns dos framework criado para a linguagem Breder que foram necessários para construir a arquitetura como completo.
+	O tópico 2.3 irá descrever o funcionamento do banco de dados distribuido e como utiliza-lo. Esse banco de dados utiliza da linguagem SQL para fazer consultas.
+	O tópico 2.4 irá mostrar o ambiente de desenvolvimento pelo qual o analista irá utilizar para construtir um projeto e publica-lo.
+	O tópico 2.5 irá descrever como será o ambiente em que o usuário final irá utilizar e consultar.
+	Por fim, o tópico 2.6 irá mostrar a arquitetura do servidor com o objetivo de compreender como funciona a arquitetura.
+
+*** 2.1. Linguagem Breder ***
+
+	A linguagem Breder foi construido com o objetivo de atentar a essa arquitetura que possui várias particularidades específicas que são necessárias para o seu funcionamento. Essa linguagem foi desenvolvido pelo engenheiro Bernardo Breder que possui experiência na área.
+	O desenvolvimento da linguagem pode ser dividido em várias subáreas
+
+** 2.1.1. Compilador **
+
+** 2.1.2. Máquina Virtual **
+
+*** 2.2. Framework ***
+
+*** 2.3. Banco de Dados ***
+
+*** 2.4. Ambiente do Desenvolvedor ***
+
+** 2.4.1. Plugin do Eclipse **
+
+*** 2.5. Ambiente do Usuário ***
+
+*** 2.6. Servidor ***
+
+public class
+	public a
+
+**** 3. Contato ****
+
+	Para entrar em contato com os desenvolvedores e engenheiros desse produto, basta enviar uma email para |a|contato@agbreder.com|mailto:bernardobreder@gmail.com|.

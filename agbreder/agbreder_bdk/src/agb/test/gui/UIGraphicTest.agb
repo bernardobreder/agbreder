@@ -1,0 +1,115 @@
+
+class UIGraphicTest extends UIGraphic do
+
+	Array logs
+	
+	UIFrame frame
+	
+	this UIGraphicTest () do
+		super()
+		this.logs = new Array()
+		return this
+	end
+
+	static this main () do
+		/*new UIGraphicTest().before().testEmpty()
+		new UIGraphicTest().before().testLabel()
+		new UIGraphicTest().before().testVerticalLabel()
+		new UIGraphicTest().before().testVerticalThreeLabel()
+		new UIGraphicTest().before().testVerticalThreeLabelAndVertical()
+		new UIGraphicTest().before().testScroll()*/
+		return this
+	end
+	
+	this before () do
+		this.frame = new UIFrame()
+		this.frame.setWidth(600).setHeight(400)
+		this.frame.graphic = this
+		return this
+	end
+	
+	this testEmpty () do
+		Console.println("UIGraphicTest.testEmpty")
+		this.frame.fireLayoutEvent()
+		this.frame.firePaintEvent()
+		Assert.equal(UIGraphicTest.paintBackGround(), this.logs.remove(1).toString())
+		Assert.equal(0, this.logs.size())
+		return this
+	end
+	
+	this testLabel () do
+		Console.println("UIGraphicTest.testLabel")
+		this.frame.push(new UILabel())
+		this.frame.fireLayoutEvent()
+		this.frame.firePaintEvent()
+		Assert.equal(UIGraphicTest.paintBackGround(), this.logs.remove(1).toString())
+		Assert.equal(UIGraphicTest.paintLabel(1, 1, 600, 400), this.logs.remove(1).toString())
+		Assert.equal(0, this.logs.size())
+		return this
+	end
+	
+	this testVerticalLabel () do
+		Console.println("UIGraphicTest.testVerticalLabel")
+		this.frame.push(new UIVertical().add(new UILabel()))
+		this.frame.fireLayoutEvent()
+		this.frame.firePaintEvent()
+		Assert.equal(UIGraphicTest.paintBackGround(), this.logs.remove(1).toString())
+		Assert.equal(UIGraphicTest.paintLabel(1, 1, 600, 16), this.logs.remove(1).toString())
+		Assert.equal(0, this.logs.size())
+		return this
+	end
+	
+	this testVerticalThreeLabel () do
+		Console.println("UIGraphicTest.testVerticalThreeLabel")
+		this.frame.push(new UIVertical().add(new UILabel()).add(new UILabel()).add(new UILabel()))
+		this.frame.fireLayoutEvent()
+		this.frame.firePaintEvent()
+		Assert.equal(UIGraphicTest.paintBackGround(), this.logs.remove(1).toString())
+		Assert.equal(UIGraphicTest.paintLabel(1, 1, 600, 16), this.logs.remove(1).toString())
+		Assert.equal(UIGraphicTest.paintLabel(1, 19, 600, 16), this.logs.remove(1).toString())
+		Assert.equal(UIGraphicTest.paintLabel(1, 37, 600, 16), this.logs.remove(1).toString())
+		Assert.equal(0, this.logs.size())
+		return this
+	end
+	
+	this testVerticalThreeLabelAndVertical () do
+		Console.println("UIGraphicTest.testVerticalThreeLabelAndVertical")
+		this.frame.push(new UIVertical().add(new UILabel()).add(new UIVertical().add(new UILabel())).add(new UILabel()))
+		this.frame.fireLayoutEvent()
+		this.frame.firePaintEvent()
+		Assert.equal(UIGraphicTest.paintBackGround(), this.logs.remove(1).toString())
+		Assert.equal(UIGraphicTest.paintLabel(1, 1, 600, 16), this.logs.remove(1).toString())
+		Assert.equal(UIGraphicTest.paintLabel(1, 19, 600, 16), this.logs.remove(1).toString())
+		Assert.equal(UIGraphicTest.paintLabel(1, 37, 600, 16), this.logs.remove(1).toString())
+		Assert.equal(0, this.logs.size())
+		return this
+	end
+	
+	this testScroll () do
+		Console.println("UIGraphicTest.testScroll")
+		this.frame.push(new UIScroll().set(new UIVertical()))
+		this.frame.fireLayoutEvent()
+		this.frame.firePaintEvent()
+		Assert.equal(UIGraphicTest.paintBackGround(), this.logs.remove(1).toString())
+		Assert.equal(UIGraphicTest.paintLabel(1, 1, 600, 16), this.logs.remove(1).toString())
+		Assert.equal(UIGraphicTest.paintLabel(1, 19, 600, 16), this.logs.remove(1).toString())
+		Assert.equal(UIGraphicTest.paintLabel(1, 37, 600, 16), this.logs.remove(1).toString())
+		Assert.equal(0, this.logs.size())
+		return this
+	end
+	
+	this fillRect (num x, num y, num width, num height, UIColor color) do
+		//this.logs.add(new String("Rect[x: " + (this.transX + x) + ", y: " + (this.transY + y) + ", width: " + width + ", height: " + height + "]"))
+		// Console.println("Rect[x: " + (this.transX + x) + ", y: " + (this.transY + y) + ", width: " + width + ", height: " + height + "]")
+		return this
+	end
+	
+	static str paintBackGround () do
+		return "Rect[x: 1, y: 1, width: 600, height: 400]"
+	end
+	
+	static str paintLabel (num x, num y, num width, num height) do
+		return "Rect[x: " + x + ", y: " + y + ", width: " + width + ", height: " + height + "]"
+	end
+	
+end

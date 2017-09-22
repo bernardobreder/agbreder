@@ -1,0 +1,60 @@
+
+class XmlReader extends Object do
+
+	TokenStream stream
+	
+	TagXmlNode root
+	
+	this XmlReader (str content) throw ParseException do
+		this.stream = new TokenStream(new TokenFactory(content).execute())
+		this.readRoot()
+		return this 
+	end
+	
+	TagXmlNode getRoot () do
+		return this.root
+	end
+	
+	this readRoot() throw ParseException do
+		if ! this.stream.eof() do
+			this.root = this.readTag()
+		end
+		return this
+	end
+	
+	bool isTag() do
+		return this.stream.isSymbol("<") and this.stream.isId(1)
+	end
+	
+	TagXmlNode readTag() throw ParseException do
+		bool hasBody = true
+		this.stream.checkSymbol("<")
+        Token firstName = this.stream.checkId()
+        Array atts = new Array()
+        while this.stream.isId() do
+        	Token att = this.stream.checkId()
+        	this.stream.checkSymbol("=")
+        	Token value = this.stream.checkString()
+        	atts.add(new AttributeXmlNode().setName(att).setValue(value))
+        end
+		if this.stream.canSymbol("/") do
+			hasBody = false
+		end
+        this.stream.checkSymbol(">")
+        Array list = new Array()
+        if hasBody do
+	        while this.isTag() do
+	        	list.add(this.readTag())
+	        end
+	        this.stream.checkSymbol("<")
+	        this.stream.checkSymbol("/") 
+	        Token lastName = this.stream.checkId()
+	        if firstName.getImage() != lastName.getImage() do
+	        	throw new ParseException()
+	        end
+	        this.stream.checkSymbol(">")
+        end
+		return new TagXmlNode().setName(firstName).setChildren(list).setAttributes(atts)
+	end
+	
+end 

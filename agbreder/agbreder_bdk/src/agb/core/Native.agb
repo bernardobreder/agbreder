@@ -1,0 +1,300 @@
+
+class Native do
+
+	static bool vmAlloc (byte[] base64, num width, num height) do
+		return |vm.alloc, base64, width, height| 
+	end
+	
+	static num keyQuit () do return Native.sdlConstant(1) end
+	static num keyDown () do return Native.sdlConstant(2) end
+	static num keyUp () do return Native.sdlConstant(3) end
+	static num mouseMotion () do return Native.sdlConstant(4) end
+	static num mouseDown () do return Native.sdlConstant(5) end
+	static num mouseUp () do return Native.sdlConstant(6) end
+	static num mouseWheel () do return Native.sdlConstant(7) end
+	static num userEvent () do return Native.sdlConstant(8) end
+	static num resizeEvent () do return Native.sdlConstant(9) end
+	static num repaintEvent () do return 1 end
+	static num SDLK_BACKSPACE () do return Native.sdlConstant(1024) end
+	static num SDLK_TAB () do return Native.sdlConstant(1025) end
+	static num SDLK_CLEAR () do return Native.sdlConstant(1026) end
+	static num SDLK_RETURN () do return Native.sdlConstant(1027) end
+	static num SDLK_PAUSE () do return Native.sdlConstant(1028) end
+	static num SDLK_ESCAPE () do return Native.sdlConstant(1029) end
+	static num SDLK_SPACE () do return Native.sdlConstant(1030) end
+	static num SDLK_EXCLAIM () do return Native.sdlConstant(1031) end
+	static num SDLK_QUOTEDBL () do return Native.sdlConstant(1032) end
+	static num SDLK_HASH () do return Native.sdlConstant(1033) end
+	static num SDLK_DOLLAR () do return Native.sdlConstant(1034) end
+	static num SDLK_AMPERSAND () do return Native.sdlConstant(1035) end 
+	static num SDLK_QUOTE () do return Native.sdlConstant(1036) end
+	static num SDLK_LEFTPAREN () do return Native.sdlConstant(1037) end
+	static num SDLK_RIGHTPAREN () do return Native.sdlConstant(1038) end
+	static num SDLK_ASTERISK () do return Native.sdlConstant(1039) end
+	static num SDLK_PLUS () do return Native.sdlConstant(1040) end
+	static num SDLK_COMMA () do return Native.sdlConstant(1041) end
+	static num SDLK_MINUS () do return Native.sdlConstant(1042) end
+	static num SDLK_PERIOD () do return Native.sdlConstant(1043) end
+	static num SDLK_SLASH () do return Native.sdlConstant(1044) end
+	static num SDLK_0 () do return Native.sdlConstant(1045) end
+	static num SDLK_1 () do return Native.sdlConstant(1046) end
+	static num SDLK_2 () do return Native.sdlConstant(1047) end
+	static num SDLK_3 () do return Native.sdlConstant(1048) end
+	static num SDLK_4 () do return Native.sdlConstant(1049) end
+	static num SDLK_5 () do return Native.sdlConstant(1050) end 
+	static num SDLK_6 () do return Native.sdlConstant(1051) end
+	static num SDLK_7 () do return Native.sdlConstant(1052) end
+	static num SDLK_8 () do return Native.sdlConstant(1053) end
+	static num SDLK_9 () do return Native.sdlConstant(1054) end
+	static num SDLK_COLON () do return Native.sdlConstant(1055) end
+	static num SDLK_SEMICOLON () do return Native.sdlConstant(1056) end
+	static num SDLK_LESS () do return Native.sdlConstant(1057) end
+	static num SDLK_EQUALS () do return Native.sdlConstant(1058) end
+	static num SDLK_GREATER () do return Native.sdlConstant(1059) end
+	static num SDLK_QUESTION () do return Native.sdlConstant(1060) end
+	static num SDLK_AT () do return Native.sdlConstant(1061) end
+	static num SDLK_LEFTBRACKET () do return Native.sdlConstant(1062) end
+	static num SDLK_BACKSLASH () do return Native.sdlConstant(1063) end
+	static num SDLK_RIGHTBRACKET () do return Native.sdlConstant(1064) end
+	static num SDLK_CARET () do return Native.sdlConstant(1065) end
+	static num SDLK_UNDERSCORE () do return Native.sdlConstant(1066) end
+	static num SDLK_BACKQUOTE () do return Native.sdlConstant(1067) end
+	static num SDLK_a () do return Native.sdlConstant(1068) end
+	static num SDLK_b () do return Native.sdlConstant(1069) end
+	static num SDLK_c () do return Native.sdlConstant(1070) end
+	static num SDLK_d () do return Native.sdlConstant(1071) end
+	static num SDLK_e () do return Native.sdlConstant(1072) end
+	static num SDLK_f () do return Native.sdlConstant(1073) end
+	static num SDLK_g () do return Native.sdlConstant(1074) end
+	static num SDLK_h () do return Native.sdlConstant(1075) end
+	static num SDLK_i () do return Native.sdlConstant(1076) end
+	static num SDLK_j () do return Native.sdlConstant(1077) end
+	static num SDLK_k () do return Native.sdlConstant(1078) end
+	static num SDLK_l () do return Native.sdlConstant(1079) end
+	static num SDLK_m () do return Native.sdlConstant(1080) end
+	static num SDLK_n () do return Native.sdlConstant(1081) end
+	static num SDLK_o () do return Native.sdlConstant(1082) end
+	static num SDLK_p () do return Native.sdlConstant(1083) end
+	static num SDLK_q () do return Native.sdlConstant(1084) end
+	static num SDLK_r () do return Native.sdlConstant(1085) end
+	static num SDLK_s () do return Native.sdlConstant(1086) end
+	static num SDLK_t () do return Native.sdlConstant(1087) end
+	static num SDLK_u () do return Native.sdlConstant(1088) end
+	static num SDLK_v () do return Native.sdlConstant(1089) end
+	static num SDLK_w () do return Native.sdlConstant(1090) end
+	static num SDLK_x () do return Native.sdlConstant(1091) end
+	static num SDLK_y () do return Native.sdlConstant(1092) end
+	static num SDLK_z () do return Native.sdlConstant(1093) end
+	static num SDLK_DELETE () do return Native.sdlConstant(1094) end
+	static num SDLK_KP0 () do return Native.sdlConstant(1191) end
+	static num SDLK_KP1 () do return Native.sdlConstant(1192) end
+	static num SDLK_KP2 () do return Native.sdlConstant(1193) end
+	static num SDLK_KP3 () do return Native.sdlConstant(1194) end
+	static num SDLK_KP4 () do return Native.sdlConstant(1195) end
+	static num SDLK_KP5 () do return Native.sdlConstant(1196) end
+	static num SDLK_KP6 () do return Native.sdlConstant(1197) end
+	static num SDLK_KP7 () do return Native.sdlConstant(1198) end
+	static num SDLK_KP8 () do return Native.sdlConstant(1199) end
+	static num SDLK_KP9 () do return Native.sdlConstant(1200) end
+	static num SDLK_KP_PERIOD () do return Native.sdlConstant(1201) end
+	static num SDLK_KP_DIVIDE () do return Native.sdlConstant(1202) end
+	static num SDLK_KP_MULTIPLY () do return Native.sdlConstant(1203) end
+	static num SDLK_KP_MINUS () do return Native.sdlConstant(1204) end
+	static num SDLK_KP_PLUS () do return Native.sdlConstant(1205) end
+	static num SDLK_KP_ENTER () do return Native.sdlConstant(1206) end
+	static num SDLK_KP_EQUALS () do return Native.sdlConstant(1207) end
+	static num SDLK_UP () do return Native.sdlConstant(1208) end
+	static num SDLK_DOWN () do return Native.sdlConstant(1209) end
+	static num SDLK_RIGHT () do return Native.sdlConstant(1210) end
+	static num SDLK_LEFT () do return Native.sdlConstant(1211) end
+	static num SDLK_INSERT () do return Native.sdlConstant(1212) end
+	static num SDLK_HOME () do return Native.sdlConstant(1213) end
+	static num SDLK_END () do return Native.sdlConstant(1214) end
+	static num SDLK_PAGEUP () do return Native.sdlConstant(1215) end
+	static num SDLK_PAGEDOWN () do return Native.sdlConstant(1216) end
+	static num SDLK_F1 () do return Native.sdlConstant(1217) end
+	static num SDLK_F2 () do return Native.sdlConstant(1218) end
+	static num SDLK_F3 () do return Native.sdlConstant(1219) end
+	static num SDLK_F4 () do return Native.sdlConstant(1220) end
+	static num SDLK_F5 () do return Native.sdlConstant(1221) end
+	static num SDLK_F6 () do return Native.sdlConstant(1222) end
+	static num SDLK_F7 () do return Native.sdlConstant(1223) end
+	static num SDLK_F8 () do return Native.sdlConstant(1224) end
+	static num SDLK_F9 () do return Native.sdlConstant(1225) end
+	static num SDLK_F10 () do return Native.sdlConstant(1226) end
+	static num SDLK_F11 () do return Native.sdlConstant(1227) end
+	static num SDLK_F12 () do return Native.sdlConstant(1228) end
+	static num SDLK_F13 () do return Native.sdlConstant(1229) end
+	static num SDLK_F14 () do return Native.sdlConstant(1230) end
+	static num SDLK_F15 () do return Native.sdlConstant(1231) end
+	static num SDLK_NUMLOCK () do return Native.sdlConstant(1232) end
+	static num SDLK_CAPSLOCK () do return Native.sdlConstant(1233) end
+	static num SDLK_SCROLLOCK () do return Native.sdlConstant(1234) end
+	static num SDLK_RSHIFT () do return Native.sdlConstant(1235) end
+	static num SDLK_LSHIFT () do return Native.sdlConstant(1236) end
+	static num SDLK_RCTRL () do return Native.sdlConstant(1237) end
+	static num SDLK_LCTRL () do return Native.sdlConstant(1238) end
+	static num SDLK_RALT () do return Native.sdlConstant(1239) end
+	static num SDLK_LALT () do return Native.sdlConstant(1240) end
+	static num SDLK_RMETA () do return Native.sdlConstant(1241) end
+	static num SDLK_LMETA () do return Native.sdlConstant(1242) end
+	static num SDLK_LSUPER () do return Native.sdlConstant(1243) end
+	static num SDLK_RSUPER () do return Native.sdlConstant(1244) end
+	static num SDLK_COMPOSE () do return Native.sdlConstant(1245) end
+	static num SDLK_HELP () do return Native.sdlConstant(1246) end
+	static num SDLK_PRINT () do return Native.sdlConstant(1247) end
+	static num SDLK_SYSREQ () do return Native.sdlConstant(1248) end
+	static num SDLK_BREAK () do return Native.sdlConstant(1249) end
+	static num SDLK_MENU () do return Native.sdlConstant(1250) end
+	static num SDLK_POWER () do return Native.sdlConstant(1251) end
+	static num SDLK_EURO () do return Native.sdlConstant(1252) end
+	static num SDLK_UNDO () do return Native.sdlConstant(1253) end
+
+	static str sdlError () do
+		return |sdl.error|
+	end
+	
+	static bool sdlInit () do
+		return |sdl.init|
+	end
+	
+	static this sdlQuit () do
+		|sdl.quit|
+		return this
+	end
+	
+	static bool sdlVideo () do
+		return |sdl.video|
+	end
+	
+	static num sdlWidth () do 
+		return |sdl.width|
+	end
+	
+	static num sdlHeight () do
+		return |sdl.height| 
+	end
+	
+	static bool sdlPollEvent () do
+		return |sdl.event_poll|
+	end
+	
+	static this sdlWaitEvent () do
+		|sdl.event_wait|
+		return this
+	end
+	
+	static num sdlEventType () do
+		return |sdl.event_type|
+	end
+	
+	static num sdlKeycode () do
+		return |sdl.event_keycode|
+	end
+	
+	static num sdlKeychar () do
+		return |sdl.event_keychar|
+	end
+	
+	static num sdlUsercode () do
+		return |sdl.event_usercode|
+	end
+	
+	static num sdlMouseMotionXEvent () do
+		return |sdl.event_mouse_motion_x|
+	end
+	
+	static num sdlMouseMotionYEvent () do
+		return |sdl.event_mouse_motion_y|
+	end
+	
+	static num sdlMouseActionButtonEvent () do
+		return |sdl.event_mouse_action_button|
+	end
+	
+	static num sdlMouseActionXEvent () do
+		return |sdl.event_mouse_action_x|
+	end
+	
+	static num sdlMouseActionYEvent () do
+		return |sdl.event_mouse_action_y|
+	end
+	
+	static num sdlConstant (num value) do
+        return |sdl.constant, value|
+    end
+	
+	static num sdlMouseWheelXEvent () do
+		return |sdl.event_mouse_wheel_x|
+	end
+	
+	static num sdlMouseWheelYEvent () do
+		return |sdl.event_mouse_wheel_y|
+	end
+	
+	static bool sdlLock () do
+		return |sdl.lock|
+	end
+	
+	static this sdlUnlock () do
+		|sdl.unlock| 
+		return this
+	end
+	
+	static this sdlUpdate () do
+		|sdl.update|
+		return this
+	end
+	
+	static num sdlTick () do
+		return |sdl.tick|
+	end
+	
+	static this sdlDelay (num miliseg) do
+		|sdl.delay, miliseg|
+		return this
+	end
+	
+	static num sdlFontWidth (str text) do
+		return |sdl.font_width, text|
+	end
+	
+	static num sdlFontHeight (str text) do
+		return |sdl.font_height, text|
+	end 
+	
+	static this sdlDrawRect (num x, num y, num width, num height, num color) do
+		|sdl.draw_rect, x, y, width, height, color|
+		return this 
+	end
+	
+	static this sdlFillRect (num x, num y, num width, num height, num color) do
+		|sdl.fill_rect, x, y, width, height, color|
+		return this
+	end
+	
+	/*static this drawCircle (num x, num y, num r, num color, num transX, num transY, num clipX, num clipY, num clipW, num clipH) do 
+		|sdl.draw_circle, x, y, r, color, transX, transY, clipX, clipY, clipW, clipH|
+		return this
+	end*/
+	
+	static this sdlDrawString (num x, num y, str text, num color) do
+		|sdl.draw_string, x, y, text, color| 
+		return this
+	end
+	
+	static this sdlPushGraphic (num x, num y, num width, num height) do
+    	|sdl.push_graphic, x, y, width, height| 
+    	return this
+    end
+    
+    static this sdlPopGraphic (num x, num y) do
+    	|sdl.pop_graphic, x, y|
+    	return this 
+    end
+    
+    static byte[] netRequest(str host, num port, str request) do
+		return |net.request, host, port, request|
+	end
+	
+end

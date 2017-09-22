@@ -1,0 +1,79 @@
+
+class UIButton extends UILabel do
+
+	Array mouseClickListeners
+	
+	this UIButton () do
+		super()
+		this.setPadding(3)
+		return this
+	end
+	
+	this paint (UIGraphic g) do
+		g.fillRect(0, 0, this.getWidth(), this.getHeight(), UIColor.getDarkGray()) 
+		do
+			str text = this.getText()
+			num x = this.getWidth() / 2 - this.getFont().getWidth(text) / 2
+			num y = 2
+			g.fillRect(1, 1, this.getWidth() - 2, this.getHeight() - 2, UIColor.getGray())
+		end
+		do
+			str text = this.getText() 
+			num x = this.getWidth() / 2 - this.getFont().getWidth(text) / 2
+			num y = 2
+			g.drawString(x, y, text, this.getForeColor()) 
+		end
+		return this
+	end
+	
+	this fireMouseDownEvent (UIMouseEvent e) do
+		return this
+	end
+	
+	this fireMouseUpEvent (UIMouseEvent e) do
+		do
+			UIFrame frame = this.getFrame()
+			if frame != null do
+				frame.fireFocus(this)
+				this.repaint()
+			end
+		end
+		if this.mouseClickListeners != null do
+			for n = 1, this.mouseClickListeners.size() do
+				Function ofunc = (Function) this.mouseClickListeners.get(n)
+				function this () func = (function this ()) ofunc.getNative()
+				func()
+			end
+		end
+		return this
+	end
+	
+	this addMouseClickListener(function this () listener) do
+		if listener != null do
+			if this.mouseClickListeners == null do
+				this.mouseClickListeners = new Array()
+			end
+			this.mouseClickListeners.add(new Function(listener))
+		end
+		return this
+	end
+	
+	this setText (str text) do
+		super.setText(text)
+		return this
+	end
+	
+	num getMinimumWidth () do
+		return this.getFont().getWidth(this.getText()) + this.getPadding() * 2
+	end
+	
+	num getMinimumHeight () do
+		return this.getFont().getHeight(this.getText()) + this.getPadding() * 2
+	end
+	
+    str toString () do
+        return "<button/>";
+    end
+	
+
+end

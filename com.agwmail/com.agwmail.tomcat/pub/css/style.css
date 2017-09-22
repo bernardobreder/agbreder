@@ -1,0 +1,248 @@
+body {
+	font: 12px "Trebuchet MS", sans-serif;
+}
+
+hr {
+	border: none 0;
+	border-top: 1px solid #aaaaaa;
+	width: 95%;
+	height: 1px;
+}
+
+#container {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+}
+
+#header {
+	background-color: #eeeeee;
+	height: 70px;
+	border-bottom: 1px solid;
+	border-bottom-color: #aaaaaa;
+}
+
+#footer {
+	background-color: #eeeeee;
+	border-top: 1px solid;
+	border-top-color: #aaaaaa;
+	border-bottom: 1px solid;
+	border-bottom-color: #aaaaaa;
+}
+
+#left {
+	width: 200px;
+}
+
+#center {
+	
+}
+
+.left-index {
+	padding: 5px;
+	margin: 5px;
+	font-weight: bold;
+	border: 1px solid;
+	border-color: #ffffff;
+}
+
+.left-index-text {
+	font-weight: bold;
+}
+
+.left-index-small {
+	padding: 5px;
+	margin: 5px;
+	font-size: small;
+	border: 1px solid;
+	border-color: #ffffff;
+}
+
+.left-index-small-text {
+	font-size: small;
+}
+
+.left-index:hover {
+	background-color: #eeeeee;
+	cursor: pointer;
+	border: 1px solid;
+	border-color: #aaaaaa;
+}
+
+.left-index-small:hover {
+	background-color: #eeeeee;
+	cursor: pointer;
+	border: 1px solid;
+	border-color: #aaaaaa;
+}
+
+#left-search-input {
+	width: 100%;
+}
+
+#left-search {
+	margin: 5px;
+	padding-top: 2px;
+}
+
+#center-toolbar {
+	border-bottom: 1px solid;
+	border-bottom-color: #aaaaaa;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+.center-tool-button {
+	padding: 8px;
+	border: 1px solid;
+	border-color: #ffffff;
+}
+
+.center-tool-button:hover {
+	background-color: #eeeeee;
+	border: 1px solid;
+	border-color: #aaaaaa;
+	cursor: pointer;
+}
+
+.center-tool-separator {
+	
+}
+
+input[type=button] {
+	background-color: #eeeeee;
+	border: 1px solid;
+	border-color: #aaaaaa;
+	margin: 1px;
+	margin-right: 0px;
+	font: 12px "Trebuchet MS", sans-serif;
+	font-size: medium;
+	font-weight: bold;
+}
+
+input[type=button]:hover {
+	border-color: #000000;
+}
+
+.center-msginfo {
+	font: 12px "Trebuchet MS", sans-serif;
+	font-size: medium;
+	font-weight: normal;
+	border-bottom: 1px solid;
+	border-bottom-color: #aaaaaa;
+	border-left: 1px solid;
+	border-left-color: #ffffff;
+}
+
+.center-msginfo:hover {
+	background-color: #eeeeee;
+	cursor: pointer;
+	border-left: 1px solid;
+	border-left-color: #aaaaaa;
+}
+
+.center-msginfo-check {
+	white-space: nowrap;
+	padding: 5px;
+	width: 1px;
+}
+
+.center-msginfo-from {
+	white-space: nowrap;
+	padding: 5px;
+	width: 200px;
+}
+
+.center-msginfo-subject {
+	padding: 5px;
+}
+
+.center-msginfo-timer {
+	white-space: nowrap;
+	padding: 5px;
+	width: 70px;
+	text-align: center;
+}
+
+.center-msg-border {
+	border: 1px solid;
+	border-color: #aaaaaa;
+	padding: 5px;
+}
+
+.center-msg-border-div {
+	margin-right: 5px;
+}
+
+#center-agent-path {
+	margin: 5px;
+	padding-bottom: 5px;
+	border-bottom: 1px solid;
+	border-bottom-color: #aaaaaa;
+}
+
+textarea {
+	resize: none;
+	border: 1px solid;
+	border-color: #aaaaaa;
+	font: 12px "Trebuchet MS", sans-serif;
+}
+
+input {
+	font: 12px "Trebuchet MS", sans-serif;
+}
+
+input.compose {
+	width: 100%;
+	border: 1px solid;
+	border-color: #aaaaaa;
+}
+
+.label {
+	white-space: nowrap;
+}
+
+.text-small {
+	font-size: small;
+}
+
+.text-medium {
+	font-size: medium;
+}
+
+.wide {
+	display: block;
+	padding: 0px;
+	border-width: 1px solid;
+	-moz-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+#loading {
+	display: none;
+	position: absolute;
+	top: 57px;
+	background-color: #eeee00;
+	left: 50%;
+	margin-left: -26px;
+	border: 1px solid;
+	border-color: #ffff00;
+	padding: 5px;
+}
+
+a:link {
+	color: #000000;
+	text-decoration: none;
+}
+
+a:visited {
+	color: #000000;
+	text-decoration: none;
+}
+
+a:hover {
+	color: #aaaaaa;
+}

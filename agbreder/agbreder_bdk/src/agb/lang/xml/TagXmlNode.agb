@@ -1,0 +1,114 @@
+
+class TagXmlNode extends XmlNode do
+
+	Token name
+	
+	Array children
+	
+	Array atts
+	
+	this setName (Token name) do
+		this.name = name
+		return this
+	end
+	
+	Token getName () do
+		return this.name
+	end
+	
+	this setChildren (Array children) do
+		this.children = children
+		return this
+	end
+	
+	Array getChildren () do
+		return this.children
+	end
+	
+	this setAttributes (Array atts) do
+		this.atts = atts
+		return this
+	end
+	
+	Array getAttributes () do
+		return this.atts
+	end
+	
+	AttributeXmlNode getAttribute (num index) do
+		return (AttributeXmlNode) this.atts.get(index)
+	end
+	
+	str getAttribute (str name) do
+		for n = 1, this.atts.size() do
+			AttributeXmlNode att = this.getAttribute(n)
+			if att.getName().getImage() == name do
+				return att.getValue().getImage() 
+			end
+		end
+		return null
+	end
+	
+	num getAttributeSize () do
+		return this.atts.size()
+	end
+	
+	num size () do
+		return this.children.size()	
+	end
+	
+	XmlNode get (num index) do
+		return (XmlNode) this.children.get(index)
+	end
+	
+	TagXmlNode getTag (num index) do
+		return (TagXmlNode) this.children.get(index)
+	end
+	
+	str toString () do
+		str result = ""
+		result = result + "<"
+		result = result + this.getName().getImage()
+		for (num n = 1 ; n <= this.getAttributeSize() ; n++) do
+			result = result + " " + this.getAttribute(n).toString()
+		end
+		result = result + ">"
+		for (num n = 1 ; n <= this.size() ; n++) do
+			result = result + this.get(n).toString()
+		end
+		result = result + "</"
+		result = result + this.getName().getImage()
+		result = result + ">"
+		return result
+	end
+	
+end
+
+class AttributeXmlNode extends XmlNode do
+
+	Token name
+	
+	Token value
+	
+	Token getName () do
+		return this.name
+	end
+	
+	this setName (Token name) do
+		this.name = name
+		return this
+	end
+	
+	Token getValue () do
+		return this.value
+	end
+	
+	this setValue (Token value) do
+		this.value = value
+		return this
+	end
+	
+	str toString () do
+		return this.getName().getImage() + "=\"" + this.getValue().getImage() + "\""
+	end
+
+end

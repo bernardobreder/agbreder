@@ -1,0 +1,89 @@
+
+class UIFrameTest do
+
+	static this main () do
+		UIFrameTest.testWrongArgument()
+		UIFrameTest.testInitState()
+		UIFrameTest.testFireMouseEvent()
+		UIFrameTest.testFireKeyEvent()
+		UIFrameTest.testFireMouseMotionEvent()
+		return this
+	end
+	
+	static this testWrongArgument () do
+		UIFrame f = new UIFrame()
+		f.layout()
+		f.push(null)
+		f.layout()
+		f.pop()
+		f.layout()
+		f.pop()
+		f.fireFocus(null)
+		return this
+	end
+	
+	static this testInitState () do
+		UIFrame f = new UIFrame()
+		Assert.equal(0, f.size())
+		Assert.nil(f.getFocus())
+		Assert.nil(f.get())
+		Assert.equal(false, f.isRepainted())
+		f.repaint()
+		Assert.equal(false, f.isRepainted())
+		return this
+	end
+	
+	static this testFireMouseEvent () do
+		do
+			UIFrame f = new UIFrame()
+			UIButton c = new UIButton().setFont(new UIFontTest())
+			c.addMouseClickListener(function this () (UIButton c = c) do
+				c.setText("test")
+				return this
+			end)
+			f.push(new UIVertical().add(c))
+			Assert.equal("", c.getText())
+			f.fireMouseDownEvent(null)
+			f.fireMouseUpEvent(null)
+			f.fireMouseDownEvent(new UIMouseEvent().setX(0).setY(100).setButton(0))
+			f.fireMouseUpEvent(new UIMouseEvent().setX(0).setY(100).setButton(0))
+			Assert.nil(f.getFocus())
+			Assert.equal("", c.getText())
+			f.fireMouseDownEvent(new UIMouseEvent().setX(0).setY(0).setButton(0))
+			f.fireMouseUpEvent(new UIMouseEvent().setX(0).setY(0).setButton(0))
+			Assert.equal("test", c.getText())
+			Assert.equal(c, f.getFocus())
+		end
+		return this
+	end
+	
+	static this testFireKeyEvent () do
+		do
+			UIFrame f = new UIFrame()
+			UIText c = new UIText().setFont(new UIFontTest())
+			f.push(new UIVertical().add(c))
+			f.fireMouseDownEvent(new UIMouseEvent().setX(0).setY(0).setButton(0))
+			f.fireMouseUpEvent(new UIMouseEvent().setX(0).setY(0).setButton(0))
+			Assert.equal("", c.getText())
+			Assert.equal(c, f.getFocus())
+			f.fireKeyDownEvent(null)
+			f.fireKeyUpEvent(null)
+			f.fireKeyDownEvent(new UIKeyEvent().setCode(97))
+			f.fireKeyUpEvent(new UIKeyEvent().setCode(97))
+			Assert.equal("a", c.getText())
+		end
+		return this
+	end
+	
+	static this testFireMouseMotionEvent () do
+		do
+			UIFrame f = new UIFrame()
+			UIButton c = new UIButton().setFont(new UIFontTest())
+			f.push(new UIVertical().add(c))
+			f.fireMouseMotionEvent(null)
+			f.fireMouseMotionEvent(new UIMouseEvent().setX(0).setY(0).setButton(0))
+		end
+		return this
+	end
+	
+end

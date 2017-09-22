@@ -1,0 +1,23 @@
+<html>
+	<head>
+		<title>Agent Breder</title>
+		<link inline="pub/css/style.css" />
+		<script src="pub/js/jquery/js/jquery-1.6.2.min.js" />
+		<script src="pub/js/jquery/js/jquery.json-2.3.js" />
+		<script src="pub/js/ajax.js" />
+		<script src="pub/js/base64.js" />
+		<script src="pub/js/json.js" />
+		<script src="pub/js/compiler.js" />
+		<!-- <script src="pub/js/compiler.pack.js" /> -->
+		<script src="pub/js/login.js" />
+		<script src="pub/js/index.js" />
+		<script src="pub/js/server.js" />
+	</head>
+	<body>
+		<div id="loading">Loading</div>
+		<div id="content"></div>
+		<div id="container">
+			<import src="/WEB-INF/page/header.xml" />
+		</div>
+	</body>
+</html>

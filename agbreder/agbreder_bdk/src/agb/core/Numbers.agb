@@ -1,0 +1,56 @@
+
+class Numbers extends Object do
+
+	num[] native
+
+	this Numbers(num size) do
+		this.native = |nums.alloc, size|  
+		return this
+	end
+	
+	num get (num index) do
+		return |nums.get, this.native, index|
+	end
+	
+	this set (num index, num value) do
+		|nums.set, this.native, index, value|
+		return this
+	end
+	
+	this sets (num beginIndex, num endIndex, num value) do
+		|nums.sets, this.native, beginIndex, endIndex, value|
+		return this
+	end
+	
+	this copy (Numbers source, num sourceBeginIndex, num sourceEndIndex, num destIndex) do
+		|nums.copy, source.native, sourceBeginIndex, sourceEndIndex, this.native, destIndex|
+		return this
+	end
+	
+	num size () do
+		return |nums.size, this.native|
+	end
+	
+	bool equal(Object target) do
+		if target.classname() != "Numbers" do
+			return false
+		end
+		return |nums.equal,this.native, ((Numbers)target).native|
+	end
+	
+	num[] getNative() do
+		return this.native
+	end
+	
+	str toString() do
+		str result = "["
+		num size = this.size()
+		for n = 1, size do
+			result = result + this.get(n)
+			if n != size do result = result + ", " end
+		end
+		result = result + "]"
+		return result
+	end
+
+end

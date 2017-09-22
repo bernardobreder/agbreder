@@ -1,0 +1,60 @@
+
+class Array extends Object do
+
+	obj native
+
+	this Array () do
+		this.native = |array.alloc,10| 
+		return this
+	end
+	
+	num size () do 
+		return |array.size,this.native|
+	end
+	
+	this add (Object value) do 
+		|array.add,this.native,value|
+		return this
+	end
+	
+	Object get (num index) do   
+		return (Object)|array.get,this.native,index|
+	end
+	
+	obj set (num index, Object value) do 
+		return |array.set,this.native,index,value|
+	end
+	
+	Object remove (num index) do 
+		return (Object)|array.remove,this.native,index|
+	end
+	
+	this clean () do
+		for n = 1, this.size() do
+			|array.remove,this.native,1|
+		end
+		return this
+	end
+	
+	this insert (num index, Object value) do
+		|array.insert,this.native,index,value|
+		return this
+	end
+	
+	str toString() do
+		str result = "[";
+		num size = this.size()
+		for n = 1, size do
+			Object value = ((Object)this.get(n))
+			if value != null do
+				result = result + value.toString()
+			end else do
+				result = result + "null"
+			end
+			if n != size do result = result + ", " end 
+		end
+		result = result + "]"
+		return result
+	end
+
+end

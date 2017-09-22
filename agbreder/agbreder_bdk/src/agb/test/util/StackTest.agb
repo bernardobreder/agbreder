@@ -1,0 +1,115 @@
+
+class StackTest do
+
+	static this main () do
+		StackTest.test1()
+		StackTest.test2()
+		StackTest.test3()
+		StackTest.test4()
+		StackTest.test5()
+		StackTest.test6()
+		StackTest.test7()
+		return this
+	end
+	
+	static this test1 () do 
+		Console.println("StackTest.test1")
+		Stack array = new Stack()
+		Assert.equal("[]", array.toString())
+		Assert.equal(0, array.size())
+		array.push(new Number(1))
+		Assert.equal("[1]", array.toString())
+		Assert.equal(1, array.size())
+		array.push(new Number(2))
+		Assert.equal("[1, 2]", array.toString())
+		Assert.equal(2, array.size())
+		return this
+	end
+	
+	static this test2 () do
+		Console.println("StackTest.test2") 
+		Stack array = new Stack()
+		Assert.equal("[]", array.toString())
+		Assert.equal(0, array.size())
+		array.push(new String("a"))
+		Assert.equal("[a]", array.toString())
+		Assert.equal(1, array.size())
+		array.push(new String("b"))
+		Assert.equal("[a, b]", array.toString())
+		Assert.equal(2, array.size())
+		array.push(new String("c"))
+		Assert.equal("[a, b, c]", array.toString())
+		Assert.equal(3, array.size())
+		Assert.equal(1, new Stack().push(new Stack()).size())
+		Assert.equal(2, new Stack().push(new Stack()).push(new Stack()).size())
+		return this
+	end
+	
+	static this test3 () do 
+		Console.println("StackTest.test3")
+		Stack array = new Stack()
+		Assert.equal(0, array.size())
+		Stack array1 = new Stack()
+		Assert.equal(0, array1.size())
+		array.push(array1)
+		Assert.equal(1, array.size())
+		Assert.equal("[[]]", array.toString())
+		return this
+	end
+	
+	static this test4 () do 
+		Console.println("StackTest.test4")
+		Stack array = new Stack()
+		Stack array1 = new Stack()
+		array1.push(new String("a"))
+		Assert.equal(new String("String"), new String(array1.peek().classname()))
+		array.push(array1)
+		Assert.equal("Stack", array.peek().classname())
+		return this
+	end
+	
+	static this test5 () do 
+		Console.println("StackTest.test5")
+		Stack array = new Stack()
+		Stack array1 = new Stack()
+		array1.push(new String("a"))
+		array.push(array1)
+		Assert.equal("[[a]]", array.toString())
+		return this
+	end
+	
+	static this test6 () do 
+		Console.println("StackTest.test6")
+		Stack array = new Stack()
+		Stack array1 = new Stack()
+		array1.push(new String("a"))
+		array1.push(new String("b"))
+		array1.push(new String("c"))
+		array.push(array1)
+		Assert.equal("[[a, b, c]]", array.toString())
+		return this
+	end
+	
+	static this test7 () do 
+		Console.println("StackTest.test7")
+		Stack array = new Stack()
+		array.push(new Number(1))
+		Assert.equal(1, array.size())
+		array.push(new Number(2))
+		Assert.equal(2, array.size())
+		array.push(new Number(3))
+		Assert.equal(3, array.size())
+		Assert.equal("[1, 2, 3]", array.toString())
+		Assert.equal(new Number(3), array.peek())
+		Assert.equal(new Number(3), array.pop())
+		Assert.equal(2, array.size())
+		Assert.equal(new Number(2), array.peek())
+		Assert.equal(new Number(2), array.pop())
+		Assert.equal(1, array.size())
+		Assert.equal(new Number(1), array.peek())
+		Assert.equal(new Number(1), array.pop())
+		Assert.equal(0, array.size())
+		return this
+	end
+
+end

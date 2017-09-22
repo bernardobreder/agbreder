@@ -1,0 +1,140 @@
+
+class String extends Primitive do
+
+	str native
+
+	this String (str value) do
+		this.native = value
+		return this
+	end
+	
+	this String (byte[] value) do
+		this.native = String.encodeUtf(value)
+		return this
+	end
+	
+	bool equal(Object target) do
+		if target.classname() != "String" do
+			return false
+		end
+		return this.native == ((String)target).native
+	end
+	
+	String substring (String text, num beginIndex, num endIndex) do
+	   return new String(String.substring(text.native, beginIndex, endIndex))
+	end
+	
+    num size () do
+        return String.size(this.native)
+    end
+    
+    String trim () do
+   		return new String(String.trim(this.native)) 
+    end
+    
+	str getNative () do
+		return this.native
+	end
+	
+	String encode64 () do
+        return new String(String.encode64(this.native))
+    end
+    
+    String decode64 () do
+        return new String(String.decode64(this.native))
+    end
+	
+	str toString () do 
+		return this.getNative()
+	end
+
+	static str substring (str text, num beginIndex, num endIndex) do
+       return |string.substring, text, beginIndex, endIndex|
+    end
+    
+    static num size (str text) do
+        return |string.len, text|
+    end
+    
+    static str trim (str text) do
+        return |string.trim, text|
+    end
+    
+    static num charToCode (str char) do
+        return |string.char_to_code, char|
+    end
+    
+    static str codeToChar (num code) do
+        return |string.code_to_char, code|
+    end
+    
+    static num charAt (str text, num at) do
+        return |string.charat, text, at|
+    end
+    
+    static bool startWith (str text, str start) do
+        return |string.startwith, text, start| 
+    end
+    
+    static bool endWith (str text, str start) do
+        return |string.endwith, text, start| 
+    end
+    
+    static num indexOf (str text, str subtext) do
+        return |string.indexof, text, subtext| 
+    end
+    
+    static num indexOf (str text, str subtext, num index) do
+        return |string.indexofn, text, subtext, index| 
+    end
+    
+    static num lastIndexOf (str text, str subtext) do
+        return |string.indexof, text, subtext| 
+    end
+    
+    /*static str replace (str text, str oldValue, str newValue) do
+        return |string.replace, text, oldValue, newValue| 
+    end*/
+    
+    static str toLowerCase (str text) do
+        return |string.tolowercase, text| 
+    end
+    
+    static str toUpperCase (str text) do
+        return |string.tolowercase, text| 
+    end
+    
+    static str encode64 (str text) do
+        return |string.base64_encode, text| 
+    end
+    
+    static str decode64 (str text) do
+        return |string.base64_decode, text| 
+    end
+    
+    static str encodeUtf (byte[] bytes) do
+        return |string.utf_encode, bytes| 
+    end
+    
+    static byte[] decodeUtf (str text) do
+        return |string.utf_decode, text| 
+    end
+    
+    static Array split (str text, str separator) do
+    	Array array =  new Array()
+    	num begin = 1
+		num index = String.indexOf(text, "\n")
+		while index > 0 do
+			str line = String.substring(text, begin, index - 1)
+			array.add(new String(line))
+			begin = index + 1
+			index = String.indexOf(text, "\n", begin)
+		end
+		do
+			str line = String.substring(text, begin, String.size(text))
+			array.add(new String(line))
+		end
+		return array
+    end
+    
+end

@@ -1,0 +1,23 @@
+<div>
+	<table>
+		<tr>
+			<td>
+				<forEach var="mail" list="${mails}">
+					<div class="center-msginfo" onclick="doOpenMail(${mail.mailId})">
+						<table>
+							<tr>
+								<td class="center-msginfo-check">
+									<input type="checkbox" />
+								</td>
+								<td class="center-msginfo-from">${mail.toUserName}</td>
+								<td class="center-msginfo-subject">${mail.subject}
+								</td>
+								<td class="center-msginfo-timer">5:30 pm</td>
+							</tr>
+						</table>
+					</div>
+				</forEach>
+			</td>
+		</tr>
+	</table>
+</div>

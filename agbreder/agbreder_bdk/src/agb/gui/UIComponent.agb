@@ -1,0 +1,178 @@
+
+class UIComponent extends Object do
+
+	num x
+	
+	num y
+	
+	num width
+	
+	num height
+	
+	num preferenceWidth
+	
+	num preferenceHeight
+	
+	num padding
+	
+	UIPanel parent
+	
+	UIFrame frame
+	
+	bool repaint
+	
+	this UIComponent () do
+		this.setPreferenceWidth(-1)
+		this.setPreferenceHeight(-1)
+		this.setRepainted(false)
+		return this
+	end
+
+	this paint (UIGraphic g) do
+		return this
+	end
+	
+	this layout () do 
+		return this
+	end
+	
+	this fireMouseMotionEvent (UIMouseEvent e) do
+		return this
+	end
+	
+	this fireMouseWheelEvent (UIMouseEvent e) do
+		return this
+	end
+	
+	this fireMouseDownEvent (UIMouseEvent e) do
+		return this
+	end
+	
+	this fireMouseUpEvent (UIMouseEvent e) do
+		return this
+	end
+	
+	this fireKeyDownEvent (UIKeyEvent e) do
+       return this
+    end
+    
+    this fireKeyUpEvent (UIKeyEvent e) do
+       return this
+    end
+	
+	UIPanel getParent () do
+		return this.parent
+	end
+	
+	this setX (num x) do
+		this.x = x
+		return this
+	end
+	
+	num getX () do
+		return this.x
+	end
+	
+	this setY (num y) do
+		this.y = y
+		return this
+	end
+	
+	num getY () do
+		return this.y
+	end
+	
+	this setSize (num width, num height) do
+		return this.setWidth(width).setHeight(height)
+	end
+	
+	this setWidth (num width) do
+		this.width = width
+		return this
+	end
+	
+	num getWidth () do
+		return this.width
+	end
+	
+	this setHeight (num height) do
+		this.height = height
+		return this
+	end
+	
+	num getHeight () do
+		return this.height
+	end
+	
+	this setPreferenceWidth (num value) do
+		this.preferenceWidth = value
+		return this
+	end
+	
+	num getPreferenceWidth () do
+		return this.preferenceWidth
+	end
+	
+	this setPreferenceHeight (num value) do
+		this.preferenceHeight = value
+		return this
+	end
+	
+	num getPreferenceHeight () do
+		return this.preferenceHeight
+	end
+	
+	num getMinimumWidth () do
+		return 16
+	end
+	
+	num getMinimumHeight () do
+		return 16
+	end
+	
+	this setPadding (num value) do
+		this.padding = value
+		return this
+	end
+	
+	num getPadding () do
+		return this.padding
+	end
+	
+	this setParent (UIPanel parent) do
+		this.parent = parent
+		return this
+	end
+	
+	bool isRepainted () do
+	   return this.repaint
+	end
+	
+	this setRepainted (bool value) do
+	   this.repaint = value
+	   return this
+	end
+	
+	this repaint () do
+		this.setRepainted(false)
+		UIComponent parent = this
+		while parent != null and parent.getParent() != null do
+			parent = parent.getParent()
+			parent.setRepainted(false)
+		end
+		if parent.frame != null do
+			parent.frame.setRepainted(false)
+		end
+		return this
+	end
+	
+	UIFrame getFrame() do
+		UIPanel parent = this.getParent()
+		if parent == null do 
+			return this.frame
+		end else do
+			return this.getParent().getFrame()
+		end
+	end
+	
+end

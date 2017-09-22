@@ -1,0 +1,19 @@
+<div id="left">
+	<!-- <import src="/WEB-INF/page/comp/button.xml" id="left-index-inbox"
+		onclick="onInboxPage()" img="pub/img/inbox.png" value="Inbox" />
+	<import src="/WEB-INF/page/comp/button.xml" id="left-index-agent"
+		onclick="onAgentPage()" img="pub/img/agent.png" value="Agent" />
+	<import src="/WEB-INF/page/comp/button.xml" id="left-index-compose"
+		onclick="onMessagePage()" img="pub/img/send.png" value="Compose" />
+	<import src="/WEB-INF/page/comp/button.xml" id="left-index-script"
+		onclick="onScriptPage()" img="pub/img/script.png" value="Script" />
+		 -->
+	<import src="/WEB-INF/page/comp/button.xml" id="left-index-logout"
+		onclick="doLogout()" img="pub/img/logout.png" value="Logout" />
+	<hr />
+	<forEach var="name" list="${names}">
+		<import src="/WEB-INF/page/comp/button.xml" id="" onclick=""
+			img="pub/img/online.png" value="${name}" />
+	</forEach>
+	<div id="state" class="left-index"></div>
+</div>

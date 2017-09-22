@@ -1,0 +1,44 @@
+<div align="center">
+	<table width="400px">
+		<tr>
+			<td colspan="2">
+				<div align="center">
+					<h1>Create a Account</h1>
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td class="label" width="100px">Username :</td>
+			<td>
+				<div style="margin-bottom: 5px">
+					<input id="create_account_username" class="wide compose text-medium" />
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td class="label">Email :</td>
+			<td>
+				<div style="margin-bottom: 5px">
+					<input id="create_account_email" class="wide compose text-medium" />
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td class="label">Password :</td>
+			<td>
+				<div style="margin-bottom: 5px">
+					<input id="create_account_password" class="wide compose text-medium"
+						type="password" />
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2">
+				<div align="right" style="margin-bottom: 5px">
+					<input id="create_account_button" type="button" value="Create"
+						onclick="create_account_submit()" />
+				</div>
+			</td>
+		</tr>
+	</table>
+</div>

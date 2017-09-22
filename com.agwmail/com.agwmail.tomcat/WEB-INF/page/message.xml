@@ -1,0 +1,42 @@
+<div style="margin: 10px">
+	<table>
+		<tr>
+			<td width="50px" valign="top">
+				<div align="right" style="margin-right: 5px">To:</div>
+			</td>
+			<td>
+				<div style="margin-bottom: 5px">
+					<textarea id="compose_to" class="wide" style="width: 100%">breder
+					</textarea>
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td valign="top">
+				<div align="right" style="margin-right: 5px">Subject:</div>
+			</td>
+			<td>
+				<div style="margin-bottom: 5px">
+					<input id="compose_subject" class="compose wide" style="margin-bottom: 4px"
+						value="Script Simples" />
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2" valign="top">
+				<div style="margin-bottom: 5px">
+					<textarea id="compose_text" class="wide"
+						style="width: 100%; height: 300px;" onkeydown="insertTab(this, event)">
+					</textarea>
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2">
+				<div align="right" style="margin-bottom: 5px">
+					<input id="compose_submit" type="button" value="Send" onclick="compose_send_empty()"/>
+				</div>
+			</td>
+		</tr>
+	</table>
+</div>

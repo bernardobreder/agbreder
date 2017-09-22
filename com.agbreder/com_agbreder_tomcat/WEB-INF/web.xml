@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<web-app xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	version="2.5">
+
+	<display-name>AGBreder</display-name>
+	<description>
+		AGBreder
+	</description>
+
+	<servlet>
+		<servlet-name>LogoutAction</servlet-name>
+		<servlet-class>com.agbreder.server.servlet.login.LogoutServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>LogoutAction</servlet-name>
+		<url-pattern>
+			/logout.do
+		</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>LoginData</servlet-name>
+		<servlet-class>com.agbreder.server.servlet.login.LoginServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>LoginData</servlet-name>
+		<url-pattern>
+			/login.do
+		</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>LoginDataServlet</servlet-name>
+		<servlet-class>com.agbreder.server.servlet.login.LoginDataServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>LoginDataServlet</servlet-name>
+		<url-pattern>
+			/logining.do
+		</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>Logined</servlet-name>
+		<servlet-class>com.agbreder.server.servlet.login.LoginedServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Logined</servlet-name>
+		<url-pattern>
+			/logined.do
+		</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>CreateAccount</servlet-name>
+		<servlet-class>com.agbreder.server.servlet.login.CreateAccountServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>CreateAccount</servlet-name>
+		<url-pattern>
+			/create_account.do
+		</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>ForgotPassword</servlet-name>
+		<servlet-class>com.agbreder.server.servlet.login.ForgotPasswordServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ForgotPassword</servlet-name>
+		<url-pattern>
+			/forgot_password.do
+		</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>Send</servlet-name>
+		<servlet-class>com.agbreder.server.servlet.mail.SendMessageServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Send</servlet-name>
+		<url-pattern>
+			/send.do
+		</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>Reply</servlet-name>
+		<servlet-class>com.agbreder.server.servlet.mail.ReplyMessageServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Reply</servlet-name>
+		<url-pattern>
+			/reply.do
+		</url-pattern>
+	</servlet-mapping>
+	
+		<servlet>
+		<servlet-name>Replys</servlet-name>
+		<servlet-class>com.agbreder.server.servlet.mail.ReplysMessageServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Replys</servlet-name>
+		<url-pattern>
+			/replys.do
+		</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>List</servlet-name>
+		<servlet-class>com.agbreder.server.servlet.mail.ListMessageServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>List</servlet-name>
+		<url-pattern>
+			/list.do
+		</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>Pop</servlet-name>
+		<servlet-class>com.agbreder.server.servlet.mail.PopMessageServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Pop</servlet-name>
+		<url-pattern>
+			/pop.do
+		</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>New</servlet-name>
+		<servlet-class>com.agbreder.server.servlet.mail.NewMessageServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>New</servlet-name>
+		<url-pattern>
+			/new.do
+		</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>Publish</servlet-name>
+		<servlet-class>com.agbreder.server.servlet.source.PublishSourceServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Publish</servlet-name>
+		<url-pattern>
+			/publish.do
+		</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>IndexPage</servlet-name>
+		<servlet-class>com.agbreder.server.servlet.page.IndexPageServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>IndexPage</servlet-name>
+		<url-pattern>
+			/index
+		</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>Page</servlet-name>
+		<servlet-class>com.agbreder.server.servlet.page.PageServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Page</servlet-name>
+		<url-pattern>
+			*.web
+		</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>ServerPage</servlet-name>
+		<servlet-class>com.agbreder.server.servlet.page.ServerPageServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ServerPage</servlet-name>
+		<url-pattern>
+			*.server
+		</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>LoginPage</servlet-name>
+		<servlet-class>com.agbreder.server.servlet.login.web.LoginServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>LoginPage</servlet-name>
+		<url-pattern>
+			/login.html
+		</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>AppPage</servlet-name>
+		<servlet-class>com.agbreder.server.servlet.page.AppPageServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>AppPage</servlet-name>
+		<url-pattern>
+			/app.html
+		</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>P2P</servlet-name>
+		<servlet-class>com.agbreder.server.servlet.P2PServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>P2P</servlet-name>
+		<url-pattern>
+			/p2p
+		</url-pattern>
+	</servlet-mapping>
+	
+	<listener>
+		<listener-class>
+			com.agbreder.server.servlet.DatabaseServletContextListener</listener-class>
+	</listener>
+
+	<welcome-file-list>
+		<welcome-file>
+			index
+		</welcome-file>
+	</welcome-file-list>
+
+</web-app>

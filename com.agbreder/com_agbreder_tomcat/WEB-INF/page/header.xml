@@ -1,0 +1,14 @@
+<div id="header">
+	<table>
+		<tr>
+			<td width="200px">
+				<div align="center">
+					<img src="pub/img/logo.png" />
+				</div>
+			</td>
+			<td>
+				<div></div>
+			</td>
+		</tr>
+	</table>
+</div>

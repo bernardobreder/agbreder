@@ -1,0 +1,92 @@
+
+class Bytes extends Object do
+
+	byte[] native
+
+	this Bytes(num size) do
+		this.native = Bytes.alloc(size)  
+		return this
+	end
+	
+	this Bytes(byte[] bytes) do
+		this.native = bytes  
+		return this
+	end
+	
+	num get (num index) do
+		return Bytes.get(this.native, index)
+	end
+	
+	this set (num index, num value) do
+		Bytes.set(this.native, index, value)
+		return this
+	end
+	
+	this sets (num beginIndex, num endIndex, num value) do
+		Bytes.sets(this.native, beginIndex, endIndex, value)
+		return this
+	end
+	
+	this copy (Bytes source, num sourceBeginIndex, num sourceEndIndex, num destIndex) do
+		Bytes.copy(source.native, sourceBeginIndex, sourceEndIndex, this.native, destIndex)
+		return this
+	end
+	
+	num size () do
+		return Bytes.size(this.native)
+	end
+	
+	bool equal(Object target) do
+		if target.classname() != "Bytes" do
+			return false
+		end
+		return Bytes.equal(this.native, ((Bytes)target).native) 
+	end
+	
+	byte[] getNative() do
+		return this.native
+	end
+	
+	str toString() do
+		str result = "["
+		num size = this.size()
+		for n = 1, size do
+			result = result + this.get(n)
+			if n != size do result = result + ", " end
+		end
+		result = result + "]"
+		return result
+	end
+	
+	static byte[] alloc (num size) do
+		return |bytes.alloc, size|
+	end
+	
+	static num get (byte[] native, num index) do
+		return |bytes.get, native, index|
+	end
+	
+	static this set (byte[] native, num index, num value) do
+		|bytes.set, native, index, value|
+		return this
+	end 
+	
+	static this sets (byte[] native, num beginIndex, num endIndex, num value) do
+		|bytes.sets, native, beginIndex, endIndex, value|
+		return this
+	end
+	
+	static this copy (byte[] source, num sourceBeginIndex, num sourceEndIndex, byte[] dest, num destIndex) do
+		|bytes.copy, source, sourceBeginIndex, sourceEndIndex, dest, destIndex|
+		return this
+	end
+	
+	static num size (byte[] native) do
+		return |bytes.size, native|
+	end
+	
+	static bool equal(byte[] bytes, byte[] other) do
+		return |bytes.equal, bytes, other| 
+	end
+
+end

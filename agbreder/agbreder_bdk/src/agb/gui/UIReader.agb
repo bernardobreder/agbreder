@@ -1,0 +1,71 @@
+
+class UIReader extends Object do
+
+	static UIComponent build (str xml) throw ParseException do
+		return UIReader.build(new XmlReader(xml).getRoot())
+	end
+	
+	static UIComponent build (TagXmlNode node) throw ParseException do
+		if node == null do
+			return null
+		end
+		switch node.getName().getImage() do
+			case "label" do
+				return UIReader.buildLabel(node)
+			end
+			case "col" do
+				return UIReader.buildHorizontal(node)
+			end
+			case "row" do
+				return UIReader.buildVertical(node)
+			end
+			case "button" do
+				return UIReader.buildButton(node)
+			end
+			else do
+				throw new ParseException()
+			end
+		end
+	end
+	
+	static UILabel buildLabel (TagXmlNode node) do
+		UILabel c = new UILabel()
+		do
+			str text = node.getAttribute("text")
+			if text != null do
+				c.setText(text)
+			end
+		end
+		return c
+	end
+	
+	static UIButton buildButton (TagXmlNode node) do
+		UIButton c = new UIButton()
+		do
+			str text = node.getAttribute("text")
+			if text != null do
+				c.setText(text)
+			end
+		end
+		return c
+	end
+	
+	static UIHorizontal buildHorizontal (TagXmlNode node) throw ParseException do
+		UIHorizontal c = new UIHorizontal()
+		for n = 1, node.size() do
+			TagXmlNode child = node.getTag(n)
+			c.add(UIReader.build(child))
+		end
+		return c
+	end
+	
+	static UIVertical buildVertical (TagXmlNode node) throw ParseException do
+		UIVertical c = new UIVertical()
+		for n = 1, node.size() do
+			TagXmlNode child = node.getTag(n)
+			c.add(UIReader.build(child))
+		end
+		return c
+	end
+
+end

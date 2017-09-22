@@ -1,0 +1,58 @@
+<div id="header">
+	<table>
+		<tr>
+			<td width="200px">
+				<div align="center">
+					<a id="" href="javascript:logo()">
+						<img src="pub/img/logo.png" />
+					</a>
+
+				</div>
+			</td>
+			<td>
+				<div></div>
+			</td>
+			<td width="400px">
+				<div style="margin: 0px 10px">
+					<table>
+						<tr>
+							<td align="center">
+								<div>Username</div>
+							</td>
+							<td align="center">
+								<div>Password</div>
+							</td>
+							<td></td>
+						</tr>
+						<tr>
+							<td>
+								<div style="margin-right:5px">
+									<input id="username" class="wide compose text-medium" />
+								</div>
+							</td>
+							<td>
+								<div style="margin-right:5px">
+									<input id="password" class="wide compose text-medium"
+										type="password" />
+								</div>
+							</td>
+							<td>
+								<input id="user_button" type="button" value="Login" onclick="logining()" />
+							</td>
+						</tr>
+						<tr>
+							<td align="center">
+								<a id="login-header-create_account" href="javascript:create_account()">Create a Account</a>
+							</td>
+							<td align="center">
+								<a id="login-header-forgot-password" href="javascript:forgot_password()">Forgot the Password
+								</a>
+							</td>
+							<td></td>
+						</tr>
+					</table>
+				</div>
+			</td>
+		</tr>
+	</table>
+</div>

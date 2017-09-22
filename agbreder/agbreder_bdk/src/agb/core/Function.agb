@@ -1,0 +1,26 @@
+
+class Function extends Object do
+
+	obj native
+
+	this Function(obj value) do
+		this.native = value  
+		return this
+	end
+	
+	bool equal(Object target) do
+		if target.classname() != "Number" do
+			return false
+		end
+		return this.native == ((Number)target).native
+	end
+	
+	obj getNative() do
+		return this.native
+	end
+	
+	str toString() do
+		return "<function>"
+	end
+
+end

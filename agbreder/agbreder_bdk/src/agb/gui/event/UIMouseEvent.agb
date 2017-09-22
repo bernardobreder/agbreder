@@ -1,0 +1,59 @@
+
+class UIMouseEvent extends UIEvent do
+
+	num x
+	
+	num y
+	
+	num wheelX
+	
+	num wheelY
+	
+	num button
+	
+	num getX () do 
+		return this.x
+	end
+	
+	this setX (num x) do
+		this.x = x
+		return this
+	end
+	
+	num getY () do 
+		return this.y
+	end
+	
+	this setY (num y) do
+		this.y = y
+		return this
+	end
+	
+	num getWheelX () do 
+		return this.wheelX
+	end
+	
+	this setWheelX (num x) do
+		this.wheelX = x
+		return this
+	end
+	
+	num getWheelY () do 
+		return this.wheelY
+	end
+	
+	this setWheelY (num y) do
+		this.wheelY = y
+		return this
+	end
+	
+	num getButton () do 
+		return this.button
+	end
+	
+	this setButton (num button) do
+		this.button = button
+		return this
+	end
+
+end

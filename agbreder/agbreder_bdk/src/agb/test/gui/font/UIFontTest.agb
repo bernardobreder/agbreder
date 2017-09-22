@@ -1,0 +1,16 @@
+
+class UIFontTest extends UIFont do
+
+	static this main () do
+		return this
+	end
+	
+	num getWidth (str text) do
+		return String.size(text) * 8
+	end
+
+	num getHeight (str text) do
+		return 16
+	end
+	
+end

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projectDescription>
+	<name>agbreder_bdk</name>
+	<comment>source : src
+</comment>
+	<projects>
+	</projects>
+	<buildSpec>
+		<buildCommand>
+			<name>agbreder_plugin.sampleBuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+	</buildSpec>
+	<natures>
+		<nature>agbreder_plugin.agbrederNature</nature>
+	</natures>
+</projectDescription>

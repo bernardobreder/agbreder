@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="isrc"/>
+	<classpathentry excluding="tutorial/JxtaChessNetwork.java" kind="src" path="test"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6"/>
+	<classpathentry kind="lib" path="lib/sqlitejdbc-v056.jar"/>
+	<classpathentry kind="lib" path="lib/sqljet-1.0.7.jar"/>
+	<classpathentry kind="lib" path="lib/dom4j-2.0.0-ALPHA-2.jar"/>
+	<classpathentry kind="lib" path="lib/jxta/bcprov-jdk14.jar"/>
+	<classpathentry kind="lib" path="lib/jxta/javax.servlet.jar"/>
+	<classpathentry kind="lib" path="lib/jxta/jxta.jar" sourcepath="lib/jxta/jxta.zip"/>
+	<classpathentry kind="lib" path="lib/jxta/org.mortbay.jetty.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

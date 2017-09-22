@@ -1,0 +1,34 @@
+
+class Number extends Primitive do
+
+	num native
+
+	this Number(num value) do
+		this.native = value  
+		return this
+	end
+	
+	bool equal(Object target) do
+		if target.classname() != "Number" do
+			return false
+		end
+		return this.native == ((Number)target).native
+	end
+	
+	bool isInteger() do
+		return Number.isInteger(this.native)
+	end
+	
+	num getNative() do
+		return this.native
+	end
+	
+	str toString() do
+		return |number.tostr, this.native|
+	end
+	
+	static bool isInteger(num value) do
+		return |number.toint, value| != value
+	end
+
+end

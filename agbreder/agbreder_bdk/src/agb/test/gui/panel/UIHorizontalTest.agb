@@ -1,0 +1,158 @@
+
+class UIHorizontalTest extends UILabel do
+
+	static this main () do
+		UIHorizontalTest.test0()
+		UIHorizontalTest.test1()
+		UIHorizontalTest.test2()
+		UIHorizontalTest.test3()
+		UIHorizontalTest.test4()
+		UIHorizontalTest.test5()
+		UIHorizontalTest.test6()
+		UIHorizontalTest.test7()
+		return this
+	end
+	
+	static this test0 () do
+		UIHorizontal v = new UIHorizontal().add(null)
+		Assert.equal(0, v.size())
+		Assert.equal(null, v.get(1))
+		Assert.equal("<col/>", v.toString())
+		return this
+	end
+	
+	static this test1 () do
+		UIHorizontal v = new UIHorizontal().layout()
+		Assert.equal(0, v.getX())
+		Assert.equal(0, v.getY())
+		Assert.equal(0, v.getWidth())
+		Assert.equal(0, v.getHeight())
+		Assert.equal("<col/>", v.toString())
+		return this
+	end
+	
+	static this test2 () do
+		UIHorizontal v = new UIHorizontal().setSize(200, 100).layout()
+		Assert.equal(0, v.getX())
+		Assert.equal(0, v.getY())
+		Assert.equal(200, v.getWidth())
+		Assert.equal(100, v.getHeight())
+		Assert.equal("<col/>", v.toString())
+		return this
+	end
+	
+	static this test3 () do
+		UIHorizontal v = new UIHorizontal().setSize(200, 100).add(new UIHorizontalTest()).layout()
+		Assert.equal(1, v.size())
+		Assert.equal("UIHorizontalTest", v.get(1).classname())
+		Assert.equal(0, v.get(1).getX())
+		Assert.equal(0, v.get(1).getY())
+		Assert.equal(16, v.get(1).getWidth())
+		Assert.equal(16, v.get(1).getHeight())
+		Assert.equal("<col><label/></col>", v.toString())
+		return this
+	end
+	
+	static this test4 () do
+		UIHorizontal v = new UIHorizontal().setSize(200, 100).setMargin(2).add(new UIHorizontalTest()).add(new UIHorizontalTest()).add(new UIHorizontalTest()).layout()
+		Assert.equal(3, v.size())
+		Assert.equal("UIHorizontalTest", v.get(1).classname())
+		Assert.equal("UIHorizontalTest", v.get(2).classname())
+		Assert.equal("UIHorizontalTest", v.get(3).classname())
+		Assert.equal(0, v.get(1).getX())
+		Assert.equal(0, v.get(1).getY())
+		Assert.equal(16, v.get(1).getWidth())
+		Assert.equal(16, v.get(1).getHeight())
+		Assert.equal(18, v.get(2).getX())
+		Assert.equal(0, v.get(2).getY())
+		Assert.equal(16, v.get(2).getWidth())
+		Assert.equal(16, v.get(2).getHeight())
+		Assert.equal(36, v.get(3).getX())
+		Assert.equal(0, v.get(3).getY())
+		Assert.equal(16, v.get(3).getWidth())
+		Assert.equal(16, v.get(3).getHeight())
+		Assert.equal("<col><label/><label/><label/></col>", v.toString())
+		return this
+	end
+	
+	static this test5 () do
+		UIHorizontal v = new UIHorizontal().setSize(200, 20).setMargin(2).add(new UIHorizontalTest()).add(new UIHorizontalTest(), true).add(new UIHorizontalTest()).layout()
+		Assert.equal(3, v.size())
+		Assert.equal("UIHorizontalTest", v.get(1).classname())
+		Assert.equal("UIHorizontalTest", v.get(2).classname())
+		Assert.equal("UIHorizontalTest", v.get(3).classname())
+		Assert.equal(0, v.get(1).getX())
+		Assert.equal(2, v.get(1).getY())
+		Assert.equal(16, v.get(1).getWidth())
+		Assert.equal(16, v.get(1).getHeight())
+		Assert.equal(18, v.get(2).getX())
+		Assert.equal(2, v.get(2).getY())
+		Assert.equal(164, v.get(2).getWidth())
+		Assert.equal(16, v.get(2).getHeight())
+		Assert.equal(184, v.get(3).getX())
+		Assert.equal(2, v.get(3).getY())
+		Assert.equal(16, v.get(3).getWidth())
+		Assert.equal(16, v.get(3).getHeight())
+		Assert.equal("<col><label/><label/><label/></col>", v.toString())
+		return this
+	end
+	
+    static this test6 () do
+        UIHorizontal v = new UIHorizontal().setSize(200, 20).setMargin(2).add(new UIHorizontalTest()).add(new UIHorizontalTest(), true).add(new UIHorizontalTest(), true).layout()
+        Assert.equal(3, v.size())
+        Assert.equal("UIHorizontalTest", v.get(1).classname())
+        Assert.equal("UIHorizontalTest", v.get(2).classname())
+        Assert.equal("UIHorizontalTest", v.get(3).classname())
+        Assert.equal(0, v.get(1).getX())
+        Assert.equal(2, v.get(1).getY())
+        Assert.equal(16, v.get(1).getWidth())
+        Assert.equal(16, v.get(1).getHeight())
+        Assert.equal(18, v.get(2).getX())
+        Assert.equal(2, v.get(2).getY())
+        Assert.equal(90, v.get(2).getWidth())
+        Assert.equal(16, v.get(2).getHeight())
+        Assert.equal(110, v.get(3).getX())
+        Assert.equal(2, v.get(3).getY())
+        Assert.equal(90, v.get(3).getWidth())
+        Assert.equal(16, v.get(3).getHeight())
+        Assert.equal("<col><label/><label/><label/></col>", v.toString())
+        return this
+    end
+    
+    static this test7 () do
+        UIVertical panel = new UIVertical().setSize(200, 100).setMargin(2)
+        panel.add(new UIHorizontal().add(new UIText().setFont(new UIFontTest()), true).add(new UIButton().setFont(new UIFontTest())))
+        panel.add(new UIText().setFont(new UIFontTest()), true)
+        panel.layout()
+        Assert.equal(2, panel.size())
+        Assert.equal("UIHorizontal", panel.get(1).classname())
+        Assert.equal("UIText", panel.get(2).classname())
+        UIHorizontal h = (UIHorizontal) panel.get(1)
+        Assert.equal(0, panel.get(1).getX())
+        Assert.equal(0, panel.get(1).getY())
+        Assert.equal(200, panel.get(1).getWidth())
+        Assert.equal(22, panel.get(1).getHeight())
+        Assert.equal(0, panel.get(2).getX())
+        Assert.equal(24, panel.get(2).getY())
+        Assert.equal(200, panel.get(2).getWidth())
+        Assert.equal(76, panel.get(2).getHeight())
+        Assert.equal(2, h.size())
+        Assert.equal("UIText", h.get(1).classname())
+        Assert.equal("UIButton", h.get(2).classname())
+        Assert.equal(0, h.get(1).getX())
+        Assert.equal(3, h.get(1).getY())
+        Assert.equal(192, h.get(1).getWidth())
+        Assert.equal(16, h.get(1).getHeight())
+        Assert.equal(194, h.get(2).getX())
+        Assert.equal(0, h.get(2).getY())
+        Assert.equal(6, h.get(2).getWidth())
+        Assert.equal(22, h.get(2).getHeight())
+        Assert.equal("<row><col><text/><button/></col><text/></row>", panel.toString())
+        return this
+    end
+	
+	num getMinimumWidth () do
+		return 16
+	end
+	
+end 

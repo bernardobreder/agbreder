@@ -1,0 +1,20 @@
+
+class Object do
+
+	bool equal (Object target) do
+		return this == target
+	end
+
+	num hash () do
+		return |object.hashcode,this|
+	end
+	
+	str classname () do 
+		return |object.classname,this| 
+	end
+	
+	str toString () do 
+		return this.classname() + "@" + this.hash() 
+	end		
+	
+end

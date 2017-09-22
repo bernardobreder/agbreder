@@ -1,0 +1,151 @@
+
+class UIScroll extends UIPanel do
+
+	UIComponent component
+	
+	num clipX
+	
+	num clipY
+	
+	num factor
+
+	this UIScroll () do
+		super()
+		this.clipX = 0
+		this.clipY = 0
+		this.setFactor(1)
+		return this
+	end
+	
+	this paint (UIGraphic g) do
+    	UIComponent c = this.get()
+		if c != null do
+            do
+	            num cx = c.getX() 
+	            num cy = c.getY() 
+	            num cw = this.getWidth()
+	            num ch = this.getHeight()
+	            g.pushGraphic(this.clipX, this.clipY, this.getWidth() - 5, this.getHeight() - 5)
+		        c.paint(g)
+	            g.popGraphic(0, 0)
+            end
+			if true do
+				bool hscroll = this.hasHorizontalScroll()
+				bool vscroll = this.hasVerticalScroll()
+				g.fillRect(this.getWidth() - 5, 0, 5, this.getHeight() - 5, UIColor.getLightGray())
+				g.fillRect(0, this.getHeight() - 5, this.getWidth() - 5, 5, UIColor.getLightGray())
+				g.fillRect(this.getWidth() - 5, this.getHeight() - 5, 5, 5, UIColor.getDarkGray())
+				if vscroll do
+					num thisH = this.getHeight() 
+					num compH = c.getHeight()
+					num y = this.clipY * thisH / compH 
+					num height = thisH * thisH / compH 
+					g.fillRect(this.getWidth() - 5, y, 5, height - 5, UIColor.getDarkGray())
+				end
+				if hscroll do
+					num thisW = this.getWidth() 
+					num compW = c.getWidth()
+					num x = this.clipX * thisW / compW
+					num width = thisW * thisW / compW
+					g.fillRect(x, this.getHeight() - 5, width - 5, 5, UIColor.getDarkGray())
+				end
+			end
+		end
+		return this
+	end
+	
+	this layout () do
+		UIComponent c = this.get()
+		if c != null do
+			do
+				num value = Math.max(c.getPreferenceWidth(), c.getMinimumWidth())
+				if value > this.getWidth() do
+					c.setWidth(value)
+				end else do
+					c.setWidth(this.getWidth() - 5)
+				end
+			end
+			do
+				num value = Math.max(c.getPreferenceHeight(), c.getMinimumHeight())
+				if value > this.getHeight() do
+					c.setHeight(value)
+				end else do
+					c.setHeight(this.getHeight() - 5)
+				end
+			end
+			c.layout()
+		end
+		return this
+	end
+	
+	this fireMouseWheelEvent (UIMouseEvent e) do
+		UIComponent c = this.get()
+		if c != null do
+			bool hscroll = this.hasHorizontalScroll()
+			bool vscroll = this.hasVerticalScroll()
+			num clipX = this.clipX
+			num clipY = this.clipY
+			if hscroll do
+				this.clipX = Math.between(0, clipX - e.getWheelX() * this.getFactor(), c.getWidth() - (this.getWidth() - 5))
+			end
+			if vscroll do
+				this.clipY = Math.between(0, clipY - e.getWheelY() * this.getFactor(), c.getHeight() - (this.getHeight() - 5))
+			end
+				this.repaint()
+			if (vscroll and this.clipY != clipY) or (hscroll and this.clipX != clipX) do
+			end else do
+				e.setX(e.getX() + this.clipX)
+				e.setY(e.getY() + this.clipY)
+				super.fireMouseWheelEvent(e)
+			end
+		end
+		return this
+	end
+	
+	UIComponent get () do
+		if this.size() == 0 do
+			return null
+		end else do
+			return (UIComponent) this.children.get(1)
+		end
+	end
+	
+	this set (UIComponent c) do
+		c.setParent(this)
+		if this.size() == 0 do
+			this.children.add(c)
+		end else do
+			this.get().setParent(null)
+			this.children.set(1, c)
+		end
+		return this
+	end
+	
+	num getFactor () do
+		return this.factor
+	end
+	
+	this setFactor (num value) do
+		this.factor = value
+		return this
+	end
+	
+	num getMinimumWidth () do
+		return 100
+	end
+	
+	num getMinimumHeight () do
+		return 50
+	end
+	
+	bool hasHorizontalScroll () do
+		UIComponent c = this.get()
+		return c != null and c.getWidth() > this.getWidth() - 5
+	end
+	
+	bool hasVerticalScroll () do
+		UIComponent c = this.get()
+		return c != null and c.getHeight() > this.getHeight() - 5
+	end
+	
+end

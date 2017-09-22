@@ -1,0 +1,32 @@
+.p {
+	font-family: "Times New Roman", Times, serif;
+	text-align: justify;
+}
+
+.p1 {
+	font-weight: bold;
+}
+
+.p2 {
+	font-weight: bold;
+	font-size: larger;
+	color: #000077;
+	margin-left: 20px;
+}
+
+.p3 {
+	font-weight: bold;
+	font-size: x-large;
+	color: #3333BB;
+	margin-left: 10px;
+}
+
+.p4 {
+	font-weight: bold;
+	font-size: xx-large;
+	color: #6666FF;
+}
+
+#content {
+	margin: 5px;
+}

@@ -1,0 +1,16 @@
+
+class Input do
+
+	byte readByte () do
+		return -1
+	end
+	
+	bool isEof () do
+		return true
+	end
+	
+	this close () do
+		return this
+	end
+	
+end

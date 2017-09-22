@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<web-app xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	version="2.5">
+
+	<display-name>Agent Breder Browser</display-name>
+	<description>
+		Agent Breder Browser
+    </description>
+
+	<servlet>
+		<servlet-name>Connect</servlet-name>
+		<servlet-class>com.agbreder.servlet.service.ConnectServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Connect</servlet-name>
+		<url-pattern>
+            /connect.ws
+        </url-pattern>
+	</servlet-mapping>
+
+	<error-page>
+		<error-code>500</error-code>
+		<location>/index.html</location>
+	</error-page>
+	<error-page>
+		<error-code>404</error-code>
+		<location>/index.html</location>
+	</error-page>
+
+	<welcome-file-list>
+		<welcome-file>
+			index.html
+        </welcome-file>
+	</welcome-file-list>
+
+</web-app>

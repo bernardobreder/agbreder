@@ -1,0 +1,125 @@
+
+class UIColor extends Object do
+
+	num color
+	
+	static UIColor getWhite () do 
+		return new UIColor().setRGB(255, 255, 255) 
+	end
+	
+	static UIColor getBlack () do 
+		return new UIColor().setRGB(0, 0, 0)
+	end
+	
+	static UIColor getLightRed () do 
+		return new UIColor().setRGB(255, 225, 225)
+	end
+	
+	static UIColor getRed () do 
+		return new UIColor().setRGB(255, 200, 200)
+	end
+	
+	static UIColor getDarkRed () do 
+		return new UIColor().setRGB(255, 100, 100)
+	end
+	
+	static UIColor getLightGreen () do 
+		return new UIColor().setRGB(225, 255, 225)
+	end
+	
+	static UIColor getGreen () do 
+		return new UIColor().setRGB(200, 255, 200)
+	end
+	
+	static UIColor getDarkGreen () do 
+		return new UIColor().setRGB(100, 255, 100)
+	end
+	
+	static UIColor getLightBlue () do 
+		return new UIColor().setRGB(225, 225, 255)
+	end
+	
+	static UIColor getBlue () do 
+		return new UIColor().setRGB(200, 200, 255)
+	end
+	
+	static UIColor getDarkBlue () do 
+		return new UIColor().setRGB(100, 100, 255)
+	end
+	
+	static UIColor getLightGray () do 
+		return new UIColor().setRGB(225, 225, 225)
+	end
+	
+	static UIColor getGray () do 
+		return new UIColor().setRGB(200, 200, 200)
+	end
+	
+	static UIColor getDarkGray () do 
+		return new UIColor().setRGB(150, 150, 150)
+	end
+	
+	num getRGB () do
+		return this.color andbit 16777215
+	end
+	
+	num getRGBA () do
+		return this.color
+	end
+	
+	num getAlpha () do
+		return (this.color andbit 4278190080) >> 24 
+	end
+	
+	num getRed () do
+		return (this.color andbit 16711680) >> 16
+	end
+	
+	num getGreen () do
+		return (this.color andbit 65280) >> 8
+	end
+	
+	num getBlue () do
+		return this.color andbit 255
+	end
+	
+	this setAlpha (num value) do
+		this.color = this.color orbit ((value andbit 255) << 24) 
+		return this
+	end
+	
+	this setRed (num value) do
+		this.color = this.color orbit ((value andbit 255) << 16)
+		return this
+	end
+	
+	this setGreen (num value) do
+		this.color = this.color orbit ((value andbit 255) << 8)
+		return this
+	end
+	
+	this setBlue (num value) do
+		this.color = this.color orbit value
+		return this
+	end 
+	
+	this setRGB (num red, num green, num blue) do
+		return this.setRed(red).setGreen(green).setBlue(blue)
+	end
+	
+	this setARGB (num alpha, num red, num green, num blue) do
+		return this.setAlpha(alpha).setRGB(red, green, blue)
+	end
+	
+	bool equal (Object target) do
+		if target == null or target.classname() != "UIColor" do
+			return false
+		end
+		return this.color == ((UIColor)target).color
+	end
+
+	num hash () do
+		return this.color
+	end
+
+end

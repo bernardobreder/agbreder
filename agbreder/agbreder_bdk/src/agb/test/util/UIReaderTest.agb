@@ -1,0 +1,31 @@
+
+class UIReaderTest do
+
+	static this main () throw CheckedException do
+		UIReaderTest.test1()
+		UIReaderTest.test2()
+		Console.println("Finish")
+		return this
+	end
+	
+	static this test1 () throw CheckedException do 
+		Console.println("UIReaderTest.test1")
+		Assert.equal("<label/>", UIReader.build(new XmlReader("<label/>").getRoot()).toString())
+		Assert.equal("<label/>", UIReader.build(new XmlReader("<label></label>").getRoot()).toString())
+		Assert.equal("<row/>", UIReader.build(new XmlReader("<row/>").getRoot()).toString())
+		Assert.equal("<row/>", UIReader.build(new XmlReader("<row></row>").getRoot()).toString())
+		Assert.equal("<col/>", UIReader.build(new XmlReader("<col/>").getRoot()).toString())
+		Assert.equal("<col/>", UIReader.build(new XmlReader("<col></col>").getRoot()).toString())
+		return this
+	end
+	
+	static this test2 () throw CheckedException do 
+		Console.println("UIReaderTest.test2")
+		Assert.equal("<row><label/></row>", UIReader.build(new XmlReader("<row><label></label></row>").getRoot()).toString())
+		Assert.equal("<row><label/></row>", UIReader.build(new XmlReader("<row><label/></row>").getRoot()).toString())
+		Assert.equal("<row><label/><label/></row>", UIReader.build(new XmlReader("<row><label/><label/></row>").getRoot()).toString())
+		Assert.equal("<row><label/><row><label/></row></row>", UIReader.build(new XmlReader("<row><label/><row><label/></row></row>").getRoot()).toString())
+		return this
+	end
+	
+end

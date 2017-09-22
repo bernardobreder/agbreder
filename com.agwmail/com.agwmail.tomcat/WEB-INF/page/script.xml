@@ -1,0 +1,19 @@
+<div style="margin: 10px">
+	<table>
+		<tr>
+			<td>
+				<textarea id="script-text" class="wide" style="width: 100%; height: 400px;"
+					onkeydown="insertTab(this, event)">
+					${content}
+				</textarea>
+			</td>
+		</tr>
+		<tr>
+			<td id="script-execute" align="right">
+				<div style="margin-top: 5px">
+					<input type="button" value="Execute" />
+				</div>
+			</td>
+		</tr>
+	</table>
+</div>

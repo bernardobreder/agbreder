@@ -1,0 +1,82 @@
+
+class UIComponentTest do
+
+	static this main () do
+		UIComponentTest.test1()
+		UIComponentTest.test2()
+		UIComponentTest.test3()
+		return this
+	end
+	
+	static this test1 () do
+		Console.println("UIComponentTest.test1")
+		do
+			UIPanel p = new UIVertical().add(new UILabel()).add(new UILabel())
+			Assert.notnil(p).equal(2, p.size())
+			Assert.equal("UILabel", p.get(1).classname())
+			Assert.equal("UILabel", p.get(2).classname())
+			Assert.equal(p, p.get(1).getParent())
+			Assert.equal(p, p.get(2).getParent())
+			Assert.equal("UIVertical", p.classname())
+			Assert.nil(p.get(0)).nil(p.get(3))
+		end
+		do
+			UIPanel p = new UIHorizontal().add(new UILabel()).add(new UILabel())
+			Assert.notnil(p).equal(2, p.size())
+			Assert.equal("UILabel", p.get(1).classname())
+			Assert.equal("UILabel", p.get(2).classname())
+			Assert.equal(p, p.get(1).getParent())
+			Assert.equal(p, p.get(2).getParent())
+			Assert.equal("UIHorizontal", p.classname())
+			Assert.nil(p.get(0)).nil(p.get(3))
+		end
+		do
+			UIComponent c = new UIComponent()
+			Assert.equal(0, c.getX())
+			Assert.equal(0, c.getY())
+			Assert.equal(0, c.getWidth())
+			Assert.equal(0, c.getHeight())
+			Assert.equal(-1, c.getPreferenceWidth())
+			Assert.equal(-1, c.getPreferenceHeight())
+			Assert.equal(10, c.setX(10).getX())
+			Assert.equal(20, c.setY(20).getY())
+			Assert.equal(30, c.setWidth(30).getWidth())
+			Assert.equal(40, c.setHeight(40).getHeight())
+			Assert.equal(50, c.setPreferenceWidth(50).getPreferenceWidth())
+			Assert.equal(60, c.setPreferenceHeight(60).getPreferenceHeight())
+			Assert.equal(70, c.setPadding(70).getPadding())
+			Assert.nil(c.getParent())
+			Assert.nil(c.getFrame())
+			Assert.equal(c, c.repaint())
+		end
+		return this
+	end
+	
+	static this test2 () do
+		Console.println("UIComponentTest.test2")
+		do
+			UIPanel p = new UIVertical().add(new UILabel()).add(new UILabel())
+					.add(new UIButton()).add(new UICheck()).add(new UIArea()).add(new UIText())
+			Assert.notnil(p).equal(6, p.size())
+			Assert.equal("UILabel", p.get(1).classname())
+			Assert.equal("UILabel", p.get(2).classname())
+			Assert.equal("UIButton", p.get(3).classname())
+			Assert.equal("UICheck", p.get(4).classname())
+			Assert.equal("UIArea", p.get(5).classname())
+			Assert.equal("UIText", p.get(6).classname())
+			Assert.nil(p.get(0)).nil(p.get(7))
+		end
+		return this
+	end
+	
+	static this test3 () do
+		Console.println("UIComponentTest.test3")
+		do
+			UIGraphic g = new UIGraphic()
+			UIPanel p = new UIVertical().add(new UILabel()).add(new UILabel())
+					.add(new UIButton()).add(new UICheck()).add(new UIArea()).add(new UIText())
+		end
+		return this
+	end
+	
+end

@@ -1,0 +1,8 @@
+
+class Main do
+
+	static this main() do
+		return this
+	end
+
+end

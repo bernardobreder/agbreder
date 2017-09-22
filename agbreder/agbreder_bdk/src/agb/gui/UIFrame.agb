@@ -1,0 +1,226 @@
+
+class UIFrame extends UIComponent do
+
+	UIGraphic graphic
+	
+	UIComponent focus
+	
+	Stack frames
+	
+	bool initialized
+
+	this UIFrame () do
+		super()
+		this.frames = new Stack()
+		this.setPadding(2)
+		return this
+	end
+	
+	this init () do
+		if ! this.initialized do
+			Native.sdlInit()
+			Native.sdlVideo() 
+			this.setWidth(Native.sdlWidth()) 
+			this.setHeight(Native.sdlHeight())
+			this.graphic = new UIGraphic()
+			this.initialized = true
+		end
+		return this
+	end
+
+	this loop () do
+		bool run = true
+		this.fireLayoutEvent()
+		this.fireDrawEvent()
+		while run do
+            if !Native.sdlPollEvent() do
+                if !this.isRepainted() do
+                    this.fireDrawEvent()
+                end
+                Native.sdlWaitEvent()
+            end
+			this.fireEvent()
+			switch Native.sdlEventType() do 
+				case Native.keyQuit() do
+					Native.sdlQuit() 
+					run = false
+				end
+			end 
+		end
+		return this
+	end
+	
+	this layout () do
+		UIComponent c = this.get()
+		if c != null do
+			num padding = this.getPadding()
+			c.setX(padding)
+			c.setY(padding)
+			c.setWidth(this.getWidth() - 2 * padding)
+			c.setHeight(this.getHeight() - 2 * padding)
+			c.layout()
+		end
+		return this
+	end
+	
+	this fireEvent () do 
+		switch Native.sdlEventType() do 
+			case Native.mouseMotion() do
+				this.fireMouseMotionEvent(new UIMouseEvent().setX(Native.sdlMouseMotionXEvent()).setY(Native.sdlMouseMotionYEvent()).setButton(0)) 
+			end
+			case Native.mouseWheel() do
+				this.fireMouseWheelEvent(new UIMouseEvent().setX(Native.sdlMouseMotionXEvent()).setY(Native.sdlMouseMotionYEvent()).setButton(0).setWheelX(Native.sdlMouseWheelXEvent()).setWheelY(Native.sdlMouseWheelYEvent())) 
+			end
+			case Native.mouseDown() do
+				this.fireMouseDownEvent(new UIMouseEvent().setX(Native.sdlMouseActionXEvent()).setY(Native.sdlMouseActionYEvent()).setButton(Native.sdlMouseActionButtonEvent())) 
+			end
+			case Native.mouseUp() do
+				this.fireMouseUpEvent(new UIMouseEvent().setX(Native.sdlMouseActionXEvent()).setY(Native.sdlMouseActionYEvent()).setButton(Native.sdlMouseActionButtonEvent()))
+			end
+			case Native.keyDown() do
+				this.fireKeyDownEvent(new UIKeyEvent().setCode(Native.sdlKeycode())) 
+			end
+			case Native.keyUp() do
+				this.fireKeyUpEvent(new UIKeyEvent().setCode(Native.sdlKeycode()))
+			end
+			case Native.userEvent() do
+				this.fireUserEvent()
+			end
+			case Native.keyQuit() do 
+				this.fireKeyQuitEvent()
+			end
+		end
+		return this
+	end
+	
+	this fireUserEvent () do 
+		switch Native.sdlUsercode() do
+			case Native.repaintEvent() do	
+				this.fireDrawEvent()
+			end
+		end
+		return this
+	end
+	
+	this fireKeyQuitEvent () do
+		return this
+	end
+	
+	this fireKeyDownEvent (UIKeyEvent e) do
+        if this.focus != null and e != null do
+            this.focus.fireKeyDownEvent(e)        
+        end
+        return this
+    end
+    
+    this fireKeyUpEvent (UIKeyEvent e) do
+        if this.focus != null and e != null do
+            this.focus.fireKeyUpEvent(e)        
+        end
+        return this
+    end
+	
+	this fireMouseMotionEvent (UIMouseEvent e) do
+		UIComponent component = this.get()
+		if component != null and e != null do
+			component.fireMouseMotionEvent(e)
+		end
+		return this
+	end
+	
+	this fireMouseWheelEvent (UIMouseEvent e) do
+		UIComponent component = this.get()
+		if component != null and e != null do
+			component.fireMouseWheelEvent(e)
+		end
+		return this
+	end
+	
+	this fireMouseDownEvent (UIMouseEvent e) do
+		UIComponent component = this.get()
+		if component != null and e != null do
+			component.fireMouseDownEvent(e)
+		end
+		return this
+	end
+	
+	this fireMouseUpEvent (UIMouseEvent e) do
+        UIComponent component = this.get()
+        if component != null and e != null do
+            component.fireMouseUpEvent(e)
+        end
+        return this
+    end
+	
+	this fireLayoutEvent () do
+		this.layout()
+		return this
+	end
+	
+	this fireDrawEvent () do
+        this.setRepainted(true)
+		if !Native.sdlLock() do return this end
+		try do
+			this.firePaintEvent()
+		end catch Throwable e do end
+		Native.sdlUnlock()
+		Native.sdlUpdate()
+		return this
+	end
+	
+	this firePaintEvent () do
+		UIComponent c = this.get()
+		UIGraphic g = this.graphic
+		g.fillRect(0, 0, this.getWidth(), this.getHeight(), UIColor.getLightBlue())
+		if c != null do
+            num x = c.getX()
+            num y = c.getY()
+            g.translate(x, y)
+			c.paint(g)
+			g.translate(-x, -y)
+		end
+		return this
+	end
+	
+	this fireFocus (UIComponent c) do
+		this.focus = c
+		return this
+	end
+	
+	this repaint () do
+		this.setRepainted(false)
+		return this
+	end
+
+	this push(UIComponent c) do
+		if c != null do
+			c.frame = this
+			this.frames.push(c)
+		end
+		return this
+	end
+	
+	this pop() do
+		if this.frames.size() > 0 do
+			this.frames.pop()
+		end
+		return this
+	end
+	
+	num size () do
+		return this.frames.size()
+	end
+	
+	UIComponent get () do
+		if this.frames.size() == 0 do
+			return null
+		end else do
+			return (UIComponent) this.frames.peek()
+		end
+	end
+	
+	UIComponent getFocus () do
+		return this.focus
+	end
+
+end

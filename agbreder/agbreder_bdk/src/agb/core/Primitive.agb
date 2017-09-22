@@ -1,0 +1,4 @@
+
+class Primitive extends Object do
+
+end

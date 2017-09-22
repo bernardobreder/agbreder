@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ufwb version="1.1.5">
+    <grammar name="AGBreder Binary" start="id:10" author="Bernardo Breder" complete="yes">
+        <description>Grammar for my file format</description>
+        <structure name="Agbreder" id="10" encoding="UTF-8" endian="big" signed="no">
+            <binary name="Magic" id="11" length="1">
+                <fixedvalue name="Magic Char" value="BB"/>
+            </binary>
+            <structure name="Number" id="12" consists-of="id:10">
+                <number name="Count" id="13" type="integer" length="4"/>
+                <structure name="Number Content" id="14" repeat="id:13" repeatmin="0" repeatmax="Count">
+                    <number name="Size" id="15" type="integer" length="2"/>
+                    <string name="Content" id="16" type="fixed-length" length="Size"/>
+                </structure>
+            </structure>
+            <structure name="String" id="19" consists-of="id:10">
+                <number name="Count" id="20" type="integer" length="4"/>
+                <structure name="String Content" id="21" repeat="id:20" repeatmin="0" repeatmax="Count">
+                    <number name="Size" id="22" type="integer" length="2"/>
+                    <string name="Content" id="23" type="fixed-length" length="Size"/>
+                </structure>
+            </structure>
+            <structure name="Class" id="26">
+                <number name="Count" id="27" type="integer" length="4"/>
+                <structure name="Item" id="28" repeat="id:27" repeatmax="Count">
+                    <number name="NameSize" id="29" type="integer" length="2"/>
+                    <string name="Name" id="30" type="fixed-length" length="NameSize"/>
+                    <number name="Extend" id="31" type="integer" length="4"/>
+                    <number name="Field" id="32" type="integer" length="4"/>
+                </structure>
+            </structure>
+            <structure name="Method" id="35">
+                <number name="ClassSize" id="36" type="integer" length="4"/>
+                <structure name="Class" id="37" repeat="id:36" repeatmax="ClassSize">
+                    <number name="MethodSize" id="38" type="integer" length="4"/>
+                    <structure name="Method" id="39" repeatmax="MethodSize">
+                        <number name="NameSize" id="40" type="integer" length="2"/>
+                        <string name="Name" id="41" type="fixed-length" length="NameSize"/>
+                        <number name="isStatic" id="55" type="integer" length="4"/>
+                        <number name="Pc Begin" id="42" type="integer" length="4"/>
+                        <number name="Pc End" id="43" type="integer" length="4"/>
+                    </structure>
+                </structure>
+            </structure>
+            <binary name="Mark" id="47" length="1"/>
+            <structure name="Opcodes" id="48">
+                <number name="OpcodeSize" id="49" type="integer" length="4"/>
+                <structure name="Opcode" id="50" repeat="id:49" repeatmax="OpcodeSize">
+                    <number name="Opcode Code" id="51" type="integer" length="4"/>
+                </structure>
+            </structure>
+        </structure>
+    </grammar>
+</ufwb>

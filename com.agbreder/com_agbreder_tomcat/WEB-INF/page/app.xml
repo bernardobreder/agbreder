@@ -1,0 +1,17 @@
+
+<div id="container">
+	<import src="/WEB-INF/page/header.xml" />
+	<div id="middle">
+		<table>
+			<tr>
+				<td valign="top" width="200px">
+					<import src="/WEB-INF/page/left.xml" />
+				</td>
+				<td valign="top">
+					<div id="center">
+					</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+</div>

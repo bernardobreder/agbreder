@@ -1,0 +1,8 @@
+
+class UIArea extends UIComponent do
+
+	this paint (UIGraphic g) do 
+		return this
+	end
+
+end

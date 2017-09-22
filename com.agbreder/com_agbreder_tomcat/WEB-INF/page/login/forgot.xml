@@ -1,0 +1,24 @@
+<div align="center">
+    <table width="400px">
+        <tr>
+            <td colspan="2">
+                <div align="center">
+                    <h1>Forgot the Password</h1>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td class="label">Email :</td>
+            <td>
+                <input id="email" class="wide compose text-medium" />
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <div align="right">
+                    <input type="button" value="Send Email" />
+                </div>
+            </td>
+        </tr>
+    </table>
+</div>

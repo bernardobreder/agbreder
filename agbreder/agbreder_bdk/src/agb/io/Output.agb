@@ -1,0 +1,12 @@
+
+class Output do
+
+	this writeByte (byte value) do
+		return this
+	end
+	
+	this close () do
+		return this
+	end
+	
+end

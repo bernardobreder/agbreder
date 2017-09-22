@@ -1,0 +1,52 @@
+
+class Main do
+
+	static this main() throw CheckedException do
+		UIFrame frame = new UIFrame() 
+		frame.init()
+		UIButton b = new UIButton().setText("Go")
+		UIProcess process = new UIProcess()
+		function this () okFunction = function this () (UIFrame frame = frame, UIProcess process = process) do
+			byte[] bytecode = NetNative.request("get app test")
+			if bytecode != null do
+				process.setBytecode(bytecode)
+			end
+			return this 
+		end
+		b.addMouseClickListener(okFunction)
+		UIVertical panel = new UIVertical()
+		panel.add(new UIHorizontal().add(new UIText(), true).add(b))
+        panel.add(new UIScroll().set(process), true)
+        frame.push(panel)
+		//frame.push(new UIScroll().set(UIReader.build(|string.base64_decode,'res/main.xml'|)))
+		frame.loop()
+		return this 
+	end
+	
+	static UIComponent mainFrame (UIFrame frame) do
+		function this () okFunction = function this () (UIFrame frame = frame) do
+			frame.push(Main.otherFrame(frame))
+			frame.layout()
+			frame.repaint()
+			return this
+		end
+		UIVertical center = new UIVertical().add(new UIButton().setText("Ae...").addMouseClickListener(okFunction)).add(new UILabel().setText("Texto Simples"))
+		for n = 1, 10 do
+			center.add(new UIHorizontal().add(new UIText()))
+		end
+		return center
+	end 
+	
+	static UIComponent otherFrame (UIFrame frame) do
+		function this () okFunction = function this () (UIFrame frame = frame) do
+			frame.pop()
+			frame.layout()
+			frame.repaint()
+			return this
+		end
+		UIHorizontal header = new UIHorizontal().add(new UIButton().setText("Cancelar").addMouseClickListener(okFunction)).add(new UIText(), true)
+		UIVertical center = new UIVertical().add(header).add(new UIScroll().set(new UILabel().setText("a\nb\nc\nd\ne\nf\ng\nh\ni\nj\nk\nl\nm\nn\no\np\nq\nr\ns\nt\nu\nv\nx\ny\nz\na\nb\nc\nd\ne\nf\ng\nh\ni\nj\nk\nl\nm\nn\no\np\nq\nr\ns\nt\nu\nv\nx\ny\nz\na\nb\nc\nd\ne\nf\ng\nh\ni\nj\nk\nl\nm\nn\no\np\nq\nr\ns\nt\nu\nv\nx\ny\nz\n")))
+		return center
+	end 
+	
+end

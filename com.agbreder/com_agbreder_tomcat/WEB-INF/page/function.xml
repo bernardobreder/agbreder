@@ -1,0 +1,11 @@
+<div id="agent-center-function" style="margin-right: 5px">
+	<div>
+		<textarea id="script-text" class="wide"
+			style="width: 100%; height: 300px;" onkeydown="insertTab(this, event)">
+			${content}
+		</textarea>
+	</div>
+	<div align="right" style="margin-top: 4px">
+		<input type="button" value="Salvar" />
+	</div>
+</div>

@@ -1,0 +1,16 @@
+
+class ConsoleTest do
+
+	static this main () do
+		ConsoleTest.test1()
+		return this
+	end
+	
+	static this test1 () do
+		Console.println("ConsoleTest.test1")
+		Console.println(null)
+		Console.print(null) 
+		return this
+	end
+	
+end

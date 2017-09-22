@@ -1,0 +1,4 @@
+
+class TextXmlNode extends XmlNode do
+
+end

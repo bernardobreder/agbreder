@@ -1,0 +1,35 @@
+
+class UIButtonTest do
+
+	static this main () do
+		UIButtonTest.test1()
+		return this
+	end
+	
+	static this test1 () do
+		do
+			UIButton c = new UIButton().setFont(new UIFontTest())
+			Assert.equal("", c.getText())
+			Assert.equal(3, c.getPadding())
+			Assert.equal(6, c.getMinimumWidth())
+			Assert.equal(22, c.getMinimumHeight())
+			Assert.equal(5, c.setText("ab").setPadding(5).getPadding())
+			Assert.equal(26, c.getMinimumWidth())
+			Assert.equal(26, c.getMinimumHeight())
+		end
+		do
+			UIButton c = new UIButton().setFont(new UIFontTest())
+			c.addMouseClickListener(null)
+			c.addMouseClickListener(function this () (UIButton c = c) do
+				c.setText("ab")
+				return this
+			end)
+			Assert.equal("", c.getText())
+			c.fireMouseDownEvent(new UIMouseEvent().setX(0).setY(0).setButton(0))
+			c.fireMouseUpEvent(new UIMouseEvent().setX(0).setY(0).setButton(0))
+			Assert.equal("ab", c.getText())
+		end
+		return this
+	end
+	
+end

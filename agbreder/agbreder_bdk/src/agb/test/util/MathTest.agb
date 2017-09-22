@@ -1,0 +1,24 @@
+
+class MathTest do
+
+	static this main () do
+		MathTest.testMax()
+		MathTest.testMin()
+		return this
+	end
+	
+	static this testMax () do 
+		Console.println("MathTest.testMax")
+		Assert.equal(2, Math.max(1,2))
+		Assert.equal(5, Math.max(5,2))
+		return this
+	end
+	
+	static this testMin () do 
+		Console.println("MathTest.testMin")
+		Assert.equal(1, Math.min(1,2))
+		Assert.equal(2, Math.min(5,2))
+		return this
+	end
+	
+end

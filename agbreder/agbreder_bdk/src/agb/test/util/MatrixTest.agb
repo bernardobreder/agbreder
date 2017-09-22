@@ -1,0 +1,40 @@
+
+class MatrixTest do
+
+	static this main () do
+		MatrixTest.test1()
+		MatrixTest.test2()
+		MatrixTest.test3()
+		return this
+	end
+	
+	static this test1 () do 
+		Console.println("MatrixTest.test1")
+		Assert.equal("[[0, 0], [0, 0]]", new Matrix(2,2).toString())
+		Assert.equal("[[0]]", new Matrix(1,1).toString())
+		Assert.equal("[[]]", new Matrix(1,0).toString())
+		Assert.equal("[[]]", new Matrix(1,-1).toString())
+		Assert.equal("[]", new Matrix(-1,1).toString())
+		Assert.equal(2, new Matrix(2,2).rowSize())
+		Assert.equal(2, new Matrix(2,2).columnSize())
+		return this
+	end
+	
+	static this test2 () do 
+		Console.println("MatrixTest.test2")
+		Assert.equal("[[0, 5], [0, 0]]", new Matrix(2,2).set(1,2,5).toString())
+		Assert.equal("[[5, 0], [0, 0]]", new Matrix(2,2).set(1,1,5).toString())
+		Assert.equal("[[0, 0], [0, 5]]", new Matrix(2,2).set(2,2,5).toString())
+		Assert.equal("[[0, 0], [0, 0]]", new Matrix(2,2).set(0,0,5).toString())
+		Assert.equal("[[0, 0], [0, 0]]", new Matrix(2,2).set(3,3,5).toString())
+		Assert.equal("[[0, 0], [0, 0]]", new Matrix(2,2).set(1,3,5).toString())
+		return this
+	end
+	
+	static this test3 () do 
+		Console.println("MatrixTest.test3")
+		Assert.equal("[[0, 0], [0, 5]]", new Matrix(2,2).copy(new Matrix(2,2).set(1,1,5), 1, 1, 1, 1, 2, 2).toString())
+		return this
+	end
+	
+end

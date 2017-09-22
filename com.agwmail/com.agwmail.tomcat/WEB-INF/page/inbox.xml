@@ -1,0 +1,36 @@
+<div>
+	<div id="center-toolbar">
+		<table>
+			<tr>
+				<td id="inbox-tool-check" class="center-tool-button">
+					<img src="pub/img/check.png" />
+				</td>
+				<td class="center-tool-separator">
+					<img src="pub/img/separator.png" />
+				</td>
+				<td id="inbox-tool-archive" class="center-tool-button">
+					<img src="pub/img/archive.png" />
+				</td>
+				<td id="inbox-tool-copy" class="center-tool-button">
+					<img src="pub/img/copy.png" />
+				</td>
+				<td id="inbox-tool-move" class="center-tool-button">
+					<img src="pub/img/move.png" />
+				</td>
+				<td id="inbox-tool-delete" class="center-tool-button">
+					<img src="pub/img/delete.png" />
+				</td>
+				<td class="center-tool-separator">
+					<img src="pub/img/separator.png" />
+				</td>
+				<td id="inbox-tool-refresh" class="center-tool-button">
+					<img src="pub/img/refresh.png" />
+				</td>
+				<td width="100%"></td>
+			</tr>
+		</table>
+	</div>
+	<div id="center-msginfo-mails">
+		<import src="/WEB-INF/page/mails.xml" />
+	</div>
+</div>

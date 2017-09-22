@@ -1,0 +1,92 @@
+
+class ArrayTest do
+
+	static this main () do
+		ArrayTest.test1()
+		ArrayTest.test2()
+		ArrayTest.test3()
+		ArrayTest.test4()
+		ArrayTest.test5()
+		ArrayTest.test6()
+		return this
+	end
+	
+	static this test1 () do 
+		Console.println("ArrayTest.test1")
+		Array array = new Array()
+		Assert.equal("[]", array.toString())
+		Assert.equal(0, array.size())
+		array.add(new Number(1))
+		Assert.equal("[1]", array.toString())
+		Assert.equal(1, array.size())
+		array.add(new Number(1))
+		Assert.equal("[1, 1]", array.toString())
+		Assert.equal(2, array.size())
+		return this
+	end
+	
+	static this test2 () do
+		Console.println("ArrayTest.test2") 
+		Array array = new Array()
+		Assert.equal("[]", array.toString())
+		Assert.equal(0, array.size())
+		array.add(new String("a"))
+		Assert.equal("[a]", array.toString())
+		Assert.equal(1, array.size())
+		array.add(new String("b"))
+		Assert.equal("[a, b]", array.toString())
+		Assert.equal(2, array.size())
+		array.add(new String("c"))
+		Assert.equal("[a, b, c]", array.toString())
+		Assert.equal(3, array.size())
+		Assert.equal(1, new Array().add(new Array()).size())
+		Assert.equal(2, new Array().add(new Array()).add(new Array()).size())
+		return this
+	end
+	
+	static this test3 () do 
+		Console.println("ArrayTest.test3")
+		Array array = new Array()
+		Assert.equal(0, array.size())
+		Array array1 = new Array()
+		Assert.equal(0, array1.size())
+		array.add(array1)
+		Assert.equal(1, array.size())
+		Assert.equal("[[]]", array.toString())
+		return this
+	end
+	
+	static this test4 () do 
+		Console.println("ArrayTest.test4")
+		Array array = new Array()
+		Array array1 = new Array()
+		array1.add(new String("a"))
+		Assert.equal(new String("String"), new String(((Object)array1.get(1)).classname()))
+		array.add(array1)
+		Assert.equal("Array", ((Object)array.get(1)).classname())
+		return this
+	end
+	
+	static this test5 () do 
+		Console.println("ArrayTest.test5")
+		Array array = new Array()
+		Array array1 = new Array()
+		array1.add(new String("a"))
+		array.add(array1)
+		Assert.equal("[[a]]", array.toString())
+		return this
+	end
+	
+	static this test6 () do 
+		Console.println("ArrayTest.test6")
+		Array array = new Array()
+		Array array1 = new Array()
+		array1.add(new String("a"))
+		array1.add(new String("b"))
+		array1.add(new String("c"))
+		array.add(array1)
+		Assert.equal("[[a, b, c]]", array.toString())
+		return this
+	end
+
+end

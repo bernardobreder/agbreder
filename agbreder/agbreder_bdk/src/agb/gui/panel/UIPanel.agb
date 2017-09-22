@@ -1,0 +1,99 @@
+
+class UIPanel extends UIComponent do
+
+	Array children
+	
+	num margin
+	
+	this UIPanel () do
+		super()
+		this.children = new Array()
+		this.setMargin(2)
+		return this
+	end 
+	
+	num size () do
+		return this.children.size()
+	end
+	
+	UIComponent get (num index) do
+		return (UIComponent) this.children.get(index)
+	end
+	
+	this set (num index, UIComponent c) do
+		this.children.set(index, c)
+		return this
+	end
+	
+	this clean () do
+		this.children.clean()
+		return this
+	end
+	
+	this fireMouseDownEvent (UIMouseEvent e) do
+		num x = e.getX()
+		num y = e.getY()
+		for n = 1, this.size() do
+			UIComponent c = this.get(n)
+			num cy = c.getY()
+			if cy <= y and cy + c.getHeight() >= y do
+				num cx = c.getX()
+				if cx <= x and cx + c.getWidth() >= x do
+					e.setX(x - cx)
+					e.setY(y - cy)
+					c.fireMouseDownEvent(e)
+					return this
+				end
+			end 
+		end
+		return this
+	end
+	
+	this fireMouseUpEvent (UIMouseEvent e) do
+		num x = e.getX()
+		num y = e.getY()
+		for n = 1, this.size() do
+			UIComponent c = this.get(n)
+			num cy = c.getY()
+			if cy <= y and cy + c.getHeight() >= y do
+				num cx = c.getX()
+				if cx <= x and cx + c.getWidth() >= x do
+					e.setX(x - cx)
+					e.setY(y - cy)
+					c.fireMouseUpEvent(e)
+					return this
+				end
+			end 
+		end
+		return this
+	end
+	
+	this fireMouseWheelEvent (UIMouseEvent e) do
+		num x = e.getX()
+		num y = e.getY()
+		for n = 1, this.size() do
+			UIComponent c = this.get(n)
+			num cy = c.getY()
+			if cy <= y and cy + c.getHeight() >= y do
+				num cx = c.getX()
+				if cx <= x and cx + c.getWidth() >= x do
+					e.setX(x - cx)
+					e.setY(y - cy)
+					c.fireMouseWheelEvent(e)
+					return this
+				end
+			end 
+		end
+		return this
+	end
+	
+	this setMargin (num value) do
+		this.margin = value
+		return this
+	end
+	
+	num getMargin () do
+		return this.margin
+	end
+	
+end

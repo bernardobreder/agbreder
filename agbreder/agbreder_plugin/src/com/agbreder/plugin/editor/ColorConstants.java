@@ -1,0 +1,43 @@
+package com.agbreder.plugin.editor;
+
+import org.eclipse.swt.graphics.RGB;
+
+public interface ColorConstants {
+
+	RGB COMMENT = new RGB(0, 0, 150);
+	RGB DEFAULT = new RGB(0, 0, 0);
+
+	RGB RED = new RGB(225, 0, 0);
+	RGB DARK_RED = new RGB(175, 0, 0);
+	RGB DARK_GREEN = new RGB(0, 120, 0);
+	RGB DARK_BLUE = new RGB(0, 0, 200);
+	RGB LIGHT_BLUE = new RGB(0, 0, 225);
+
+	RGB PACKAGE = RED;
+	RGB CLASS = RED;
+	RGB SUBCLASS = RED;
+	RGB INTERFACE = RED;
+	RGB IMPORT = RED;
+
+	RGB EXTEND = RED;
+	RGB EXTENDS = RED;
+	RGB IMPLEMENTS = RED;
+
+	RGB PUBLIC = RED;
+	RGB PRIVATE = RED;
+	RGB PROTECTED = RED;
+
+	RGB LBODY = RED;
+	RGB RBODY = RED;
+	RGB LPARAM = RED;
+	RGB RPARAM = RED;
+	RGB SEMICOMMA = RED;
+	RGB EQUAL = RED;
+	RGB DOT = RED;
+
+	RGB SUM = RED;
+	RGB SUB = RED;
+	RGB MUL = RED;
+	RGB DIV = RED;
+
+}

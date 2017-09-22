@@ -1,0 +1,62 @@
+
+class Matrix do
+
+	Array lines
+	
+	num columns
+	
+	this Matrix (num lines, num columns) do
+		this.columns = columns
+		this.lines = new Array()
+		for n = 1, lines do
+			this.lines.add(new Numbers(columns))
+		end
+		return this
+	end
+	
+	Numbers get(num index) do
+		return (Numbers) this.lines.get(index)
+	end
+	
+	this set(num line, num  column, num value) do
+		Numbers array = this.get(line)
+		if array != null do
+			array.set(column, value)
+		end
+		return this
+	end
+	
+	num rowSize () do
+		return this.lines.size()
+	end
+	
+	num columnSize () do
+		return this.columns
+	end
+	
+	this copy (Matrix source, num sourceLineBegin, num sourceLineEnd, num sourceColumnBegin, num sourceColumnEnd, num destLine, num destColumn) do
+		num lines = sourceLineEnd - sourceLineBegin + 1
+		for n = 0, lines - 1 do
+			Numbers sourceLine = source.get(sourceLineBegin + n)
+			Numbers dest = this.get(destLine + n)
+			if sourceLine != null and dest != null do
+				dest.copy(sourceLine, sourceColumnBegin, sourceColumnEnd, destColumn)
+			end
+		end
+		return this
+	end
+	
+	str toString () do
+		str result = "["
+		num lines = this.rowSize()
+		num columns = this.columnSize()
+		for n = 1, lines do
+			Numbers line = this.get(n)
+			result = result + line.toString()
+			if n != lines do result = result + ", " end 
+		end
+		result = result + "]"
+		return result
+	end
+
+end

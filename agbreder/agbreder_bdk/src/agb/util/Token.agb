@@ -1,0 +1,325 @@
+
+class Token extends Object do
+
+	str image
+	
+	num type
+	
+	num line
+	
+	num column
+	
+	this Token () do
+		return this
+	end
+	
+	this Token (str image, num type, num line, num column) do
+		return this.setImage(image).setType(type).setLine(line).setColumn(column)
+	end
+	
+	this setImage (str image) do
+		this.image = image
+		return this
+	end
+	
+	str getImage () do
+		return this.image
+	end
+	
+	this setType (num type) do
+		this.type = type
+		return this
+	end
+	
+	num getType () do
+		return this.type
+	end
+	
+	this setLine (num line) do
+		this.line = line
+		return this
+	end
+	
+	num getLine () do
+		return this.line
+	end
+	
+	this setColumn (num column) do
+		this.column = column
+		return this
+	end
+	
+	num getColumn () do
+		return this.column
+	end
+	
+	str toString () do
+		return "<" + this.getImage() + ">"
+	end
+
+end
+
+class TokenFactory extends Object do
+	
+	str stream
+
+	this TokenFactory (str stream) do
+		this.stream = stream
+		return this
+	end
+	
+	Array execute () do
+		Array array = new Array()
+		num index = 1
+		num len = String.size(this.stream)
+		while index <= len do
+			num char = String.charAt(this.stream, index)
+			if char <= 32 do
+				index++
+			end else do
+				num begin = index
+				if this.isIdentifyPrefix(char) do
+					repeat do
+						char = String.charAt(this.stream, ++index)
+					end while this.isIdentifyPosfix(char)
+					array.add(new Token(String.substring(this.stream, begin, index - 1), 1, -1, -1))
+				end else if this.isStringPrefix(char) do
+					repeat do
+						char = String.charAt(this.stream, ++index)
+					end while !this.isStringPosfix(char)
+					index++
+					array.add(new Token(String.substring(this.stream, begin + 1, index - 2), 3, -1, -1))
+				end else if this.isNumberPrefix(char) do
+					bool dot = false
+					repeat do
+						char = String.charAt(this.stream, ++index)
+						if char == 46 do
+							if dot break
+							else dot = true
+						end
+					end while this.isNumberPosfix(char)
+					array.add(new Token(String.substring(this.stream, begin, index - 1), 2, -1, -1))
+				end else do
+					index++
+					array.add(new Token(String.substring(this.stream, begin, begin), 4, -1, -1))
+				end
+			end
+		end
+		return array
+	end
+	
+	bool isIdentifyPrefix (num char) do
+		return (char >= 65 and char <= 90) or (char >= 97 and char <= 122) or char == 95 
+	end
+	
+	bool isIdentifyPosfix (num char) do
+		return (char >= 65 and char <= 90) or (char >= 97 and char <= 122) or (char >= 48 and char <= 57) or char == 95 
+	end
+
+	bool isNumberPrefix (num char) do
+		return char >= 48 and char <= 57 
+	end
+
+	bool isNumberPosfix (num char) do
+		return (char >= 48 and char <= 57) or char == 46
+	end
+	
+	bool isStringPrefix (num char) do
+		return char == 34 
+	end
+	
+	bool isStringPosfix (num char) do
+		return char == 34 
+	end
+
+end
+
+class TokenStream extends Object do
+
+	num index
+	
+	Array tokens
+	
+	this TokenStream (Array tokens) do
+		this.index = 1
+		this.tokens = tokens
+		return this
+	end
+	
+	bool eof () do
+		return this.index > this.tokens.size()
+	end
+	
+	bool eof (num next) do
+		return this.index + next > this.tokens.size()
+	end
+	
+	Token get () do
+		return this.get(0)
+	end
+	
+	Token get (num next) do
+        if this.eof() do
+            return null
+        end
+		return ((Token)this.tokens.get(this.index + next))
+	end
+	
+	bool is (str token) do
+		return this.is(token, 0)
+	end
+	
+	bool is (str token, num next) do
+		return !this.eof() and this.get(next).image == token
+	end
+	
+	bool can (str token) do
+		if !this.eof() and this.get().image == token do
+			this.index = this.index + 1
+			return true
+		end else do
+			return false
+		end
+	end
+	
+	Token check (str image) throw ParseException do
+        Token token = this.get()
+		if !this.eof() and token.image == image do
+			this.index = this.index + 1
+			return token
+		end else do
+			throw new ParseException()
+		end
+	end
+	
+	bool isId () do
+		return this.isId(0)
+	end
+	
+	bool isId (num next) do
+		return !this.eof(next) and this.get(next).type == 1
+	end
+	
+	bool canId () do
+		if !this.eof() and this.get().type == 1 do
+			this.index = this.index + 1
+			return true
+		end else do
+			return false
+		end
+	end
+	
+	bool canId (str image) do
+		Token token = this.get()
+		if !this.eof() and token.type == 1 and token.image == image do
+			this.index = this.index + 1
+			return true
+		end else do
+			return false
+		end
+	end
+	
+	Token checkId () throw ParseException do
+        Token token = this.get()
+		if !this.eof() and token.type == 1 do
+			this.index = this.index + 1
+			return token
+		end else do
+			throw new ParseException()
+		end
+	end
+	
+	Token checkId (str image) throw ParseException do
+        Token token = this.get()
+		if !this.eof() and token.type == 1 and token.image == image do
+			this.index = this.index + 1
+			return token
+		end else do
+			throw new ParseException()
+		end
+	end
+	
+	bool isNumber () do
+		return this.isNumber(0)
+	end
+	
+	bool isNumber (num next) do
+		return !this.eof(next) and this.get(next).type == 2
+	end
+	
+	bool canNumber () do
+		if !this.eof() and this.get().type == 2 do
+			this.index = this.index + 1
+			return true
+		end else do
+			return false
+		end
+	end
+	
+	Token checkNumber () throw ParseException do
+        Token token = this.get()
+		if !this.eof() and token.type == 1 do
+			this.index = this.index + 2
+			return token
+		end else do
+			throw new ParseException()
+		end
+	end
+	
+	bool isString () do
+		return this.isString(0)
+	end
+	
+	bool isString (num next) do
+		return !this.eof(next) and this.get(next).type == 3
+	end
+	
+	bool canString () do
+		if !this.eof() and this.get().type == 3 do
+			this.index = this.index + 1
+			return true
+		end else do
+			return false
+		end
+	end
+	
+	Token checkString () throw ParseException do
+		Token token = this.get()
+		if !this.eof() and token.type == 3 do
+			this.index = this.index + 1
+			return token
+		end else do
+			throw new ParseException()
+		end
+	end
+	
+	bool isSymbol (str token) do
+		return this.isSymbol(token, 0)
+	end
+	
+	bool isSymbol (str image, num next) do 
+		Token token = this.get(next)
+		return !this.eof(next) and token.type == 4 and token.image == image
+	end
+	
+	bool canSymbol (str image) do
+		Token token = this.get()
+		if !this.eof() and token.type == 4 and token.image == image do
+			this.index = this.index + 1
+			return true
+		end else do
+			return false
+		end
+	end
+	
+	Token checkSymbol (str image) throw ParseException do
+		Token token = this.get()
+		if !this.eof() and token.type == 4 and token.image == image do
+			this.index = this.index + 1
+			return token
+		end else do
+			throw new ParseException()
+		end
+	end
+
+end

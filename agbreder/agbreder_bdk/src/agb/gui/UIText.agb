@@ -1,0 +1,91 @@
+
+class UIText extends UILabel do
+
+	num cursor
+	
+	num cursorX
+
+	this paint (UIGraphic g) do
+		g.fillRect(0, 0, this.getWidth(), this.getHeight(), UIColor.getWhite()) 
+		num textWidth = this.getFont().getWidth(this.getText())
+		num textHeight = this.getFont().getHeight(this.getText())
+		do
+			str text = this.getText()
+			num x = 0
+			num y = 0
+			g.drawString(x, y, text, this.getForeColor()) 
+		end
+		if this.getFrame().getFocus() == this do
+			num x = 1 + this.cursorX 
+			g.drawRect(x, 2, 1, textHeight - 4, UIColor.getBlack()) 
+		end
+		g.drawRect(0, 0, this.getWidth(), this.getHeight(), UIColor.getGray()) 
+		return this
+	end
+	
+    this fireMouseDownEvent (UIMouseEvent e) do
+        this.getFrame().fireFocus(this)
+        this.repaint() 
+        return this
+    end
+    
+    this fireKeyDownEvent (UIKeyEvent e) do
+        num key = e.getCode()
+        if key == Native.SDLK_LEFT() do
+            if this.cursor > 0 do
+                this.cursor = this.cursor - 1
+                this.cursorX = this.getFont().getWidth(String.substring(this.getText(), 1, this.cursor))
+            end
+        end else if key == Native.SDLK_RIGHT() do 
+            if this.cursor < String.size(this.getText()) do
+                this.cursor = this.cursor + 1
+                this.cursorX = this.getFont().getWidth(String.substring(this.getText(), 1, this.cursor))
+            end
+        end else if key == Native.SDLK_DELETE() do
+        	str text = String.substring(this.getText(), 1, this.cursor)
+        	text = text + String.substring(this.getText(), this.cursor + 2, String.size(this.getText()))
+            this.setText(text)
+        end else if key == Native.SDLK_BACKSPACE() do
+            if this.cursor > 0 do
+                str text = String.substring(this.getText(), 1, this.cursor - 1)
+                text = text + String.substring(this.getText(), this.cursor + 1, String.size(this.getText()))
+                this.setText(text)
+                this.cursor = this.cursor - 1
+                this.cursorX = this.getFont().getWidth(String.substring(this.getText(), 1, this.cursor))
+            end
+        end else if key == Native.SDLK_RETURN() do
+            this.fireActionEvent(e)
+        end else if (key > 32 and key < 256) or key == Native.SDLK_SPACE() do
+        	str text = String.substring(this.getText(), 1, this.cursor)
+        	text = text + String.codeToChar(e.getCode())
+        	text = text + String.substring(this.getText(), this.cursor + 1, String.size(this.getText()))
+            this.setText(text)
+            this.cursor = this.cursor + 1
+            this.cursorX = this.getFont().getWidth(String.substring(this.getText(), 1, this.cursor))
+        end
+        this.repaint()
+        return this
+    end
+    
+    num getCursor () do
+    	return this.cursor
+    end
+    
+    this fireActionEvent(UIKeyEvent e) do
+        return this
+    end
+    
+    num getMinimumWidth () do
+		return 100
+	end
+	
+	num getMinimumHeight () do
+		return this.getFont().getHeight(this.getText())
+	end
+	
+	str toString () do
+        return "<text/>";
+    end
+	
+    
+end

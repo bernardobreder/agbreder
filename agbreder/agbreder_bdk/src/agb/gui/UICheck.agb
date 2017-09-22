@@ -1,0 +1,8 @@
+
+class UICheck extends UIComponent do
+
+	this paint (UIGraphic g) do 
+		return this
+	end
+
+end

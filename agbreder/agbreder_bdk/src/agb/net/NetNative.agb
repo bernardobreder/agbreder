@@ -1,0 +1,12 @@
+
+class NetNative do
+
+	static byte[] request(str host, str request) do
+		return Native.netRequest(host, 9889, request)
+	end
+	
+	static byte[] request(str request) do
+		return Native.netRequest("localhost", 9889, request)
+	end
+	
+end

@@ -1,0 +1,4 @@
+
+throw ParseException extends CheckedException do
+
+end

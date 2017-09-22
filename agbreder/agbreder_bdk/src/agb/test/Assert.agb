@@ -1,0 +1,97 @@
+
+class Assert do
+
+	static this equal(Object expected, Object actual) do
+		if expected == null or actual == null do
+			if expected == null and actual != null do
+				Console.println("Assert Exception: Excepted 'null' and not '" + actual.toString() + "'")
+				|vm.half,2|
+			end else if expected != null and actual == null do
+				Console.println("Assert Exception: Excepted '" + expected.toString() + "' and not 'null'")
+				|vm.half,2|
+			end
+		end else if !expected.equal(actual) do
+			Console.println("Assert Exception: Excepted '" + expected.toString() + "' and not '" + actual.toString() + "'") 
+			|vm.half,2|
+		end
+		return this
+	end
+	
+	static this equal(str expected, str actual) do
+		if expected != actual do
+			Console.println("Assert Exception: Excepted '" + expected + "' and not '" + actual + "'")
+			|vm.half,2|
+		end
+		return this
+	end
+	
+	static this equal(bool expected, bool actual) do
+		if expected != actual do
+			Console.println("Assert Exception: Excepted '" + expected + "' and not '" + actual + "'")
+			|vm.half,2|
+		end
+		return this
+	end
+	
+	static this equal(num expected, num actual) do
+		if expected != actual do
+			Console.println("Assert Exception: Excepted '" + expected + "' and not '" + actual + "'")
+			|vm.half,2|
+		end
+		return this
+	end
+	
+	static this notequal(Object expected, Object actual) do
+		if expected == null or actual == null do
+			if expected == null and actual == null do
+				Console.println("Assert Exception: Excepted 'null' and not 'null'")
+				|vm.half,2|
+			end
+		end else if expected.equal(actual) do
+			Console.println("Assert Exception: Excepted '" + expected.toString() + "' and not '" + actual.toString() + "'") 
+			|vm.half,2|
+		end
+		return this
+	end
+	
+	static this notequal(str expected, str actual) do
+		if expected == actual do
+			Console.println("Assert Exception: Excepted '" + expected + "' and not '" + actual + "'")
+			|vm.half,2|
+		end
+		return this
+	end
+	
+	static this notequal(num expected, num actual) do
+		if expected != actual do
+			Console.println("Assert Exception: Excepted '" + expected + "' and not '" + actual + "'")
+			|vm.half,2|
+		end
+		return this
+	end
+	
+	static this notnil(obj value) do
+		if value == null do
+			Console.println("Assert Exception: Excepted Not Null")
+			|vm.half,2|
+		end
+		return this
+	end
+	
+	static this nil(obj value) do
+		if value != null do
+			Console.println("Assert Exception: Excepted Null")
+			|vm.half,2|
+		end
+		return this
+	end
+	
+	static this fail() do
+		Console.println("Assert Exception: Fail")
+		throw new AssertException()
+		return this
+	end
+
+end
+
+throw runtime AssertException do end

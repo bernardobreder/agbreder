@@ -1,0 +1,84 @@
+
+class Rectangle extends Object do
+
+	num x
+	
+	num y
+	
+	num width
+	
+	num height
+	
+	this Rectangle (num x, num y, num width, num height) do
+		this.setX(x).setY(y).setWidth(width).setHeight(height)
+		return this
+	end
+	
+	this Rectangle (num width, num height) do
+		this.setWidth(width).setHeight(height)
+		return this
+	end
+
+	this Rectangle () do
+		return this
+	end
+	
+	num getX () do
+		return this.x
+	end
+	
+	this setX (num value) do
+		this.x = value
+		return this
+	end
+	
+	this incX (num value) do 
+		this.x = this.x + value
+		return this
+	end
+	
+	num getY () do
+		return this.y
+	end
+	
+	this setY (num value) do
+		this.y = value
+		return this
+	end
+	
+	this incY (num value) do 
+		this.y = this.y + value
+		return this
+	end
+	
+	num getWidth () do
+		return this.width
+	end
+	
+	this setWidth (num value) do
+		this.width = value
+		return this
+	end
+	
+	num getHeight () do
+		return this.height
+	end
+	
+	this setHeight (num value) do
+		this.height = value
+		return this
+	end
+	
+	this setPoint (num x, num y) do
+		return this.setX(x).setY(y)
+	end
+	
+	this setSize (num width, num height) do
+		return this.setWidth(width).setHeight(height)
+	end
+	
+	str toString () do
+		return "[x=" + this.getX() + ", y=" + this.getY() + ", width=" + this.getWidth() + ", height=" + this.getHeight() + "]"
+	end
+
+end

@@ -1,0 +1,3 @@
+def str IndexServlet_service() {
+	return 'é'
+}

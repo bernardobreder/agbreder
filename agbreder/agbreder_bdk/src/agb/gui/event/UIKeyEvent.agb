@@ -1,0 +1,15 @@
+
+class UIKeyEvent extends UIEvent do
+
+	num code
+	
+	num getCode () do 
+		return this.code
+	end
+	
+	this setCode (num code) do
+		this.code = code
+		return this
+	end
+	
+end

@@ -1,0 +1,505 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0135AAE114A8942300BF2364 /* gui.c in Sources */ = {isa = PBXBuildFile; fileRef = 0135AAE014A8942300BF2364 /* gui.c */; };
+		01A53AD214A8A60100AF265F /* array.c in Sources */ = {isa = PBXBuildFile; fileRef = 01A53ACA14A8A60100AF265F /* array.c */; };
+		01A53AD414A8A60100AF265F /* map.c in Sources */ = {isa = PBXBuildFile; fileRef = 01A53ACC14A8A60100AF265F /* map.c */; };
+		01A53AD514A8A60100AF265F /* net.c in Sources */ = {isa = PBXBuildFile; fileRef = 01A53ACD14A8A60100AF265F /* net.c */; };
+		01A53AD614A8A60100AF265F /* number.c in Sources */ = {isa = PBXBuildFile; fileRef = 01A53ACE14A8A60100AF265F /* number.c */; };
+		01A53AD714A8A60100AF265F /* object.c in Sources */ = {isa = PBXBuildFile; fileRef = 01A53ACF14A8A60100AF265F /* object.c */; };
+		01A53AD814A8A60100AF265F /* string.c in Sources */ = {isa = PBXBuildFile; fileRef = 01A53AD014A8A60100AF265F /* string.c */; };
+		01A53AD914A8A60100AF265F /* vm.c in Sources */ = {isa = PBXBuildFile; fileRef = 01A53AD114A8A60100AF265F /* vm.c */; };
+		01DCFEBD1484DBB5006BAF57 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01DCFEBC1484DBB5006BAF57 /* UIKit.framework */; };
+		01DCFEBF1484DBB5006BAF57 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01DCFEBE1484DBB5006BAF57 /* Foundation.framework */; };
+		01DCFEC11484DBB5006BAF57 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01DCFEC01484DBB5006BAF57 /* CoreGraphics.framework */; };
+		01DCFEC71484DBB5006BAF57 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 01DCFEC51484DBB5006BAF57 /* InfoPlist.strings */; };
+		01DCFEC91484DBB5006BAF57 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 01DCFEC81484DBB5006BAF57 /* main.m */; };
+		01DCFECD1484DBB5006BAF57 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 01DCFECC1484DBB5006BAF57 /* AppDelegate.m */; };
+		01DCFED01484DBB5006BAF57 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01DCFECE1484DBB5006BAF57 /* MainStoryboard.storyboard */; };
+		01DCFED31484DBB5006BAF57 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01DCFED21484DBB5006BAF57 /* ViewController.m */; };
+		01DCFEDB1484DBB5006BAF57 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01DCFEDA1484DBB5006BAF57 /* SenTestingKit.framework */; };
+		01DCFEDC1484DBB5006BAF57 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01DCFEBC1484DBB5006BAF57 /* UIKit.framework */; };
+		01DCFEDD1484DBB5006BAF57 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01DCFEBE1484DBB5006BAF57 /* Foundation.framework */; };
+		01DCFEE51484DBB5006BAF57 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 01DCFEE31484DBB5006BAF57 /* InfoPlist.strings */; };
+		01DCFEE81484DBB5006BAF57 /* agbreder_iphoneTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 01DCFEE71484DBB5006BAF57 /* agbreder_iphoneTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		01DCFEDE1484DBB5006BAF57 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 01DCFEAF1484DBB5006BAF57 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 01DCFEB71484DBB5006BAF57;
+			remoteInfo = "agbreder-iphone";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0135AAE014A8942300BF2364 /* gui.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = gui.c; sourceTree = "<group>"; };
+		01A53AC114A8A5F800AF265F /* agb_array.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = agb_array.h; path = ../../agbreder_vm/inc/agb_array.h; sourceTree = "<group>"; };
+		01A53AC214A8A5F800AF265F /* agb_gui.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = agb_gui.h; path = ../../agbreder_vm/inc/agb_gui.h; sourceTree = "<group>"; };
+		01A53AC314A8A5F800AF265F /* agb_map.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = agb_map.h; path = ../../agbreder_vm/inc/agb_map.h; sourceTree = "<group>"; };
+		01A53AC414A8A5F800AF265F /* agb_net.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = agb_net.h; path = ../../agbreder_vm/inc/agb_net.h; sourceTree = "<group>"; };
+		01A53AC514A8A5F800AF265F /* agb_number.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = agb_number.h; path = ../../agbreder_vm/inc/agb_number.h; sourceTree = "<group>"; };
+		01A53AC614A8A5F800AF265F /* agb_object.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = agb_object.h; path = ../../agbreder_vm/inc/agb_object.h; sourceTree = "<group>"; };
+		01A53AC714A8A5F800AF265F /* agb_string.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = agb_string.h; path = ../../agbreder_vm/inc/agb_string.h; sourceTree = "<group>"; };
+		01A53AC814A8A5F800AF265F /* agb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = agb.h; path = ../../agbreder_vm/inc/agb.h; sourceTree = "<group>"; };
+		01A53AC914A8A5F800AF265F /* agbi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = agbi.h; path = ../../agbreder_vm/inc/agbi.h; sourceTree = "<group>"; };
+		01A53ACA14A8A60100AF265F /* array.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = array.c; path = ../../agbreder_vm/src/array.c; sourceTree = "<group>"; };
+		01A53ACC14A8A60100AF265F /* map.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = map.c; path = ../../agbreder_vm/src/map.c; sourceTree = "<group>"; };
+		01A53ACD14A8A60100AF265F /* net.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = net.c; path = ../../agbreder_vm/src/net.c; sourceTree = "<group>"; };
+		01A53ACE14A8A60100AF265F /* number.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = number.c; path = ../../agbreder_vm/src/number.c; sourceTree = "<group>"; };
+		01A53ACF14A8A60100AF265F /* object.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = object.c; path = ../../agbreder_vm/src/object.c; sourceTree = "<group>"; };
+		01A53AD014A8A60100AF265F /* string.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = string.c; path = ../../agbreder_vm/src/string.c; sourceTree = "<group>"; };
+		01A53AD114A8A60100AF265F /* vm.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = vm.c; path = ../../agbreder_vm/src/vm.c; sourceTree = "<group>"; };
+		01DCFEB81484DBB5006BAF57 /* agbreder-iphone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "agbreder-iphone.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		01DCFEBC1484DBB5006BAF57 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		01DCFEBE1484DBB5006BAF57 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		01DCFEC01484DBB5006BAF57 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		01DCFEC41484DBB5006BAF57 /* agbreder-iphone-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "agbreder-iphone-Info.plist"; sourceTree = "<group>"; };
+		01DCFEC61484DBB5006BAF57 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		01DCFEC81484DBB5006BAF57 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		01DCFECA1484DBB5006BAF57 /* agbreder-iphone-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "agbreder-iphone-Prefix.pch"; sourceTree = "<group>"; };
+		01DCFECB1484DBB5006BAF57 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		01DCFECC1484DBB5006BAF57 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		01DCFECF1484DBB5006BAF57 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
+		01DCFED11484DBB5006BAF57 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		01DCFED21484DBB5006BAF57 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		01DCFED91484DBB5006BAF57 /* agbreder-iphoneTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "agbreder-iphoneTests.octest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		01DCFEDA1484DBB5006BAF57 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		01DCFEE21484DBB5006BAF57 /* agbreder-iphoneTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "agbreder-iphoneTests-Info.plist"; sourceTree = "<group>"; };
+		01DCFEE41484DBB5006BAF57 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		01DCFEE61484DBB5006BAF57 /* agbreder_iphoneTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = agbreder_iphoneTests.h; sourceTree = "<group>"; };
+		01DCFEE71484DBB5006BAF57 /* agbreder_iphoneTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = agbreder_iphoneTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		01DCFEB51484DBB5006BAF57 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				01DCFEBD1484DBB5006BAF57 /* UIKit.framework in Frameworks */,
+				01DCFEBF1484DBB5006BAF57 /* Foundation.framework in Frameworks */,
+				01DCFEC11484DBB5006BAF57 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		01DCFED51484DBB5006BAF57 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				01DCFEDB1484DBB5006BAF57 /* SenTestingKit.framework in Frameworks */,
+				01DCFEDC1484DBB5006BAF57 /* UIKit.framework in Frameworks */,
+				01DCFEDD1484DBB5006BAF57 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0135AAC214A88F7900BF2364 /* agb */ = {
+			isa = PBXGroup;
+			children = (
+				01A53ACA14A8A60100AF265F /* array.c */,
+				01A53ACC14A8A60100AF265F /* map.c */,
+				01A53ACD14A8A60100AF265F /* net.c */,
+				01A53ACE14A8A60100AF265F /* number.c */,
+				01A53ACF14A8A60100AF265F /* object.c */,
+				01A53AD014A8A60100AF265F /* string.c */,
+				01A53AD114A8A60100AF265F /* vm.c */,
+				01A53AC114A8A5F800AF265F /* agb_array.h */,
+				01A53AC214A8A5F800AF265F /* agb_gui.h */,
+				01A53AC314A8A5F800AF265F /* agb_map.h */,
+				01A53AC414A8A5F800AF265F /* agb_net.h */,
+				01A53AC514A8A5F800AF265F /* agb_number.h */,
+				01A53AC614A8A5F800AF265F /* agb_object.h */,
+				01A53AC714A8A5F800AF265F /* agb_string.h */,
+				01A53AC814A8A5F800AF265F /* agb.h */,
+				01A53AC914A8A5F800AF265F /* agbi.h */,
+				0135AAE014A8942300BF2364 /* gui.c */,
+			);
+			name = agb;
+			sourceTree = "<group>";
+		};
+		01DCFEAD1484DBB5006BAF57 = {
+			isa = PBXGroup;
+			children = (
+				01DCFEC21484DBB5006BAF57 /* agbreder-iphone */,
+				01DCFEE01484DBB5006BAF57 /* agbreder-iphoneTests */,
+				01DCFEBB1484DBB5006BAF57 /* Frameworks */,
+				01DCFEB91484DBB5006BAF57 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		01DCFEB91484DBB5006BAF57 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				01DCFEB81484DBB5006BAF57 /* agbreder-iphone.app */,
+				01DCFED91484DBB5006BAF57 /* agbreder-iphoneTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		01DCFEBB1484DBB5006BAF57 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				01DCFEBC1484DBB5006BAF57 /* UIKit.framework */,
+				01DCFEBE1484DBB5006BAF57 /* Foundation.framework */,
+				01DCFEC01484DBB5006BAF57 /* CoreGraphics.framework */,
+				01DCFEDA1484DBB5006BAF57 /* SenTestingKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		01DCFEC21484DBB5006BAF57 /* agbreder-iphone */ = {
+			isa = PBXGroup;
+			children = (
+				0135AAC214A88F7900BF2364 /* agb */,
+				01DCFECB1484DBB5006BAF57 /* AppDelegate.h */,
+				01DCFECC1484DBB5006BAF57 /* AppDelegate.m */,
+				01DCFECE1484DBB5006BAF57 /* MainStoryboard.storyboard */,
+				01DCFED11484DBB5006BAF57 /* ViewController.h */,
+				01DCFED21484DBB5006BAF57 /* ViewController.m */,
+				01DCFEC31484DBB5006BAF57 /* Supporting Files */,
+			);
+			path = "agbreder-iphone";
+			sourceTree = "<group>";
+		};
+		01DCFEC31484DBB5006BAF57 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				01DCFEC41484DBB5006BAF57 /* agbreder-iphone-Info.plist */,
+				01DCFEC51484DBB5006BAF57 /* InfoPlist.strings */,
+				01DCFEC81484DBB5006BAF57 /* main.m */,
+				01DCFECA1484DBB5006BAF57 /* agbreder-iphone-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		01DCFEE01484DBB5006BAF57 /* agbreder-iphoneTests */ = {
+			isa = PBXGroup;
+			children = (
+				01DCFEE61484DBB5006BAF57 /* agbreder_iphoneTests.h */,
+				01DCFEE71484DBB5006BAF57 /* agbreder_iphoneTests.m */,
+				01DCFEE11484DBB5006BAF57 /* Supporting Files */,
+			);
+			path = "agbreder-iphoneTests";
+			sourceTree = "<group>";
+		};
+		01DCFEE11484DBB5006BAF57 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				01DCFEE21484DBB5006BAF57 /* agbreder-iphoneTests-Info.plist */,
+				01DCFEE31484DBB5006BAF57 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		01DCFEB71484DBB5006BAF57 /* agbreder-iphone */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 01DCFEEB1484DBB5006BAF57 /* Build configuration list for PBXNativeTarget "agbreder-iphone" */;
+			buildPhases = (
+				01DCFEB41484DBB5006BAF57 /* Sources */,
+				01DCFEB51484DBB5006BAF57 /* Frameworks */,
+				01DCFEB61484DBB5006BAF57 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "agbreder-iphone";
+			productName = "agbreder-iphone";
+			productReference = 01DCFEB81484DBB5006BAF57 /* agbreder-iphone.app */;
+			productType = "com.apple.product-type.application";
+		};
+		01DCFED81484DBB5006BAF57 /* agbreder-iphoneTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 01DCFEEE1484DBB5006BAF57 /* Build configuration list for PBXNativeTarget "agbreder-iphoneTests" */;
+			buildPhases = (
+				01DCFED41484DBB5006BAF57 /* Sources */,
+				01DCFED51484DBB5006BAF57 /* Frameworks */,
+				01DCFED61484DBB5006BAF57 /* Resources */,
+				01DCFED71484DBB5006BAF57 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				01DCFEDF1484DBB5006BAF57 /* PBXTargetDependency */,
+			);
+			name = "agbreder-iphoneTests";
+			productName = "agbreder-iphoneTests";
+			productReference = 01DCFED91484DBB5006BAF57 /* agbreder-iphoneTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		01DCFEAF1484DBB5006BAF57 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+				ORGANIZATIONNAME = "PUC-RIO";
+			};
+			buildConfigurationList = 01DCFEB21484DBB5006BAF57 /* Build configuration list for PBXProject "agbreder-iphone" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 01DCFEAD1484DBB5006BAF57;
+			productRefGroup = 01DCFEB91484DBB5006BAF57 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				01DCFEB71484DBB5006BAF57 /* agbreder-iphone */,
+				01DCFED81484DBB5006BAF57 /* agbreder-iphoneTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		01DCFEB61484DBB5006BAF57 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				01DCFEC71484DBB5006BAF57 /* InfoPlist.strings in Resources */,
+				01DCFED01484DBB5006BAF57 /* MainStoryboard.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		01DCFED61484DBB5006BAF57 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				01DCFEE51484DBB5006BAF57 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		01DCFED71484DBB5006BAF57 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		01DCFEB41484DBB5006BAF57 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				01DCFEC91484DBB5006BAF57 /* main.m in Sources */,
+				01DCFECD1484DBB5006BAF57 /* AppDelegate.m in Sources */,
+				01DCFED31484DBB5006BAF57 /* ViewController.m in Sources */,
+				0135AAE114A8942300BF2364 /* gui.c in Sources */,
+				01A53AD214A8A60100AF265F /* array.c in Sources */,
+				01A53AD414A8A60100AF265F /* map.c in Sources */,
+				01A53AD514A8A60100AF265F /* net.c in Sources */,
+				01A53AD614A8A60100AF265F /* number.c in Sources */,
+				01A53AD714A8A60100AF265F /* object.c in Sources */,
+				01A53AD814A8A60100AF265F /* string.c in Sources */,
+				01A53AD914A8A60100AF265F /* vm.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		01DCFED41484DBB5006BAF57 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				01DCFEE81484DBB5006BAF57 /* agbreder_iphoneTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		01DCFEDF1484DBB5006BAF57 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 01DCFEB71484DBB5006BAF57 /* agbreder-iphone */;
+			targetProxy = 01DCFEDE1484DBB5006BAF57 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		01DCFEC51484DBB5006BAF57 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				01DCFEC61484DBB5006BAF57 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		01DCFECE1484DBB5006BAF57 /* MainStoryboard.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				01DCFECF1484DBB5006BAF57 /* en */,
+			);
+			name = MainStoryboard.storyboard;
+			sourceTree = "<group>";
+		};
+		01DCFEE31484DBB5006BAF57 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				01DCFEE41484DBB5006BAF57 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		01DCFEE91484DBB5006BAF57 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		01DCFEEA1484DBB5006BAF57 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		01DCFEEC1484DBB5006BAF57 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "agbreder-iphone/agbreder-iphone-Prefix.pch";
+				INFOPLIST_FILE = "agbreder-iphone/agbreder-iphone-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		01DCFEED1484DBB5006BAF57 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "agbreder-iphone/agbreder-iphone-Prefix.pch";
+				INFOPLIST_FILE = "agbreder-iphone/agbreder-iphone-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		01DCFEEF1484DBB5006BAF57 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/agbreder-iphone.app/agbreder-iphone";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "agbreder-iphone/agbreder-iphone-Prefix.pch";
+				INFOPLIST_FILE = "agbreder-iphoneTests/agbreder-iphoneTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		01DCFEF01484DBB5006BAF57 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/agbreder-iphone.app/agbreder-iphone";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "agbreder-iphone/agbreder-iphone-Prefix.pch";
+				INFOPLIST_FILE = "agbreder-iphoneTests/agbreder-iphoneTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		01DCFEB21484DBB5006BAF57 /* Build configuration list for PBXProject "agbreder-iphone" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				01DCFEE91484DBB5006BAF57 /* Debug */,
+				01DCFEEA1484DBB5006BAF57 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		01DCFEEB1484DBB5006BAF57 /* Build configuration list for PBXNativeTarget "agbreder-iphone" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				01DCFEEC1484DBB5006BAF57 /* Debug */,
+				01DCFEED1484DBB5006BAF57 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		01DCFEEE1484DBB5006BAF57 /* Build configuration list for PBXNativeTarget "agbreder-iphoneTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				01DCFEEF1484DBB5006BAF57 /* Debug */,
+				01DCFEF01484DBB5006BAF57 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 01DCFEAF1484DBB5006BAF57 /* Project object */;
+}

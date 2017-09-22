@@ -1,0 +1,13 @@
+<div class="left-index" onclick="${onclick}">
+	<table>
+		<tr>
+			<td width="1px">
+				<img src="${img}" />
+			</td>
+			<td width="5px"></td>
+			<td>
+				<div id="${id}" class="left-index-text">${value}</div>
+			</td>
+		</tr>
+	</table>
+</div>
